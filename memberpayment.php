@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/discover.css">
     <link rel="stylesheet" href="css/discover.css">
     <link rel="stylesheet" href="css/pr.css">
+    <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/profile.css">
 
     
@@ -37,12 +38,6 @@
 </nav> 
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  
-<div class="heading">
-         <div class="mt-3 bg-light text-center" >
-             <h2>Payment Fee</h2>
-    </div>
-    </div>
- 
     <div><?php include 'payment.php'; ?></div> 
  
 </div>

@@ -1,35 +1,59 @@
 <?php
 
-include 'config.php';
+include 'config.php'; 
 
 if(isset($_POST['submit'])){
 	 
 
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = mysqli_real_escape_string($conn, md5($_POST['password'])); 
-   $department = mysqli_real_escape_string($conn, $_POST['dept_name']); 
-   $batch = mysqli_real_escape_string($conn, $_POST['batch']);
-   $user_type = $_POST['user_type'];
+   $month = mysqli_real_escape_string($conn, $_POST['month']);
+   $year = mysqli_real_escape_string($conn, $_POST['year']); 
+   $usergiven_paynumber=$_POST['pay_number'];
+   $payment_ammount=$_POST['payment_ammount'];
+   $transiction_number= mysqli_real_escape_string($conn, $_POST['transiction_number']);
+  
 
-   if (!preg_match("/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]+.nstu.edu.bd+$/i",$email )) {
+   //--------------------------------------checks for availability of payment of the month------------------------------
+   $available = mysqli_query($conn, "SELECT * FROM `clubmonthypayment`  WHERE  clubmonthypayment.month='$month' AND clubmonthypayment.year='$year' AND clubmonthypayment.club_id='27'") or die('query failed');
+ 
+   if(mysqli_num_rows($available) > 0){
+	    
+	    while($row = mysqli_fetch_assoc($available)){
+			$pay_number=$row['pay_number']; 
+			$payment_id=$row['payment_id'];
+         }
+	//-----------------------------------checks if the user already paid for the month-----------------------------------	
+		 $payed = mysqli_query($conn, "SELECT * FROM `pay`  WHERE   pay.user_id='1' AND  pay.payment_id='$payment_id'") or die('query failed');
+		 $payment_status=null;
+		 if(mysqli_num_rows($payed) > 0){
+		 while($row = mysqli_fetch_assoc($payed)){
+			$payment_status=$row['payment_status']; 
+			if($payment_status=="checked"){
+				$message[] = 'You Have already paied for this month --->'.$month; 
+ 			break; 
+			}
+         }
+		}
+    //--------------------------------if payment is not completed inserts payment check raquest to table----------------------------
+		 if($payment_status!="checked" ||  $payment_status=null){
 
-	$message[]= "Must enter Education mail of the university";
-  }else{
-	$select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
-   if(mysqli_num_rows($select_users) > 0){
-      $message[] = 'user already exist!';
-   }else{
-    
-         mysqli_query($conn, "INSERT INTO `users`(name, email, password, user_type,department,batch) VALUES('$name', '$email', '$pass', '$user_type','$department','$batch')") or die('query failed');
-         $message[] = 'registered successfully!';
-         header('location:login.php');
-      
-   } }
-}
+		 if($pay_number==$usergiven_paynumber){
+		   
+			mysqli_query($conn, "INSERT INTO `pay`(user_id,payment_id,payment_ammount,transiction_number) VALUES('1', '$payment_id', '$payment_ammount', '$transiction_number')") or die('query failed');
+			$message[] = 'Succesfully inserted payment check request of month   --->'.$month;
+		  
+		   }else{
+			        $message[] = 'Not the corrent Bkash NUmber .The correct number is --->'.$pay_number; 
 
+		        }
 
+			}
+ 
+	   }else{
+              $message[] = 'No payment for this month on this club  --->'.$month;
+            }
+} 
+ 
 ?>
 
 
@@ -48,6 +72,9 @@ if(isset($message)){
    }
 }
 ?>
+ 
+
+
 	<section class="h-100">
 		<div class="container h-100">
 			<div class="row justify-content-sm-center h-100">
@@ -55,86 +82,61 @@ if(isset($message)){
 				 
 					<div class="card shadow-lg mb-1">
 						<div class="card-body p-5">
-							<h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
-							<form action="" method="post" class="form" name="form" autocomplete="on" >
-								<div class="mb-3">
-									<label class="mb-2 text-muted" for="name">Club Bkash Number</label>
-									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
-								</div>
+							<h1 class="fs-4 card-title fw-bold mb-4">Monthly Payment</h1>
 
-								<div class="mb-3">
-									<label class="mb-2 text-muted" for="email">Payment Amount</label> 
-									<input id="email" type="email" class="form-control" name="email" value="" required>
-								</div>
-
-								<div class="mb-3">
-									<label class="mb-2 text-muted" for="password">Transaction number</label>
-									<input id="password" type="password" class="form-control" name="password" required>
-								</div>
-
+							<!-- -----------------------------check form---------------------------------- -->
+							<form action="" method="post" class="checkform" name="checkform" autocomplete="on" >
+							 
 								<div class="dept mb-3">
-	                  				<label class="mb-2 text-muted" for="dept_name">Department</label> 
-									<select name="dept_name" class="mb-3">
-                                         <option value="CSE">CSE</option>
-                                         <option value="IIT">IIT</option>
-										 <option value="Bangla">Bangla</option>
-                                         <option value="English">English</option>
-										 <option value="Chemical">Chemical</option>
-                                         <option value="ICE">ICE</option>
-										 <option value="EEE">EEE</option>
-                                         <option value="Agri">Agri</option>
-										 <option value="ESDM">ESDM</option>
-                                         <option value="Pharmacy">Pharmacy</option> 
-                                     </select> 
-								</div>
-								<div class="mb-3">
-									<label class="mb-2 text-muted"  >User</label> 
-									<select name="user_type" class="mb-3" id="user_type" onclick="run()">
-									<option disabled selected value>select an option</option>
-                                         <option value="student">student</option>
-                                         <option value="teacher">teacher</option>
-                                     </select>  
-								</div>
-								<script>
-									function run(){ 
-									  let selected = document.getElementById("user_type");
-									  dept=selected.options[selected.selectedIndex].text;
-									  if(dept=="student"){
-                                        document.querySelector(".batch").style.display="block";
-									  }else{
-										document.querySelector(".batch").style.display="none";
-										document.querySelector(".batchnq").required=false;
-									  }
-									   
-									}
+	                  				<label class="mb-2 text-muted" for="month">Pyment of month</label> 
+									  <select placeholder="Month"  class="month" name="month" required> 
+									  <option disabled selected value>Select Month</option>
+                                         <option name="January" value="jan">January</option>
+                                         <option name="February" value="feb">February</option>
+                                          <option name="March" value="mar">March</option>
+                                          <option name="April" value="apr">April</option>
+	                                      <option name="May" value="may">May</option>
+                                          <option name="June" value="jun">June</option>
+                                          <option name="July" value="jul">July</option>
+                                          <option name="August" value="aug">August</option>
+	                                      <option name="September" value="sep">September</option>
+                                          <option name="October" value="oct">October</option>
+                                         <option name="November" value="nov">November</option>
+                                          <option name="December" value="dec">December</option>
+                                      </select>	 							                      
+								</div>  
 								</script>
 								 <div class="batch mb-3">
-									<label class="mb-2 text-muted"> Batch</label>
-									<input class="batchnq" type="number" name="batch" required>
+									<label class="mb-2 text-muted" > Year</label>
+									<input class="year" type="number" name="year" value="" required>
+								</div>
+ 
+ 
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="pay_number">Club Bkash Number</label>
+									<input id="pay_numberr" type="number" class="form-control" name="pay_number" value="" required autofocus>
 								</div>
 
-								<p class="form-text text-muted mb-3">
-									By registering you agree with our terms and condition.
-								</p>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="payment_ammount">Payment Amount</label> 
+									<input id="payment_ammount" type="number" class="form-control" name="payment_ammount" value="" required>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="transiction_number">Transaction number</label>
+									<input id="transiction_number" type="text" class="form-control" name="transiction_number" required>
+								</div>  
 
 								<div class="align-items-center d-flex">
 									<button type="submit" name="submit" class="btn btn-primary ms-auto">
-										Register	
+										Sumbmit 	
 									</button>
 								</div>
 							</form>
-						</div>
-						<div class="card-footer py-3 border-0">
-							<div class="text-center">
-								Already have an account? <a href="./login.php" class="text-dark">Login</a>
-							</div>
-						</div>
-					</div>
-					<div class="text-center mt-5 text-muted">
-					Copyright &copy; 2022-2023 &mdash; Team Triangle 
-					</div>
+						</div> 
+					</div> 
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> 
  

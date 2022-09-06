@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="css/user.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/side.css"> 
-    <link rel="stylesheet" href="css/discover.css">
-    <link rel="stylesheet" href="css/discover.css">
+    <link rel="stylesheet" href="css/discover.css"> 
     <link rel="stylesheet" href="css/pr.css">
     <link rel="stylesheet" href="css/profile.css">
 
@@ -37,11 +36,7 @@
 </nav> 
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  
-<div class="heading">
-         <div class="mt-3 bg-light text-center" >
-             <h2>Club Post</h2>
-</div>
-    </div>
+ 
     <div><?php include 'createpost.php'; ?></div> 
  
 
