@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="shared/style.css">
+    <link rel="stylesheet" href="css/header.css"> 
+    <link rel="stylesheet" href="css/side.css">
+    <title>Document</title>
+
+</head>
+<body> 
+          <!-- partial:partials/_navbar.html -->
+          <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center"> 
+              <ul class="navbar-nav">
+                <li class="nav-item font-weight-semibold d-none d-lg-block">NSTU CLUB COLLAB</li>    
+              </ul>
+            <!-- Notification -->
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link count-indicator" id="notiDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img class="img-xs rounded-circle" src="images/noti.png" alt="Profile image">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notiDropdown">
+                  <a class="dropdown-item py-3">
+                    <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
+                    <span class="badge badge-pill badge-primary float-right">View all</span>
+                  </a> 
+                </div>
+              </li>
+           
+                <!-- user Pofile -->
+                <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+                  <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="true">
+                    <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="Profile image"> </a>
+                  <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                    <div class="dropdown-header text-center">
+                      <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                      <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
+                      <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                    </div>
+                    <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
+                    <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+                  </div>
+                </li>
+              </ul>
+              <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <span class="mdi mdi-menu"></span>
+              </button>
+            </div>
+          </nav>
+ 
+ <!-- side bar -->
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidebar">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto">
+              <img src="images/club.png" class="align-middle px-0 mainlogo" alt="logo" />
+          </a>
+              <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto">
+                  <span class="fs-3 d-none d-sm-inline meanue">Menu</span>
+              </a>
+              <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                  <li class="nav-item">
+                      <a href="#" class="nav-link align-middle px-0">
+                        <img src="images/discover.png" class="img" alt="logo" />  <span class="ms-1 d-none d-sm-inline text">Discover club</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <img src="images/rename.png" class="img" alt="logo" /><span class="ms-1 d-none d-sm-inline text">Feed</span> </a>
+        
+                  </li>
+                  <li>
+                      <a href="#" class="nav-link px-0 align-middle">
+                        <img src="images/joined.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Joined club</span></a>
+                  </li>  
+              </ul>
+               
+          </div>
+      </div>
+  </div>
+</div>
+  
+</body>
+</html>
