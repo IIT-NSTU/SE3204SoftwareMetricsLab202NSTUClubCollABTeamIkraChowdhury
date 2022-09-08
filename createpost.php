@@ -12,8 +12,7 @@ if(isset($_POST['submit'])){
 
     $user_id="1";
     $club_id="27";
-    $post_time=date("m.d.Y"); 
-    echo $post_time;
+    $post_time=date("m.d.Y");  
   
           if($image_size > 2000000){
             $message[] =  'image size is too large ,please provide new picture';
