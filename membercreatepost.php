@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/discover.css"> 
     <link rel="stylesheet" href="css/pr.css">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/register.css">
 
     
     
