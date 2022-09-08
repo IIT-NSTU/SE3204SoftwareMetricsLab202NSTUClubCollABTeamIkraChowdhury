@@ -1,81 +1,39 @@
- 
-<style>
-    .button-background-color {
-        background-color: #293462;
-        color: white;
-    }
-
-
-    .star-color {
-        color: red;
-    }
-
-    .create-post-heading {
-        background-color: #dae1e9;
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 55px;
-    }
-</style>
- 
-
-<div class="container ">
-    <div class="card create-post-heading">
-        <div>
-            <h3 class="text-center mb-0"><i class="fa-solid fa-pencil"></i> Create New Post</h3>
-        </div>
-    </div>
-
-    <div class="card card-body mt-4 bg-light">
-        <form action="" method="post"> 
-            <div class="row">
-                <div class="col">
-                    <div class="form-group mb-4">
-                        <label for="title" class="mb-2"><b>Title:</b> <sup class="star-color">*</sup></label>
-                        <input type="text" name="title" class="form-control <?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']; ?>">
-                        <span class="invalid-feedback"><?php echo $data['title_err']; ?></span>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="exampleFormControlSelect1" class="mb-2"><b>Category:</b><sup class="star-color">*</sup></label>
-                        <select name="category" class="form-control" id="exampleFormControlSelect1">
-                             
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <!-- <label for="title" class="mb-2"><b>Photo:</b></label> -->
-                        <label for="formFileMultiple" class="form-label mb-2"><b>Photo:</b></label>
-                        <div class="row">
-                            <div class="col-9">
-                                <input class="form-control" type="file" name="image_file">
-                            </div>
-                            <div class="col">
-                                <input type="submit" name="submit" class="btn button-background-color" value="Upload">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label for="body" class="mb-2"><b>Body:</b> <sup class="star-color">*</sup></label>
-                        <textarea name="body" class="form-control form-control-lg  " rows="7">
-                     
-                </textarea>
-                        <span class="invalid-feedback"> </span>
-                    </div>
+<div class="f-card">
+            <div class="headers">
+                <div class="options"><i class="fa fa-chevron-down"></i></div>
+                <img class="co-logo" src="../images/adventureClub.jpg" />
+                <div class="co-name"><a href="#">Advanture club</a></div>
+                <div class="time"><a href="#">2hrs</a> · <i class="fa fa-globe"></i></div>
+            </div>
+            <div class="content">
+                <p>Height is optional, if no height is specified the image will be a square.Example: <a href="http://placehold.it/300">http://placehold.it/300</a> See More</p>
+            </div>
+            <div class="reference">
+                <img class="reference-thumb" src="https://source.unsplash.com/600x400/?advanture" />
+                <div class="reference-content">
+                <div class="reference-title">A quick and simple image placeholder service. | PLACEHOLDER.it</div>
+                    <div class="reference-subtitle">How does it work? Just put your image size after our URL and you'll get a placeholder.</div>
+                <div class="reference-font">placeholder.it</div>
                 </div>
             </div>
+    </div>
 
-            <div class="row mb-2">
-                <div class="col-lg-6 mt-3 mb-2">
-                    <a href="" class="btn w-100 button-background-color"><i class="fas fa-arrow-left"></i> Back to Posts</a>
-                </div>
-                <div class="col-lg-6 mt-3 mb-2">
-                    <button type="submit" name="submit" class="btn button-background-color w-100"><i class="fas fa-check"></i> Publish
-                    </button>
+    <div class="f-card">
+            <div class="headers">
+                <div class="options"><i class="fa fa-chevron-down"></i></div>
+                <img class="co-logo" src="../images/adventureClub.jpg" />
+                <div class="co-name"><a href="#">Advanture club</a></div>
+                <div class="time"><a href="#">2hrs</a> · <i class="fa fa-globe"></i></div>
+            </div>
+            <div class="content">
+                <p>Height is optional, if no height is specified the image will be a square.Example: <a href="http://placehold.it/300">http://placehold.it/300</a> See More</p>
+            </div>
+            <div class="reference">
+                <img class="reference-thumb" src="https://source.unsplash.com/600x400/?advanture" />
+                <div class="reference-content">
+                <div class="reference-title">A quick and simple image placeholder service. | PLACEHOLDER.it</div>
+                    <div class="reference-subtitle">How does it work? Just put your image size after our URL and you'll get a placeholder.</div>
+                <div class="reference-font">placeholder.it</div>
                 </div>
             </div>
-        </form>
-    </div>
-</div>    
+    </div> 
