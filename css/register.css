@@ -22,3 +22,7 @@
 #type-option {
     width: 100%;
 }
+
+.batch {
+    display: none;
+}
