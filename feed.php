@@ -24,7 +24,14 @@ if(isset($_POST['submit'])){
                     $club_image=$rowc['club_image'];
                      
                 }
-                
+                $comment=mysqli_query($conn, "SELECT * FROM `comment` WHERE post_id='$post_id' ORDER BY comment_id DESC") or die('query failed');
+                if(mysqli_num_rows($comment) > 0){
+                    $rowco= mysqli_fetch_assoc($comment);
+                    $user_id=$rowco['user_id'];
+                    $comment_content=$rowco['comment_content'];
+                    $comment_time=$rowco['comment_time'];
+                     
+                }
 
                 
       ?>
@@ -75,16 +82,13 @@ if(isset($_POST['submit'])){
                             <div class="pe-2">
                                 <!-- <h6 class="fw-bold mb-1">Maggie Marsh</h6> -->
                                 <div class="d-flex align-items-center mb-1" style="justify-content: space-between;">
-                                    <h6 class="fw-bold mb-1">Maggie Marsh</h6>
+                                    <h6 class="fw-bold mb-1"><?php echo  $user_id; ?></h6>
                                     <p class="mb-0">
-                                        <small class="text-muted">March 07, 2021</small>
+                                        <small class="text-muted"><?php echo  $comment_time; ?></small>
                                     </p>
                                 </div>
                                 <p class="mb-0 " style="text-align:justify;">
-                                    <small>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                        since the 1500s, when an unknown printer took a galley of type and
-                                        scrambled it.</small>
+                                    <small> <?php echo  $comment_content; ?></small>
                                 </p>
                             </div>
                         </div>
