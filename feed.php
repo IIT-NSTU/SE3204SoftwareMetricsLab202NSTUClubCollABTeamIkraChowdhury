@@ -4,6 +4,7 @@ include 'config.php';
   <?php
          $post = mysqli_query($conn, "SELECT * FROM `post`") or die('query failed');
          if(mysqli_num_rows($post) > 0){
+            for(){
             while($row = mysqli_fetch_assoc($post)){
                 $post_caption=$row['post_caption'];
                 $post_picture=$row['post_picture'];
@@ -22,7 +23,7 @@ include 'config.php';
 
 
 <section >
-    <div class="container my-2 py-5 px-2">
+    <div class="container my-2 py-1 px-2">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
                 <div class="card p-2">

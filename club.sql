@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2022 at 12:33 PM
+-- Generation Time: Sep 10, 2022 at 06:49 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -65,7 +65,7 @@ CREATE TABLE `clubs` (
 
 INSERT INTO `clubs` (`club_id`, `club_name`, `totall_members`, `club_type`, `club_description`, `club_image`) VALUES
 (27, 'Drupod', 80, 'cultural', 'Band and singing club', 'dhrupod.jpg'),
-(28, 'Adventure Club', 30, 'adventure', 'adventure club', 'dhrupod.jpg'),
+(28, 'Adventure Club', 30, 'adventure', 'adventure club', 'adventureClub.jpg'),
 (29, 'Debating Club', 70, 'educational', 'Debating Club nitu', 'dhrupod.jpg'),
 (30, 'IIT Club', 90, 'educational', ' programming', 'dhrupod.jpg'),
 (31, 'Eshti kutum', 80, 'cultural', 'Draeing club', 'dhrupod.jpg'),
@@ -92,6 +92,20 @@ INSERT INTO `club_members` (`user_id`, `club_id`, `member_type`) VALUES
 (5, 29, 'admin'),
 (4, 30, 'admin'),
 (5, 32, 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `comment_id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `post_id` int(100) NOT NULL,
+  `comment_content` varchar(100) NOT NULL,
+  `comment_time` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -136,7 +150,9 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `user_id`, `club_id`, `post_caption`, `post_picture`, `post_status`, `post_time`) VALUES
-(17, 1, 27, 'kjhgfsd', 'jpined.png', 'public', '09.08.2022');
+(18, 1, 27, 'This is a dhrupad post', 'dhrupod.jpg', 'private', '9-10-22'),
+(19, 1, 28, 'this is a adventure club psot', 'adventureClub.jpg', 'private', '9-10-22'),
+(20, 1, 27, 'Hello from drhupod', 'joined.png', 'private', '9-10-22');
 
 -- --------------------------------------------------------
 
@@ -183,6 +199,12 @@ ALTER TABLE `clubs`
   ADD PRIMARY KEY (`club_id`);
 
 --
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- Indexes for table `pay`
 --
 ALTER TABLE `pay`
@@ -217,6 +239,12 @@ ALTER TABLE `clubs`
   MODIFY `club_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `comment_id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `pay`
 --
 ALTER TABLE `pay`
@@ -226,7 +254,7 @@ ALTER TABLE `pay`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `post_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
