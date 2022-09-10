@@ -2,10 +2,9 @@
 include 'config.php';
 ?>
   <?php
-         $post = mysqli_query($conn, "SELECT * FROM `post`") or die('query failed');
-         if(mysqli_num_rows($post) > 0){
-            for(){
-            while($row = mysqli_fetch_assoc($post)){
+         $post = mysqli_query($conn, "SELECT * FROM `post`ORDER BY post_id DESC ") or die('query failed');
+         if(mysqli_num_rows($post) > 0){ 
+            while($row = mysqli_fetch_assoc($post)){ 
                 $post_caption=$row['post_caption'];
                 $post_picture=$row['post_picture'];
                 $post_time=$row['post_time']; 
