@@ -1,10 +1,18 @@
 <?php
 include 'config.php';
-?>
-  <?php
+if(isset($_POST['submit'])){
+    $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
+    $post_id= $_POST['post_id']; 
+    $comment_time = date("m.d.Y");
+    $user_id="1";
+    mysqli_query($conn, "INSERT INTO `comment`(user_id,post_id,comment_content,comment_time) VALUES('$user_id', '$post_id', '$comment_content','$comment_time')") or die('query failed');
+     
+    
+}
          $post = mysqli_query($conn, "SELECT * FROM `post`ORDER BY post_id DESC ") or die('query failed');
          if(mysqli_num_rows($post) > 0){ 
             while($row = mysqli_fetch_assoc($post)){ 
+                $post_id=$row['post_id'];
                 $post_caption=$row['post_caption'];
                 $post_picture=$row['post_picture'];
                 $post_time=$row['post_time']; 
@@ -16,6 +24,7 @@ include 'config.php';
                     $club_image=$rowc['club_image'];
                      
                 }
+                
 
                 
       ?>
@@ -47,14 +56,16 @@ include 'config.php';
                         </div>
                     </div>
 
-                    <div class="row ps-3 pe-4">
+                    <form action="" method="post" class="row ps-3 pe-4"> 
                         <div class="col-sm-10 mb-2 mt-2">
-                            <input type="text" class="form-control" placeholder="Write Comment" style="font-size:12px ;">
+                            <input type="text" name="comment_content" class="form-control" placeholder="Write Comment" style="font-size:12px ;">
+                            <input type="number" name="post_id" class="form-control" value="<?php echo  $post_id; ?>" style="display:none;">
                         </div>
                         <div class="col-sm-2" style="display: flex; justify-content: flex-end;">
-                            <a href="" class="btn btn-sm btn-primary mb-2 mt-2">Comment</a>
+                            <button  type="submit" name="submit" class="btn btn-sm btn-primary mb-2 mt-2">Comment</button>
                         </div>
-                    </div>
+                       
+                    </form>
 
                     <div class="card-body">
                         <!-- <h6 class="mb-0">Recent comments</h6>
