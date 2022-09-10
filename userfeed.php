@@ -38,16 +38,7 @@
 </nav> 
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  
-   <div class="heading">
-         <div class="mt-3 bg-light text-center" >
-             <h3>News Feed</h3>
-    </div>
-    <div><?php include 'feed.php'; ?></div> 
-    
-     
-
-
-</div>
+  <div><?php include 'feed.php'; ?></div> 
 
 </div>
 </div>  
