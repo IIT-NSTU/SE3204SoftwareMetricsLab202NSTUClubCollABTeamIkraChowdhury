@@ -2,14 +2,14 @@
     <div class="container my-2 py-5 px-2">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
-                <div class="card">
+                <div class="card p-2">
 
                     <div class="card-body">
                         <div class="d-flex flex-start align-items-center">
                             <img class="rounded-circle shadow-1-strong me-3" src="images/club.png" alt="avatar" width="60" height="60" />
                             <div>
                                 <h6 class="fw-bold text-primary mb-1">Lily Coleman</h6>
-                                <p class="text-muted small">
+                                <p class="text-muted small mb-0">
                                     Shared publicly - Jan 2020
                                 </p>
                             </div>
@@ -22,15 +22,15 @@
                             </p>
                         </div>
                         <div class="text-center">
-                            <img class="py-3" src="images/fountenpen.jpg" alt="avatar" width="50%" height="auto" />
+                            <img class="py-3" src="images/dhrupod.jpg" alt="avatar" width="50%" height="auto" />
                         </div>
                     </div>
 
-                    <div class="row px-3">
+                    <div class="row ps-3 pe-4">
                         <div class="col-sm-10 mb-2 mt-2">
                             <input type="text" class="form-control" placeholder="Write Comment" style="font-size:12px ;">
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2" style="display: flex; justify-content: flex-end;">
                             <a href="" class="btn btn-sm btn-primary mb-2 mt-2">Comment</a>
                         </div>
                     </div>
@@ -58,6 +58,9 @@
                         </div>
 
 
+                    </div>
+                    <div class="d-flex ps-3 pe-4" style="justify-content: flex-end;">
+                        <a href="#" class=" btn-sm text-primary"><b>See all Comments</b></a>
                     </div>
                 </div>
             </div>
