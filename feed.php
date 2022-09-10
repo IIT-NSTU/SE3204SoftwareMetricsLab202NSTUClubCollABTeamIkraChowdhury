@@ -10,10 +10,7 @@
             </div>
             <div class="reference">
                 <img class="reference-thumb" src="https://source.unsplash.com/600x400/?advanture" />
-                <div class="reference-content">
-                <div class="reference-title">A quick and simple image placeholder service. | PLACEHOLDER.it</div>
-                    <div class="reference-subtitle">How does it work? Just put your image size after our URL and you'll get a placeholder.</div>
-                <div class="reference-font">placeholder.it</div>
+                <div class="reference-content"> 
                 </div>
             </div>
     </div>
