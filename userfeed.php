@@ -38,7 +38,7 @@
 </nav> 
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  
-  <div><?php include 'feed.php'; ?></div> 
+  <div><?php include 'managepost.php'; ?></div> 
 
 </div>
 </div>  
