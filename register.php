@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
           }
           else{
             echo "<script>
-            alert('Not Successfully Registered');
+            alert('Not Successfully Registered or Check your internet connection');
             window.location.href='';
             </script>";
           }

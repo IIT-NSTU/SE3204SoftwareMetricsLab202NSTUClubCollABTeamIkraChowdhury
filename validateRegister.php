@@ -1,4 +1,32 @@
+<?php
 
+include 'config.php'; 
+
+if (isset($_POST['submit'])) {
+
+	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$validate = $_POST['validate'];
+
+	$select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+
+	if (mysqli_num_rows($select_users) > 0) {
+        while($row = mysqli_fetch_assoc($select_users)){
+            $random_code=$row['v_code'];
+        }
+
+        if($validate==$random_code){
+            header('location:login.php');
+        }
+        else{
+            $message[] = 'Incorrect Code';
+        }
+
+	} else {
+		$message[] = 'Incorrect email ';
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +43,18 @@
 
 <body>
 	<!-- ---------------------------------------------Error msg------------------------------------ -->
-
+    <?php
+	if (isset($message)) {
+		foreach ($message as $message) {
+			echo '
+      <div class="message"> 
+         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <span>' . $message . '</span>
+      </div>
+      ';
+		}
+	}
+	?>
 	<section class="h-100">
 		<div class="container h-100">
 			<div class="row justify-content-sm-center h-100">
@@ -38,9 +77,9 @@
 
 								<div class="mb-2">
 									<div class="mb-2 w-100">
-										<label class="text-muted" for="password">Enter validation code</label>
+										<label class="text-muted" for="validate">Enter validation code</label>
 									</div>
-									<input id="password" type="password" class="form-control" name="password" required>
+									<input id="validate" type="text" class="form-control" name="validate" required>
 									<div class="invalid-feedback">
 										Password is required
 									</div>
