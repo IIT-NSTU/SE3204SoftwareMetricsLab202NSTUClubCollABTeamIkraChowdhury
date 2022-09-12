@@ -2,6 +2,56 @@
 
 include 'config.php';
 
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\SMTP;
+  use PHPMailer\PHPMailer\Exception;
+  
+  function sendMail($email,$v_code){
+      require ("phpMailer/Exception.php");
+      require ("phpMailer/PHPMailer.php");
+      require ("phpMailer/SMTP.php");
+
+      $mail= new PHPMailer(true);
+      try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                  //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;  		//Enable SMTP authentication
+        $mail->Username   = 'nowshadparvin@gmail.com';                     //SMTP username
+        $mail->Password   = 'bzgzxtulnlgvkphj';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+		$mail->SMTPOptions = array(
+		'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+		)
+		);
+        //Recipients
+        $mail->setFrom('nowshadparvin@gmail.com', 'NSTU CLUB COLLAB');
+        $mail->addAddress($email);     //Add a recipient
+	
+		
+		$mail->From = 'nowshadparvin@gmail.com';
+        $mail->Sender = $email;
+    
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Email Verification';
+        $mail->Body    = "Thanks for registration!<br>
+        Verify your email my entering this code $v_code
+        ";
+    
+        $mail->send();
+       return true;
+    } catch (Exception $e) {
+        return false;
+    }
+
+  }
+
 if (isset($_POST['submit'])) {
 
 
@@ -19,14 +69,29 @@ if (isset($_POST['submit'])) {
 		$select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
 		if (mysqli_num_rows($select_users) > 0) {
-			$message[] = 'user already exist!';
+			$message[] = 'User already exist!';
 		} else {
+			// mysqli_query($conn, "INSERT INTO `users`(name, email, password, user_type,department,batch) VALUES('$name', '$email', '$pass', '$user_type','$department','$batch')") or die('query failed');
+			// $message[] = 'registered successfully!';
+			// header('location:login.php');
+			$v_code=bin2hex(random_bytes(4));
+			$user_query= "INSERT INTO `users`(name, email, password, user_type,department,batch,is_validate,v_code) VALUES('$name', '$email', '$pass', '$user_type','$department','$batch',0,'$v_code')";
+            $result2=(mysqli_query($conn,$user_query) && sendMail($email,$v_code));
+         // var_dump($result2);
+          if($result2){
+			header('location:validateRegister.php');
 
-			mysqli_query($conn, "INSERT INTO `users`(name, email, password, user_type,department,batch) VALUES('$name', '$email', '$pass', '$user_type','$department','$batch')") or die('query failed');
-			$message[] = 'registered successfully!';
-			header('location:login.php');
+          }
+          else{
+            echo "<script>
+            alert('Not Successfully Registered');
+            window.location.href='';
+            </script>";
+          }
 		}
 	}
+
+
 }
 
 
