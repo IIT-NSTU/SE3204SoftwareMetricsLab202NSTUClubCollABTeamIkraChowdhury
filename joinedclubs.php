@@ -95,7 +95,7 @@ if(isset($_POST['submit'])){
 
 
 
-else{         $user_id=4;
+else{          
              $sql = "SELECT * FROM clubs JOIN 
           club_members ON clubs.club_id=club_members.club_id WHERE club_members.user_id=$user_id;";
            $clubs = mysqli_query($conn,$sql) or die('query failed');

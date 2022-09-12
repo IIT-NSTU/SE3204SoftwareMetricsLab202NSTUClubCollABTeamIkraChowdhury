@@ -1,4 +1,8 @@
- 
+ <?php 
+ include 'config.php';
+   $user=mysqli_query($conn, "SELECT * FROM `club_members` WHERE  user_id='$user_id'") or die('query failed');
+  
+ ?>
     <div class="container">
         <div class="main-body">
             <div class="row gutters-sm">
@@ -55,10 +59,10 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Joined Club</h6>
+                                    <h6 class="mb-0">Joined clubs</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    4
+                                <?php echo mysqli_num_rows($user);?>
                                 </div>
                             </div>
                         </div>
@@ -66,39 +70,40 @@
                 </div>
             </div> 
             <div class="row">
+            <?php 
+                       if(mysqli_num_rows($user) > 0){
+                       while($row = mysqli_fetch_assoc($user)){
+
+                        $club_id=$row['club_id'];
+                        $member_type=$row['member_type'];
+                        
+                        $club=mysqli_query($conn, "SELECT * FROM `clubs` WHERE club_id='$club_id'") or die('query failed');
+                         if(mysqli_num_rows($club) > 0){
+                         $rowc= mysqli_fetch_assoc($club);
+                         $club_name=$rowc['club_name'];
+                         $club_image=$rowc['club_image'];
+                     
+                }
+
+                        ?>
+                
                 <div class="col-md-4">
                     <div class="card user-card">
                         <div class="card-block">
                             <div class="user-image">
-                                <img src="images/adventureClub.jpg" class="img-radius" alt="User-Profile-Image">
+                                <img src="images/<?php echo $club_image; ?>" class="img-radius" alt="User-Profile-Image">
                             </div>
                             <hr>
-                            <p class=" m-t-15">Secretery</p>
+                            <p class=" m-t-15"><?php echo $member_type; ?></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card user-card">
-                        <div class="card-block">
-                            <div class="user-image">
-                                <img src="images/dhrupod.jpg" class="img-radius" alt="User-Profile-Image">
-                            </div>
-                            <hr>
-                            <p class=" m-t-15">Executive Member</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card user-card ">
-                        <div class="card-block">
-                            <div class="user-image">
-                                <img src="images/debating.png" class="img-radius" alt="User-Profile-Image">
-                            </div>
-                            <hr>
-                            <p class=" m-t-15">General Member</p>
-                        </div>
-                    </div>
-                </div>
+
+                <?php 
+                }   
+              }
+             ?>
+             
             </div>
         </div>
     </div>
