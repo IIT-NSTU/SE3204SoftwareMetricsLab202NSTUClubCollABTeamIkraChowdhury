@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
 	$password_confirm= mysqli_real_escape_string($conn, md5($_POST['password_confirm'])); 
  
 	if ($password==$password_confirm) {  
-		mysqli_query($conn, "UPDATE `users` SET password='$password_confirm' WHERE user_id='1'") or die('query failed');
+		mysqli_query($conn, "UPDATE `users` SET password='$password_confirm' WHERE user_id='$user_id'") or die('query failed');
 
    }else{
 	 

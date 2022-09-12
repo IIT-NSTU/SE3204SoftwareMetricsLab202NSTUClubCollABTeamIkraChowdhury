@@ -1,3 +1,13 @@
+<?php
+session_start();
+$user_name=$_SESSION['user_name'];
+$user_email=$_SESSION['user_email'];
+$user_id=$_SESSION['user_id'];
+$user_type=$_SESSION['user_type'];
+$user_dept=$_SESSION['user_dept'];
+$user_batch=$_SESSION['user_batch'];
+
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>

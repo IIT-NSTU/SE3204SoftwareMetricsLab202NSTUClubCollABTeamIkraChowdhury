@@ -1,6 +1,7 @@
 <?php
 
-include 'config.php';
+include 'config.php'; 
+ 
 $isclicked=false;
  
 ?>
@@ -52,8 +53,8 @@ if(isset($_POST['submit'])){
 }
  //------------------------searching result is shown--------------------------- 
   if($isclicked){
-    $sql = 'SELECT * FROM clubs JOIN 
-          club_members ON clubs.club_id=club_members.club_id WHERE club_members.user_id="4";';
+    $sql = "SELECT * FROM clubs JOIN 
+          club_members ON clubs.club_id=club_members.club_id WHERE club_members.user_id=$user_id;";
          $clubs = mysqli_query($conn,$sql) or die('query failed');
          if(mysqli_num_rows($clubs) > 0){
               
@@ -94,11 +95,13 @@ if(isset($_POST['submit'])){
 
 
 
-else{
-         $sql = 'SELECT * FROM clubs JOIN 
-          club_members ON clubs.club_id=club_members.club_id WHERE club_members.user_id="4";';
-         $clubs = mysqli_query($conn,$sql) or die('query failed');
-         if(mysqli_num_rows($clubs) > 0){
+else{         $user_id=4;
+             $sql = "SELECT * FROM clubs JOIN 
+          club_members ON clubs.club_id=club_members.club_id WHERE club_members.user_id=$user_id;";
+           $clubs = mysqli_query($conn,$sql) or die('query failed');
+ 
+          
+          if(mysqli_num_rows($clubs) > 0){
             while($row = mysqli_fetch_assoc($clubs)){
                 ?>
  

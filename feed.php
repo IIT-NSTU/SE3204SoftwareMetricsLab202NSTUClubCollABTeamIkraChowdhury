@@ -1,10 +1,11 @@
 <?php
 include 'config.php';
+ 
+
 if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
     $post_id= $_POST['post_id']; 
-    $comment_time = date("m.d.Y");
-    $user_id="1";
+    $comment_time = date("m.d.Y"); 
     mysqli_query($conn, "INSERT INTO `comment`(user_id,post_id,comment_content,comment_time) VALUES('$user_id', '$post_id', '$comment_content','$comment_time')") or die('query failed');
      
     
@@ -17,6 +18,7 @@ if(isset($_POST['submit'])){
                 $post_picture=$row['post_picture'];
                 $post_time=$row['post_time']; 
                 $club_id=$row['club_id'];
+                
                 $club=mysqli_query($conn, "SELECT * FROM `clubs` WHERE club_id='$club_id'") or die('query failed');
                 if(mysqli_num_rows($club) > 0){
                     $rowc= mysqli_fetch_assoc($club);
