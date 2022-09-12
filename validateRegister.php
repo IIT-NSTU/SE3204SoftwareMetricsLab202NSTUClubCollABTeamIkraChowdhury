@@ -12,9 +12,11 @@ if (isset($_POST['submit'])) {
 	if (mysqli_num_rows($select_users) > 0) {
         while($row = mysqli_fetch_assoc($select_users)){
             $random_code=$row['v_code'];
+            $user_id=$row['user_id'];
         }
 
         if($validate==$random_code){
+            mysqli_query($conn, "UPDATE `users` SET is_validate = '1' WHERE user_id = '$user_id'") or die('query failed');
             header('location:login.php');
         }
         else{

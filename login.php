@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
 	if (mysqli_num_rows($select_users) > 0) {
 
 		$row = mysqli_fetch_assoc($select_users);
-
+        $is_validate=$row['is_validate'];
 
 
 		$_SESSION['user_name'] = $row['name'];
@@ -22,10 +22,12 @@ if (isset($_POST['submit'])) {
 		$_SESSION['user_type'] = $row['user_type'];
 		$_SESSION['user_dept'] = $row['department'];
 		$_SESSION['user_batch'] = $row['user_id'];
-		header('location:membercreatepost.php');
-		//  $message[] = 'succesful!';
 
-
+		if($is_validate==1){
+ 	         header('location:userdiscover.php'); 
+     	}else{
+			$message[] = 'User not varified first create a varified account!';
+		}
 	} else {
 		$message[] = 'Incorrect email or password!';
 	}
