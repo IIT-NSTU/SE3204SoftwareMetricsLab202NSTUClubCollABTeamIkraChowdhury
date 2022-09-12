@@ -32,6 +32,12 @@ if(isset($_POST['submit'])){
                     $comment_time=$rowco['comment_time'];
                      
                 }
+                $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+                if(mysqli_num_rows($user) > 0){
+                    $rowu= mysqli_fetch_assoc($user);
+                    $user_name=$rowu['name']; 
+                     
+                }
 
                 
       ?>
@@ -82,7 +88,7 @@ if(isset($_POST['submit'])){
                             <div class="pe-2">
                                 <!-- <h6 class="fw-bold mb-1">Maggie Marsh</h6> -->
                                 <div class="d-flex align-items-center mb-1" style="justify-content: space-between;">
-                                    <h6 class="fw-bold mb-1"><?php echo  $user_id; ?></h6>
+                                    <h6 class="fw-bold mb-1"><?php echo   $user_name; ?></h6>
                                     <p class="mb-0">
                                         <small class="text-muted"><?php echo  $comment_time; ?></small>
                                     </p>
