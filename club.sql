@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2022 at 06:49 PM
+-- Generation Time: Sep 13, 2022 at 07:35 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -107,6 +107,35 @@ CREATE TABLE `comment` (
   `comment_time` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `user_id`, `post_id`, `comment_content`, `comment_time`) VALUES
+(1, 1, 20, 'gnfbxvcg', '09.10.2022'),
+(2, 1, 20, 'hello', '09.10.2022'),
+(3, 1, 19, 'khjgfdszxcvb mkloiuytgfdc', '09.10.2022'),
+(4, 1, 19, 'khjgfdszxcvb mkloiuytgfdc', '09.10.2022'),
+(5, 1, 19, 'khjgfdszxcvb mkloiuytgfdc', '09.10.2022'),
+(6, 1, 19, 'khjgfdszxcvb mkloiuytgfdc', '09.10.2022'),
+(7, 1, 19, 'khjgfdszxcvb mkloiuytgfdc', '09.10.2022'),
+(8, 1, 19, 'khjgfdszxcvb mkloiuytgfdc', '09.10.2022');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment_reply`
+--
+
+CREATE TABLE `comment_reply` (
+  `reply_id` int(100) NOT NULL,
+  `comment_id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `post_id` int(100) NOT NULL,
+  `post_content` varchar(100) NOT NULL,
+  `comment_time` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -167,20 +196,22 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   `user_type` varchar(100) NOT NULL,
   `department` varchar(100) NOT NULL,
-  `batch` int(100) NOT NULL
+  `batch` int(100) NOT NULL,
+  `is_validate` int(100) NOT NULL,
+  `v_code` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `user_type`, `department`, `batch`) VALUES
-(1, 'IKRA CHOWDHURY NOWKSHI', 'ikra2514@student.nstu.edu.bd', '34173cb38f07f89ddbebc2ac9128303f', 'student', 'IIT', 14),
-(2, 'nowkshi', 'nowkshi@student.nstu.edu.bd', '37693cfc748049e45d87b8c7d8b9aacd', 'student', 'CSE', 14),
-(3, 'Rintu', 'rintu@student.nstu.edu.bd', '37693cfc748049e45d87b8c7d8b9aacd', 'student', 'IIT', 14),
-(4, 'Arman', 'arman@student.nstu.edu.bd', '37693cfc748049e45d87b8c7d8b9aacd', 'student', 'EEE', 14),
-(5, 'Nitu', 'nitu@student.nstu.edu.bd', '1ff1de774005f8da13f42943881c655f', 'student', 'Chemical', 13),
-(6, 'Anupa', 'anupa@student.nstu.edu.bd', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'student', 'English', 14);
+INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `user_type`, `department`, `batch`, `is_validate`, `v_code`) VALUES
+(1, 'nowkshi', 'ikra2514@student.nstu.edu.bd', '34173cb38f07f89ddbebc2ac9128303f', 'Student', 'ACCE', 14, 1, 'ba7647e0'),
+(2, 'nowkshi', 'nowkshi@student.nstu.edu.bd', '37693cfc748049e45d87b8c7d8b9aacd', 'student', 'CSE', 14, 0, ''),
+(3, 'Rintu', 'rintu@student.nstu.edu.bd', '37693cfc748049e45d87b8c7d8b9aacd', 'student', 'IIT', 14, 0, ''),
+(4, 'Arman', 'arman@student.nstu.edu.bd', '37693cfc748049e45d87b8c7d8b9aacd', 'student', 'EEE', 14, 1, ''),
+(5, 'Nitu', 'nitu@student.nstu.edu.bd', '1ff1de774005f8da13f42943881c655f', 'student', 'Chemical', 13, 1, ''),
+(6, 'Anupa', 'anupa@student.nstu.edu.bd', 'b6d767d2f8ed5d21a44b0e5886680cb9', 'student', 'English', 14, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -203,6 +234,12 @@ ALTER TABLE `clubs`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`comment_id`);
+
+--
+-- Indexes for table `comment_reply`
+--
+ALTER TABLE `comment_reply`
+  ADD PRIMARY KEY (`reply_id`);
 
 --
 -- Indexes for table `pay`
@@ -242,7 +279,13 @@ ALTER TABLE `clubs`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `comment_reply`
+--
+ALTER TABLE `comment_reply`
+  MODIFY `reply_id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pay`
@@ -260,7 +303,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
