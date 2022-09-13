@@ -11,6 +11,7 @@ if(isset($_POST['submit'])){
      
     
 }
+ 
          $post = mysqli_query($conn, "SELECT * FROM `post`ORDER BY post_id DESC ") or die('query failed');
          if(mysqli_num_rows($post) > 0){ 
             while($row = mysqli_fetch_assoc($post)){ 
@@ -25,23 +26,8 @@ if(isset($_POST['submit'])){
                     $club_name=$rowc['club_name'];
                     $club_image=$rowc['club_image'];
                      
-                }
-                $comment=mysqli_query($conn, "SELECT * FROM `comment` WHERE post_id='$post_id' ORDER BY comment_id DESC") or die('query failed');
-                if(mysqli_num_rows($comment) > 0){
-                    $rowco= mysqli_fetch_assoc($comment);
-                    $comment_id=$rowco['comment_id'];
-                    $user_id=$rowco['user_id'];
-                    $comment_content=$rowco['comment_content'];
-                    $comment_time=$rowco['comment_time'];
-                     
-                }
-                $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
-                if(mysqli_num_rows($user) > 0){
-                    $rowu= mysqli_fetch_assoc($user);
-                    $user_name=$rowu['name']; 
-                     
-                }
-                $comment_reply=mysqli_query($conn, "SELECT * FROM `comment_reply` WHERE comment_id='$comment_id' ORDER BY reply_id DESC") or die('query failed');
+                }  
+                
           
                 
       ?>
@@ -73,20 +59,24 @@ if(isset($_POST['submit'])){
                         </div>
                     </div>
 
-                    <form action="" method="post" class="row ps-3 pe-4"> 
-                        <div class="col-sm-10 mb-2 mt-2">
-                            <input type="text" name="comment_content" class="form-control" placeholder="Write Comment" style="font-size:12px ;">
-                            <input type="number" name="post_id" class="form-control" value="<?php echo  $post_id; ?>" style="display:none;">
-                        </div>
-                        <div class="col-sm-2" style="display: flex; justify-content: flex-end;">
-                            <button  type="submit" name="submit" class="btn btn-sm btn-primary mb-2 mt-2">Comment</button>
-                        </div>
-                       
-                    </form>
+                     
 <!-- --------------------------------------------------------checks fo comment and loads comment-------------------------------------------- -->
        <?php
-          
-          if(mysqli_num_rows($comment) > 0){
+            $comment=mysqli_query($conn, "SELECT * FROM `comment` WHERE post_id='$post_id' ORDER BY comment_id DESC") or die('query failed');
+            if(mysqli_num_rows($comment) > 0){
+              while($rowco= mysqli_fetch_assoc($comment)){;
+                $comment_id=$rowco['comment_id'];
+                $user_id=$rowco['user_id'];
+                $comment_content=$rowco['comment_content'];
+                $comment_time=$rowco['comment_time'];
+
+                $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+                if(mysqli_num_rows($user) > 0){
+                    $rowu= mysqli_fetch_assoc($user);
+                    $user_name=$rowu['name']; 
+                     
+                }
+            
 
            ?>
 
@@ -110,6 +100,7 @@ if(isset($_POST['submit'])){
 
 <!-- ---------------------------------------------------checks for comment reply and loads reply---------------------------------------------------------- -->
                     <?php 
+                               $comment_reply=mysqli_query($conn, "SELECT * FROM `comment_reply` WHERE comment_id='$comment_id' ORDER BY reply_id DESC") or die('query failed');
                               if(mysqli_num_rows($comment_reply) > 0){
                                 while( $rowreply= mysqli_fetch_assoc($comment_reply)){ 
                                 
@@ -159,14 +150,11 @@ if(isset($_POST['submit'])){
  
               </div>
             </div>
-          </div>
- 
-                    <div class="d-flex ps-3 pe-4" style="justify-content: flex-end;">
-                        <a href="#" class=" btn-sm text-primary"><b>See all Comments</b></a>
-                    </div>
+          </div> 
 
                 <?php
                     }
+                  }
                     ?>
                 </div>
             </div>
@@ -177,6 +165,7 @@ if(isset($_POST['submit'])){
 <?php
          }
       }
-
+?>
       
+
  

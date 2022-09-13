@@ -25,25 +25,7 @@ if(isset($_POST['submit'])){
                     $club_name=$rowc['club_name'];
                     $club_image=$rowc['club_image'];
                      
-                }
-                $comment=mysqli_query($conn, "SELECT * FROM `comment` WHERE post_id='$post_id' ORDER BY comment_id DESC") or die('query failed');
-                if(mysqli_num_rows($comment) > 0){
-                    $rowco= mysqli_fetch_assoc($comment);
-                    $comment_id=$rowco['comment_id'];
-                    $user_id=$rowco['user_id'];
-                    $comment_content=$rowco['comment_content'];
-                    $comment_time=$rowco['comment_time'];
-                     
-                }
-                $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
-                if(mysqli_num_rows($user) > 0){
-                    $rowu= mysqli_fetch_assoc($user);
-                    $user_name=$rowu['name']; 
-                     
-                }
-                $comment_reply=mysqli_query($conn, "SELECT * FROM `comment_reply` WHERE comment_id='$comment_id' ORDER BY reply_id DESC") or die('query failed');
-          
-                
+                }    
       ?>
 
 
@@ -84,99 +66,137 @@ if(isset($_POST['submit'])){
                        
                     </form>
 <!-- --------------------------------------------------------checks fo comment and loads comment-------------------------------------------- -->
-       <?php
-          
-          if(mysqli_num_rows($comment) > 0){
+<?php 
+       if(!isset(($_GET['clicked']))) {
+        $comment=mysqli_query($conn, "SELECT * FROM `comment` WHERE post_id='$post_id' ORDER BY comment_id DESC") or die('query failed');
+        if(mysqli_num_rows($comment) > 0){
+            $rowco= mysqli_fetch_assoc($comment);
+            $comment_id=$rowco['comment_id'];
+            $user_id=$rowco['user_id'];
+            $comment_content=$rowco['comment_content'];
+            $comment_time=$rowco['comment_time'];
+             
+        
+        $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+        if(mysqli_num_rows($user) > 0){
+            $rowu= mysqli_fetch_assoc($user);
+            $user_name=$rowu['name']; 
+         } 
+        ?>
 
-           ?>
-
-           <div class="card-body p-4">  
+        <div class="card-body p-4">  
             <div class="row">
               <div class="col">
-                <div class="d-flex flex-start">
-                  <img class="rounded-circle shadow-1-strong me-3"
-                    src="images/user.png" alt="avatar"  width="30" height="30" />
-                  <div class="flex-grow-1 flex-shrink-1">
-                    <div>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <p class="mb-1"> <?php echo  $user_name; ?>
-                        </p>
-                         <span class="small"><?php echo  $comment_time;?></span>
-                      </div>
-                      <p class="small mb-0">
-                      <?php echo  $comment_content; ?>
-                      </p>
-                    </div>
+                <div class="d-flex flex-start"> 
 
 <!-- ---------------------------------------------------checks for comment reply and loads reply---------------------------------------------------------- -->
-                    <?php 
-                              if(mysqli_num_rows($comment_reply) > 0){
-                                while( $rowreply= mysqli_fetch_assoc($comment_reply)){ 
-                                
-                                $user_id=$rowreply['user_id'];
-                                $reply_content=$rowreply['reply_content'];
-                                $comment_time=$rowreply['comment_time'];
+                  <?php 
+                   include "comment.php";
+                   $comment_reply=mysqli_query($conn, "SELECT * FROM `comment_reply` WHERE comment_id='$comment_id' ORDER BY reply_id DESC") or die('query failed');
+                   if(mysqli_num_rows($comment_reply) > 0){
+                     while( $rowreply= mysqli_fetch_assoc($comment_reply)){
 
-                                $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
-                                if(mysqli_num_rows($user) > 0){
-                                $rowu= mysqli_fetch_assoc($user);
-                                 $user_name=$rowu['name']; 
-                                }
-                                 
-                            
-            
-                    ?>
+                     $user_id=$rowreply['user_id'];
+                     $reply_content=$rowreply['reply_content'];
+                     $comment_time=$rowreply['comment_time'];
+
+                     $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+                     if(mysqli_num_rows($user) > 0){
+                     $rowu= mysqli_fetch_assoc($user);
+                      $user_name=$rowu['name'];
+                     } 
+                    include "reply.php";
+                    }
+                   }
+                  ?> 
                   
-                     
-                    <div class="d-flex flex-start mt-4">
-                      <a class="me-3" href="#">
-                        <img class="rounded-circle shadow-1-strong"
-                          src="images/user.png" alt="avatar" width="30" height="30" />
-                      </a>
-                      <div class="flex-grow-1 flex-shrink-1">
-                        <div>
-                          <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-1">
-                            <?php echo  $user_name; ?>
-                            </p>
-                          </div>
-                          <p class="small mb-0">
-                          <?php echo  $reply_content?> 
-                          </p>
-                          <span class="small"><?php echo  $comment_time;?></span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <?php
-                                }
-                              }
-                    ?>
-
-                    
-                  </div>
-                </div>
- 
+                </div> 
               </div>
             </div>
           </div>
  
                     <div class="d-flex ps-3 pe-4" style="justify-content: flex-end;">
-                        <a href="#" class=" btn-sm text-primary"><b>See all Comments</b></a>
+                        <a href="userfeed.php?clicked=1?>" class=" btn-sm text-primary"><b>See all Comments</b></a>
                     </div>
 
-                <?php
+        </div>
+         <?php
+         } 
+        }
+       
+       
+       
+       
+       else{
+        
+        $comment=mysqli_query($conn, "SELECT * FROM `comment` WHERE post_id='$post_id' ORDER BY comment_id DESC") or die('query failed');
+        while($rowco= mysqli_fetch_assoc($comment)){
+            $comment_id=$rowco['comment_id'];
+            $user_id=$rowco['user_id'];
+            $comment_content=$rowco['comment_content'];
+            $comment_time=$rowco['comment_time'];
+             
+        
+        $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+        if(mysqli_num_rows($user) > 0){
+            $rowu= mysqli_fetch_assoc($user);
+            $user_name=$rowu['name']; 
+         } 
+          
+         
+
+        ?>
+        
+        <div class="card-body p-4">  
+            <div class="row">
+              <div class="col">
+                <div class="d-flex flex-start"> 
+                 
+
+<!-- ---------------------------------------------------checks for comment reply and loads reply---------------------------------------------------------- -->
+                 <?php
+                  include "comment.php";
+                    $comment_reply=mysqli_query($conn, "SELECT * FROM `comment_reply` WHERE comment_id='$comment_id' ORDER BY reply_id DESC") or die('query failed');
+                    if(mysqli_num_rows($comment_reply) > 0){
+                      while( $rowreply= mysqli_fetch_assoc($comment_reply)){
+
+                      $user_id=$rowreply['user_id'];
+                      $reply_content=$rowreply['reply_content'];
+                      $comment_time=$rowreply['comment_time'];
+
+                      $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+                      if(mysqli_num_rows($user) > 0){
+                      $rowu= mysqli_fetch_assoc($user);
+                       $user_name=$rowu['name'];
+                      }
+                      include "reply.php";
                     }
-                    ?>
-                </div>
+                }
+                 
+                 ?>  
+                  
+                </div> 
+              </div>
+            </div>
+          </div>
+  
+
+        </div>
+
+      <?php 
+        }
+       }
+       ?>
+
+
+
             </div>
         </div>
 
     </div>
 </section>
-<?php
-         }
-      }
-
-      
- 
+ <?php
+    
+    }
+   }
+ ?>
