@@ -52,15 +52,39 @@ include 'config.php';
 
   }
 
+
+  function insertToDatabae($name,$email,$pass,$user_type,$department,$batch,$is_validate,$conn){
+
+	$v_code=bin2hex(random_bytes(4));
+	 
+	$user_query= "INSERT INTO `users`(name, email, password, user_type,department,batch,is_validate,v_code) VALUES('$name', '$email', '$pass', '$user_type','$department','$batch',0,'$v_code')";
+	$result2=(mysqli_query($conn,$user_query) && sendMail($email,$v_code));
+ 
+  if($result2){
+	header('location:validateRegister.php');
+
+  }
+  else{
+	echo "<script>
+	alert('Not Successfully Registered or Check your internet connection');
+	window.location.href='';
+	</script>";
+  }
+
+  }
+
 if (isset($_POST['submit'])) {
+	echo "khjhj";
 
 
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$pass = mysqli_real_escape_string($conn, md5($_POST['password']));
 	$department = mysqli_real_escape_string($conn, $_POST['dept_name']);
-	$batch = mysqli_real_escape_string($conn, $_POST['batch']);
 	$user_type = $_POST['user_type'];
+	$batch = mysqli_real_escape_string($conn, $_POST['batch']); 
+
+	echo "fikdshfk";
 
 	if (!preg_match("/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]+.nstu.edu.bd+$/i", $email)) {
 
@@ -69,25 +93,24 @@ if (isset($_POST['submit'])) {
 		$select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
 		if (mysqli_num_rows($select_users) > 0) {
-			$message[] = 'User already exist!';
-		} else {
-			// mysqli_query($conn, "INSERT INTO `users`(name, email, password, user_type,department,batch) VALUES('$name', '$email', '$pass', '$user_type','$department','$batch')") or die('query failed');
-			// $message[] = 'registered successfully!';
-			// header('location:login.php');
-			$v_code=bin2hex(random_bytes(4));
-			$user_query= "INSERT INTO `users`(name, email, password, user_type,department,batch,is_validate,v_code) VALUES('$name', '$email', '$pass', '$user_type','$department','$batch',0,'$v_code')";
-            $result2=(mysqli_query($conn,$user_query) && sendMail($email,$v_code));
-         // var_dump($result2);
-          if($result2){
-			header('location:validateRegister.php');
+			$row = mysqli_fetch_assoc($select_users);
+			$is_validate=$row['is_validate'];
+			$user_id=$row['user_id'];
+			
+			if($is_validate==1){
+				$message[] = 'User already exist!';
+			}else{
+				mysqli_query($conn, "DELETE FROM `users` WHERE  user_id = '$user_id'") or die('query failed');
+				insertToDatabae($name,$email,$pass,$user_type,$department,$batch,0,$conn);
+			}
+			 
+		}
 
-          }
-          else{
-            echo "<script>
-            alert('Not Successfully Registered or Check your internet connection');
-            window.location.href='';
-            </script>";
-          }
+		else {
+		 
+			 
+			insertToDatabae($name,$email,$pass,$user_type,$department,$batch,0,$conn);
+		 
 		}
 	}
 
@@ -205,6 +228,10 @@ if (isset($_POST['submit'])) {
 									</div>
 
 								</div>
+								<div class="batch mb-1">
+									<label class="mb-2 text-muted"> Batch</label>
+									<input   id="batchno" type="number" name="batch" required>
+								</div>
 
 								<script>
 									function run() {
@@ -212,18 +239,15 @@ if (isset($_POST['submit'])) {
 										gen.forEach((el) => {
 											el.checked ? val = el.value : null
 										})
-										if (val == "Student") {
+										if (val == "Student") { 
 											document.querySelector(".batch").style.display = "block";
-										} else {
+										} else { 
+											document.querySelector("#batchno").removeAttribute("required");
 											document.querySelector(".batch").style.display = "none";
-											document.querySelector(".batchno").required = false;
-										}
 									}
+								}
 								</script>
-								<div class="batch mb-1">
-									<label class="mb-2 text-muted"> Batch</label>
-									<input class="batchno" type="number" name="batch" required>
-								</div>
+								 
 
 								<div class="align-items-center d-flex">
 									<button type="submit" name="submit" class="btn btn-sm btn-primary ms-auto">
