@@ -4,10 +4,11 @@
 include 'config.php';
 if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
-    $post_id= $_POST['post_id']; 
-    $comment_time = date("m.d.Y");
-    $user_id="1";
-    mysqli_query($conn, "INSERT INTO `comment`(user_id,post_id,comment_content,comment_time) VALUES('$user_id', '$post_id', '$comment_content','$comment_time')") or die('query failed');
+    $commnet_id= $_POST['comment_id']; 
+    $post_id=$_POST['post_id'];
+    $comment_time = date("m.d.Y"); 
+
+    mysqli_query($conn, "INSERT INTO `comment_reply`(comment_id,user_id,post_id,reply_content,comment_time) VALUES('$commnet_id', '$user_id','$post_id','$comment_content','$comment_time')") or die('query failed');
      
     
 }
@@ -90,13 +91,35 @@ if(isset($_POST['submit'])){
                     <div>
                       <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-1"> <?php echo  $user_name; ?>
-                        </p>
-                        <a href="#!"><i class="fas fa-reply fa-xs"></i><span class="small"> reply</span></a>
+                        </p> 
+                        <a href="deletePost.php?deleteComment=1? && comment_id=<?php echo  $comment_id; ?>" class=" btn-sm text-primary"><b>Delete</b></a>
                       </div>
                       <p class="small mb-0">
                       <?php echo  $comment_content; ?>
                       </p>
                     </div>
+                    <!-- ---------------------------------reply Form------------------------------------------- -->
+                    <form action="" method="post" class="row ps-3 pe-4 replyArea"   style="display:block;"> 
+                        <div class="col-sm-10 mb-2 mt-2">
+                            <input type="text" name="comment_content" class="form-control" placeholder="Write Comment" style="font-size:12px ;">
+                            <input type="number" name="comment_id" class="form-control" value="<?php echo  $comment_id; ?>" style="display:none;">
+                            <input type="number" name="post_id" class="form-control" value="<?php echo  $post_id; ?>" style="display:none;">
+                        </div>
+                        <div class="col-sm-2" style="display: flex; justify-content: flex-end;">
+                            <button  type="submit" name="submit" class="btn btn-sm btn-primary mb-2 mt-2">Comment</button>
+                        </div>
+                       
+                    </form>
+                    <script>
+                      	function loadComment() { 
+                          if(document.querySelector(".replyArea").style.display =="none"){
+                            document.querySelector(".replyArea").style.display ="block";
+                          }else{
+                            document.querySelector(".replyArea").style.display ="none";
+                          } 
+                    	}
+                    
+                    </script>
 
 <!-- ---------------------------------------------------checks for comment reply and loads reply---------------------------------------------------------- -->
                     <?php 
@@ -154,8 +177,13 @@ if(isset($_POST['submit'])){
 
                 <?php
                     }
-                  }
+                  } 
                     ?>
+                    
+                    <div class="d-flex ps-3 pe-4" style="justify-content: flex-end;">
+                        <a href="deletePost.php?deletePost=1? && post_id=<?php echo  $post_id; ?>" class=" btn-sm text-primary"><b>Delete Post</b></a>
+                    </div>
+
                 </div>
             </div>
         </div>
