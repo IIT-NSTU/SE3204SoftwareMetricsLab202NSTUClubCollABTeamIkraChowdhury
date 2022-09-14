@@ -8,7 +8,7 @@
             <div>
                 <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Menu</span> </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link"> <img src="images/discover.png" alt="" style="width:25px;"> <span class="nav_name">Discover
+                    <a href="#" class="nav_link"> <img src="../images/discover.png" alt="" style="width:25px;"> <span class="nav_name">Discover
                             Club</span>
                     </a>
                     <a href="#" class="nav_link"> <img src="images/feed.png" alt="" style="width:25px;"> <span class="nav_name">Feed</span> </a>

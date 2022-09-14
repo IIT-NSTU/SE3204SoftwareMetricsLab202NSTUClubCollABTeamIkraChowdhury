@@ -1,6 +1,6 @@
 <?php
 
-include 'config.php'; 
+include '../assets//config.php'; 
 $isclicked=false;
  
 ?>
@@ -61,8 +61,8 @@ if(isset($_POST['submit'])){
                 ?>
  
   <div class="box-container">
-    <form action="login.php" method="post" class="box">
-    <img class="image" src="images/<?php echo $row['club_image']; ?>" alt="club profilepic">
+    <form action="../assets//login.php" method="post" class="box">
+    <img class="image" src="../images//<?php echo $row['club_image']; ?>" alt="club profilepic">
     <div class="name"><?php echo $row['club_name']; ?></div>
     <div class="totall_member"><?php echo $row['totall_members']; ?></div> 
     <input type="submit" value="Visit club" name="visitclub" class="btn">
@@ -87,8 +87,8 @@ if(isset($_POST['submit'])){
                 ?>
  
   <div class="box-container">
-    <form action="login.php" method="post" class="box">
-    <img class="image" src="images/<?php echo $row['club_image']; ?>" alt="club profilepic">
+    <form action="../assets//login.php" method="post" class="box">
+    <img class="image" src="../images//<?php echo $row['club_image']; ?>" alt="club profilepic">
     <div class="name"><?php echo $row['club_name']; ?></div>
     <div class="totall_member"><?php echo $row['totall_members']; ?></div> 
     <input type="submit" value="Visit club" name="visitclub" class="btn">

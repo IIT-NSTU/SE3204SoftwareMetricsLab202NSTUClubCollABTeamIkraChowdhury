@@ -1,7 +1,7 @@
   
 
 <?php
-include 'config.php';
+include '../assets//config.php';
 if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
     $post_id= $_POST['post_id']; 
@@ -37,7 +37,7 @@ if(isset($_POST['submit'])){
 <!-- ---------------------------------------------------------loads post one by one------------------------------------------------------------------------------- -->
                     <div class="card-body">
                         <div class="d-flex flex-start align-items-center">
-                            <img class="rounded-circle shadow-1-strong me-3" src="images/<?php echo $club_image; ?>" alt="avatar" width="60" height="60" />
+                            <img class="rounded-circle shadow-1-strong me-3" src="../images//<?php echo $club_image; ?>" alt="avatar" width="60" height="60" />
                             <div>
                                 <h6 class="fw-bold text-primary mb-1"><?php echo $club_name; ?></h6>
                                 <p class="text-muted small mb-0">
@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
                             </p>
                         </div>
                         <div class="text-center">
-                            <img class="py-3" src="post_images/<?php echo  $post_picture; ?>" alt="avatar" width="50%" height="auto" />
+                            <img class="py-3" src="../post_images//<?php echo  $post_picture; ?>" alt="avatar" width="50%" height="auto" />
                         </div>
                     </div>
 

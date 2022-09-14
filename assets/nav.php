@@ -30,17 +30,17 @@
           <!-- -----------------------------------------Profile------------------------------------------ -->
           <li class="nav-item dropdown">
             <a  class="dropdown-toggle d-flex align-items-center hidden-arrow"href="#"id="navbarDropdownMenuAvatar"role="button"data-bs-toggle="dropdown"  aria-expanded="false">
-                 <img src="images/user.png"  class="rounded-circle" height="36" alt="user icon" loading="lazy"/>
+                 <img src="../images//user.png"  class="rounded-circle" height="36" alt="user icon" loading="lazy"/>
              </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar" >
             <li>
-              <a class="dropdown-item" href="userprofile.php" id="profilebutton">My profile</a>
+              <a class="dropdown-item" href="../user/userprofile.php" id="profilebutton">My profile</a>
             </li>
             <li>
-              <a class="dropdown-item" href="userchangepass.php">Change Password</a>
+              <a class="dropdown-item" href="../user/userchangepass.php">Change Password</a>
             </li>
             <li>
-              <a class="dropdown-item" href="logout.php">Logout</a>
+              <a class="dropdown-item" href="../assets/logout.php">Logout</a>
             </li>
           </ul>
            </li>

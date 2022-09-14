@@ -11,16 +11,20 @@
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
                         <a href="membercreatepost.php"  class="nav-link align-middle px-0 " id="discoverbutton">
-                          <img src="images/discover.png" class="img" alt="logo" />  <span class="ms-1 d-none d-sm-inline text">Create Post</span>
+                          <img src="../images//discover.png" class="img" alt="logo" />  <span class="ms-1 d-none d-sm-inline text">Create Post</span>
                         </a>
                     </li>
                     <li>
                     <a href="membermanagepost.php" id="feedbutton" class="nav-link px-0 align-middle">
-                          <img src="images/feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Manage Post</span></a>
+                          <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Manage Post</span></a>
                     </li>
                     <li>
                         <a href="memberpayment.php" id="joinedclubbutton" class="nav-link px-0 align-middle">
-                          <img src="images/joined.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Payment</span></a>
+                          <img src="../images//joined.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Payment</span></a>
+                    </li>  
+                    <li>
+                        <a href="adminsentinvitation.php" id="joinedclubbutton" class="nav-link px-0 align-middle">
+                          <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Sent NOtification</span></a>
                     </li>  
                 </ul>
                  

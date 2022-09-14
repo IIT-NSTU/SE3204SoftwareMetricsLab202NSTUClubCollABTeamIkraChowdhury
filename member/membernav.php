@@ -30,7 +30,7 @@
           <!-- -----------------------------------------Club Profile------------------------------------------ -->
           <li class="nav-item dropdown">
             <a  class="dropdown-toggle d-flex align-items-center hidden-arrow"href="#"id="navbarDropdownMenuAvatar"role="button"data-bs-toggle="dropdown"  aria-expanded="false">
-                 <img src="images/club.png"  class="rounded-circle" height="36" alt="user icon" loading="lazy"/>
+                 <img src="../images//club.png"  class="rounded-circle" height="36" alt="user icon" loading="lazy"/>
              </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar" >
             <li>

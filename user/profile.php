@@ -1,5 +1,5 @@
  <?php 
- include 'config.php';
+ include '../assets//config.php';
    $user=mysqli_query($conn, "SELECT * FROM `club_members` WHERE  user_id='$user_id'") or die('query failed');
   
  ?>
@@ -91,7 +91,7 @@
                     <div class="card user-card">
                         <div class="card-block">
                             <div class="user-image">
-                                <img src="images/<?php echo $club_image; ?>" class="img-radius" alt="User-Profile-Image">
+                                <img src="../images//<?php echo $club_image; ?>" class="img-radius" alt="User-Profile-Image">
                             </div>
                             <hr>
                             <p class=" m-t-15"><?php echo $member_type; ?></p>

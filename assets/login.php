@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['user_batch'] = $row['user_id'];
 
 		if($is_validate==1){
- 	         header('location:userdiscover.php'); 
+ 	         header('location:../user/userdiscover.php'); 
      	}else{
 			$message[] = 'User not varified first create a varified account!';
 		}
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 	<title>NSTU Club Collab</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="../css//login.css">
 </head>
 
 <body>
@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
 			<div class="row justify-content-sm-center h-100">
 				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
 					<div class="text-center my-3">
-						<img src="images/club.png" alt="logo" width="80">
+						<img src="../images//club.png" alt="logo" width="80">
 						<h1 class="fs-4 card-title fw-bold mb-4">NSTU Club Collab</h1>
 					</div>
 					<div class="card shadow-lg">
@@ -97,7 +97,7 @@ if (isset($_POST['submit'])) {
 										<input type="checkbox" name="remember" id="remember" class="form-check-input">
 										<small for="remember" class="form-check-label">Remember Me</small>
 									</div>
-									<a href="./forgot.php" class="float-end ms-auto forgot">
+									<a href="../forgot.php" class="float-end ms-auto forgot">
 										Forgot Password?
 									</a>
 								</div>
