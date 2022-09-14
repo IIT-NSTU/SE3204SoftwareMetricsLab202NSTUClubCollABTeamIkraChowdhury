@@ -4,7 +4,7 @@
   <nav class="navbar navbar-expand-lg  p-3 fixed-top  navbar-light bg-light">  
   <a href="#" class="navbar-brand logo">
                 <!-- <img src="images/nstu.png" class="align-middle px-0 mainlogo" height="90"     alt="logo" /> -->
-                 CLub Name
+                 <?php echo $club_name;?>
             </a>
 
     <div class="container-fluid"> 

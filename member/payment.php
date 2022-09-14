@@ -99,10 +99,10 @@ if (isset($message)) {
 									<option name="December" value="dec">December</option>
 								</select>
 							</div>
-							</script>
-							<div class="batch mb-3">
-								<label class="mb-2 text-muted"> Year</label>
-								<input class="year" type="number" name="year" value="" id="type-option" required>
+							 
+							<div class="mb-1">
+								<label class="mb-2 text-muted" for="year">Payment Year</label>
+								<input id="year" type="number" class="form-control" name="year" required>
 							</div>
 
 

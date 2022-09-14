@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     
 }
  
-         $post = mysqli_query($conn, "SELECT * FROM `post`ORDER BY post_id DESC ") or die('query failed');
+         $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND user_id='$user_id' ORDER BY post_id DESC ") or die('query failed');
          if(mysqli_num_rows($post) > 0){ 
             while($row = mysqli_fetch_assoc($post)){ 
                 $post_id=$row['post_id'];

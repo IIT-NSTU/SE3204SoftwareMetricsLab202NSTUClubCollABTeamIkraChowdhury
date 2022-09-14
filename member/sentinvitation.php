@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
                         <label class="mb-2 me-3"><b>Select Clubs</b></label> 
                         <div class="me-3">
                         <select name="invitedclub_id" class="mb-3" id="type-option" required>
-                        <option value="">Select a club</option>
+                        <option  disabled selected value>Select a club</option>
 
 
                         <?php
