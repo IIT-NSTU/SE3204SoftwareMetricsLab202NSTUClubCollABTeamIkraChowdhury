@@ -86,13 +86,13 @@ if(isset($_POST['submit'])){
               <div class="col">
                 <div class="d-flex flex-start">
                   <img class="rounded-circle shadow-1-strong me-3"
-                    src="images/user.png" alt="avatar"  width="30" height="30" />
+                    src="../images//user.png" alt="avatar"  width="30" height="30" />
                   <div class="flex-grow-1 flex-shrink-1">
                     <div>
                       <div class="d-flex justify-content-between align-items-center">
                         <p class="mb-1"> <?php echo  $user_name; ?>
                         </p> 
-                        <a href="deletePost.php?deleteComment=1? && comment_id=<?php echo  $comment_id; ?>" class=" btn-sm text-primary"><b>Delete</b></a>
+                        <a href="deletePost.php?deleteComment=1? && comment_id=<?php echo  $comment_id; ?>" class=" btn-sm text-danger" style="text-decoration:none ;"><b>Delete</b></a>
                       </div>
                       <p class="small mb-0">
                       <?php echo  $comment_content; ?>
@@ -100,14 +100,17 @@ if(isset($_POST['submit'])){
                     </div>
                     <!-- ---------------------------------reply Form------------------------------------------- -->
                     <form action="" method="post" class="row ps-3 pe-4 replyArea"   style="display:block;"> 
-                        <div class="col-sm-10 mb-2 mt-2">
+                    <div class="d-flex">
+                    <div class="col-sm-10 mb-2 mt-2">
                             <input type="text" name="comment_content" class="form-control" placeholder="Write Comment" style="font-size:12px ;">
                             <input type="number" name="comment_id" class="form-control" value="<?php echo  $comment_id; ?>" style="display:none;">
                             <input type="number" name="post_id" class="form-control" value="<?php echo  $post_id; ?>" style="display:none;">
                         </div>
                         <div class="col-sm-2" style="display: flex; justify-content: flex-end;">
-                            <button  type="submit" name="submit" class="btn btn-sm btn-primary mb-2 mt-2">Comment</button>
+                            <button  type="submit" name="submit" class="btn btn-sm btn-primary mb-2 mt-2">   Reply  </button>
                         </div>
+                       
+                    </div>
                        
                     </form>
                     <script>
@@ -145,7 +148,7 @@ if(isset($_POST['submit'])){
                     <div class="d-flex flex-start mt-4">
                       <a class="me-3" href="#">
                         <img class="rounded-circle shadow-1-strong"
-                          src="..images//user.png" alt="avatar" width="30" height="30" />
+                          src="../images//user.png" alt="avatar" width="30" height="30" />
                       </a>
                       <div class="flex-grow-1 flex-shrink-1">
                         <div>
@@ -181,7 +184,7 @@ if(isset($_POST['submit'])){
                     ?>
                     
                     <div class="d-flex ps-3 pe-4" style="justify-content: flex-end;">
-                        <a href="deletePost.php?deletePost=1? && post_id=<?php echo  $post_id; ?>" class=" btn-sm text-primary"><b>Delete Post</b></a>
+                        <a href="deletePost.php?deletePost=1? && post_id=<?php echo  $post_id; ?>" class=" btn-sm text-danger" style="text-decoration:none ;"><b>Delete Post</b></a>
                     </div>
 
                 </div>

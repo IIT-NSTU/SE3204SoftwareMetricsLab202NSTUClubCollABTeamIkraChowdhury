@@ -37,11 +37,7 @@
 </nav> 
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  
-<div class="heading">
-         <div class="mt-3 bg-light text-center" >
-             <h2>Club Post</h2>
-    </div>
-    </div>
+ 
     <div><?php include 'managepost.php'; ?></div> 
  
 

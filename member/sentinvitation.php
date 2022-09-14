@@ -1,11 +1,12 @@
 <?php
 include '../assets//config.php';
 if(isset($_POST['submit'])){
-    $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
-    $post_id= $_POST['post_id']; 
-    $comment_time = date("m.d.Y");
+    $club_id=27;
+    $invitedclub_id= $_POST['invitedclub_id']; 
+    $invite_msg = mysqli_real_escape_string($conn, $_POST['invite_msg']);
+    $invite_date = date("m.d.Y");
     $user_id="1";
-    mysqli_query($conn, "INSERT INTO `comment`(user_id,post_id,comment_content,comment_time) VALUES('$user_id', '$post_id', '$comment_content','$comment_time')") or die('query failed');
+    mysqli_query($conn, "INSERT INTO `invitation`(club_id,invitedclub_id,invite_msg,invite_date) VALUES('$club_id', '$invitedclub_id', '$invite_msg','$invite_date')") or die('query failed');
      
     
 }
@@ -27,17 +28,36 @@ if(isset($_POST['submit'])){
                 <form class="row" action="" method="post" name="postform" enctype="multipart/form-data" autocomplete="off">
 
                     <div class="col-sm-12 form-group">
-                        <label for="post_caption" class="mb-2"><b>Description:</b> <sup class="star-color">*</sup></label>
-                        <textarea name="post_caption" class="form-control form-control-lg mb-4" rows="4"></textarea>
+                        <label for="invite_msg" class="mb-2"><b>Description:</b> <sup class="star-color">*</sup></label>
+                        <textarea name="invite_msg" class="form-control form-control-lg mb-4" rows="4"></textarea>
                     </div> 
                     <div class="d-flex mb-0">
-                        <label class="mb-2 me-3"><b>Availability: </b></label>
+                        <label class="mb-2 me-3"><b>Select Clubs</b></label> 
                         <div class="me-3">
-                            <input type="radio" name="user_type" value="Public"> Public
-                        </div>
-                        <div>
-                            <input type="radio" name="user_type" value="Private"> Private
-                        </div>
+                        <select name="invitedclub_id" class="mb-3" id="type-option" required>
+                        <option value="">Select a club</option>
+
+
+                        <?php
+                        $club=mysqli_query($conn, "SELECT * FROM `clubs`") or die('query failed');
+                        if(mysqli_num_rows($club) > 0){ 
+                            while($row = mysqli_fetch_assoc($club)){ 
+                                $club_name=$row['club_name'];
+                                $club_id=$row['club_id'];
+
+                        ?>
+
+
+                        <option value="<?php echo  $club_id; ?>"><?php echo  $club_name; ?></option>
+
+
+                        <?php
+                            }}
+                       ?>
+
+
+                        </select>
+                        </div> 
                     </div>
                     <div class="align-items-center d-flex">
                         <button type="submit" name="submit" class="btn btn-sm btn-primary ms-auto"><i class="fas fa-check"></i> Post</button>

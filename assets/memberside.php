@@ -24,7 +24,7 @@
                     </li>  
                     <li>
                         <a href="../member/adminsentinvitation.php" id="joinedclubbutton" class="nav-link px-0 align-middle">
-                          <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Sent NOtification</span></a>
+                          <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Sent Invitation</span></a>
                     </li>  
                 </ul>
                  

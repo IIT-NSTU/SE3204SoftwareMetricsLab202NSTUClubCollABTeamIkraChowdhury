@@ -37,7 +37,7 @@
               <a class="dropdown-item" href="" id="profilebutton">CLub profile</a>
             </li>
             <li>
-              <a class="dropdown-item" href="leaveclub.php">Leave club!</a>
+              <a class="dropdown-item" href="../member//leaveclub.php">Leave club!</a>
             </li>
           </ul>
            </li>
