@@ -23,7 +23,7 @@
 <div class="container-scroller">
 <!-------------------------------- header and sidebar---------------------- -->
 <div class="header"> 
-<?php include  'membernav.php';?>  
+<?php include  '../assets//membernav.php';?>  
 </div>
 <!---------------------------------------------totall page-------------------------------------------- -->
  
@@ -32,7 +32,7 @@
     
 <!-- ----------------------------------------sidebar area fix------------> 
 <nav class="sidebar col-xl-3 "> 
-<?php include  'memberside.php';?>
+<?php include  '../assets//memberside.php';?>
 </nav> 
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  

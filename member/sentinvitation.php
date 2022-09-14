@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include '../assets//config.php';
 if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
     $post_id= $_POST['post_id']; 
@@ -47,36 +47,7 @@ if(isset($_POST['submit'])){
             </div>
         </div>
     </div>
-
-
-
-    <?php
-
-    include 'config.php';
-    if (isset($_POST['submit'])) {
-
-        $post_caption = mysqli_real_escape_string($conn, $_POST['post_caption']);
-        $post_status = mysqli_real_escape_string($conn, $_POST['post_status']);
-        $image = $_FILES['image']['name'];
-        $image_size = $_FILES['image']['size'];
-        $image_tmp_name = $_FILES['image']['tmp_name'];
-        $image_folder = 'post_images/' . $image;
-
-        $user_id = "1";
-        $club_id = "27";
-        $post_time = date("m.d.Y");
-        echo $post_time;
-
-        if ($image_size > 2000000) {
-            $message[] =  'image size is too large ,please provide new picture';
-        } else {
-            move_uploaded_file($image_tmp_name, $image_folder);
-            $create_post = mysqli_query($conn, "INSERT INTO `post`(user_id,club_id,post_caption,post_picture,post_status,post_time) VALUES('$user_id', '$club_id', '$post_caption','$image', '$post_status', '$post_time')") or die('query failed');
-            $message[] =  'product added successfully!';
-        }
-    }
-
-    ?>
+ 
     <!-- ------------------------------------------error or successfull messege---------------------- -->
     <?php
     if (isset($message)) {

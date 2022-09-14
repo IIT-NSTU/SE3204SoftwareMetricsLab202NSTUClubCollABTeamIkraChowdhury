@@ -1,7 +1,7 @@
 
     <?php
 
-include 'config.php';
+include '../assets//config.php';
 if (isset($_POST['submit'])) {
 
     $post_caption = mysqli_real_escape_string($conn, $_POST['post_caption']);

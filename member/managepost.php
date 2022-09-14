@@ -1,7 +1,7 @@
  
 
 <?php
-include 'config.php';
+include '../assets//config.php';
 if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
     $commnet_id= $_POST['comment_id']; 

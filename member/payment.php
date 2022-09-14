@@ -1,6 +1,6 @@
 <?php
 
-include 'config.php';
+include '../assets//config.php';
 
 if (isset($_POST['submit'])) {
 
