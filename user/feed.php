@@ -116,7 +116,7 @@ if(isset($_POST['submit'])){
           </div>
  
                     <div class="d-flex ps-3 pe-4" style="justify-content: flex-end;">
-                        <a href="userfeed.php?clicked=1?>" class=" btn-sm text-primary"><b>See all Comments</b></a>
+                        <a href="userfeed.php?clicked=1" class=" btn-sm text-primary"><b>See all Comments</b></a>
                     </div>
 
         </div>

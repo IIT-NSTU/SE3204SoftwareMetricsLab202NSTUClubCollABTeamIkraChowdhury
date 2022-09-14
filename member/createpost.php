@@ -10,9 +10,8 @@ if (isset($_POST['submit'])) {
     $image_size = $_FILES['image']['size'];
     $image_tmp_name = $_FILES['image']['tmp_name'];
     $image_folder = '../post_images//' . $image;
-
-    $user_id = "1";
-    $club_id = "27";
+ 
+    
     $post_time = date("m.d.Y");
     echo $post_time;
 

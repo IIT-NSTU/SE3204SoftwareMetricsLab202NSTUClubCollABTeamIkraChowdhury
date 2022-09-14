@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['user_type'] = $row['user_type'];
 		$_SESSION['user_dept'] = $row['department'];
 		$_SESSION['user_batch'] = $row['user_id'];
+		$_SESSION['in_club']=0; 
 
 		if($is_validate==1){
  	         header('location:../user/userdiscover.php'); 
@@ -44,7 +45,7 @@ if (isset($_POST['submit'])) {
 	<meta name="description" content="This is a login page template based on Bootstrap 5">
 	<title>NSTU Club Collab</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="stylesheet" href="../css//login.css">
 </head>
 

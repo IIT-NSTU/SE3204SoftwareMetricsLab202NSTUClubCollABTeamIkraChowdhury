@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 	$transiction_number = mysqli_real_escape_string($conn, $_POST['transiction_number']);
 
 	//--------------------------------------checks for availability of payment of the month------------------------------
-	$available = mysqli_query($conn, "SELECT * FROM `clubmonthypayment`  WHERE  clubmonthypayment.month='$month' AND clubmonthypayment.year='$year' AND clubmonthypayment.club_id='27'") or die('query failed');
+	$available = mysqli_query($conn, "SELECT * FROM `clubmonthypayment`  WHERE  clubmonthypayment.month='$month' AND clubmonthypayment.year='$year' AND clubmonthypayment.club_id='$club_id'") or die('query failed');
 
 	if (mysqli_num_rows($available) > 0) {
 
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 			$payment_id = $row['payment_id'];
 		}
 		//----------------------------checks if the user already paid for the month--------------------------------	
-		$payed = mysqli_query($conn, "SELECT * FROM `pay`  WHERE   pay.user_id='1' AND  pay.payment_id='$payment_id'") or die('query failed');
+		$payed = mysqli_query($conn, "SELECT * FROM `pay`  WHERE   pay.user_id='$user_id' AND  pay.payment_id='$payment_id'") or die('query failed');
 		$payment_status = null;
 		if (mysqli_num_rows($payed) > 0) {
 			while ($row = mysqli_fetch_assoc($payed)) {
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 
 			if ($pay_number == $usergiven_paynumber) {
 
-				mysqli_query($conn, "INSERT INTO `pay`(user_id,payment_id,payment_ammount,transiction_number) VALUES('1', '$payment_id', '$payment_ammount', '$transiction_number')") or die('query failed');
+				mysqli_query($conn, "INSERT INTO `pay`(user_id,payment_id,payment_ammount,transiction_number) VALUES('$user_id', '$payment_id', '$payment_ammount', '$transiction_number')") or die('query failed');
 				$message[] = 'Succesfully inserted payment check request of month   --->' . $month;
 			} else {
 				$message[] = 'Not the correct Bkash NUmber .The correct number is --->' . $pay_number;

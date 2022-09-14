@@ -1,3 +1,12 @@
+<?php
+ 
+ session_start();
+ $user_id=$_SESSION['user_id']; 
+ $club_id = $_SESSION['club_id'];
+ $club_name = $_SESSION['club_name']; 
+ $_SESSION['in_club']=1;
+  
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +42,7 @@
     
 <!-- ----------------------------------------sidebar area fix------------> 
 <nav class="sidebar col-xl-3 "> 
-<?php include '../assets//memberside.php';?>
+<?php include '../assets//side.php';?>
 </nav> 
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  

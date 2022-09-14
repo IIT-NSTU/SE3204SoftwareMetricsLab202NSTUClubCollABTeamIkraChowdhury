@@ -6,6 +6,7 @@ $user_id=$_SESSION['user_id'];
 $user_type=$_SESSION['user_type'];
 $user_dept=$_SESSION['user_dept'];
 $user_batch=$_SESSION['user_batch'];
+$_SESSION['in_club']=0;
 
 ?> 
 <!DOCTYPE html>

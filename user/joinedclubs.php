@@ -69,7 +69,7 @@ if(isset($_POST['submit'])){
     <img class="image" src="../images//<?php echo $row['club_image']; ?>" alt="club profilepic">
     <div class="name"><?php echo $row['club_name']; ?></div>
     <div class="totall_member"><?php echo $row['totall_members']; ?></div> 
-    <input type="submit" value="Visit club" name="visitclub" class="btn">
+    <a href="../assets/enterclub.php?club_id=<?php echo $row['club_id']; ?>"  name="visitclub" class="btn">Visit CLub</a>
     </form>
  </div>
     <?php 
@@ -110,7 +110,7 @@ else{
     <img class="image" src="../images//<?php echo $row['club_image']; ?>" alt="club profilepic">
     <div class="name"><?php echo $row['club_name']; ?></div>
     <div class="totall_member"><?php echo $row['totall_members']; ?></div> 
-    <input type="submit" value="Visit club" name="visitclub" class="btn">
+    <a href=" ../assets/enterclub.php?club_id=<?php echo $row['club_id'];?> & club_name=<?php echo $row['club_name'];?> "  name="visitclub" class="btn">Visit CLub</a>
     </form>
     </div>
     <?php

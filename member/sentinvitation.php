@@ -1,11 +1,11 @@
 <?php
 include '../assets//config.php';
 if(isset($_POST['submit'])){
-    $club_id=27;
+    $club_id=$club_id;
     $invitedclub_id= $_POST['invitedclub_id']; 
     $invite_msg = mysqli_real_escape_string($conn, $_POST['invite_msg']);
     $invite_date = date("m.d.Y");
-    $user_id="1";
+    $user_id= $user_id;
     mysqli_query($conn, "INSERT INTO `invitation`(club_id,invitedclub_id,invite_msg,invite_date) VALUES('$club_id', '$invitedclub_id', '$invite_msg','$invite_date')") or die('query failed');
      
     
