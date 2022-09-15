@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['in_club']=0; 
 
 		if($is_validate==1){
- 	         header('location:../user/userdiscover.php'); 
+ 	         header('location:../user/userfeed.php'); 
      	}else{
 			$message[] = 'User not varified first create a varified account!';
 		}
