@@ -25,7 +25,11 @@
                     </li>
                     <li>
                         <a href="../user/userjoinedclub.php" id="joinedclubbutton" class="nav-link px-0 align-middle">
-                          <img src="../images//joined.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Joined club</span></a>
+                          <img src="../images//joined.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">My clubs</span></a>
+                    </li>
+                    <li>
+                        <a href="../user/userjoinclub.php" id="joinedclubbutton" class="nav-link px-0 align-middle">
+                          <img src="../images//joined.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Join clubs</span></a>
                     </li>  
                 </ul>
                  
@@ -109,16 +113,17 @@
                       <img src="../images//joined.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Payment</span></a>
                 </li>  
                 <li>
+                    <a href="../admin/adminaddmember.php" id="joinedclubbutton" class="nav-link px-0 align-middle">
+                      <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Add Member</span></a>
+                </li>
+                <li>
                     <a href="../admin/adminmanagemember.php" id="joinedclubbutton" class="nav-link px-0 align-middle">
                       <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Manage Member</span></a>
                 </li>
+             
                 <li>
-                    <a href="#" id="joinedclubbutton" class="nav-link px-0 align-middle">
-                      <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Publish Apply Form</span></a>
-                </li>
-                <li>
-                    <a href="#" id="joinedclubbutton" class="nav-link px-0 align-middle">
-                      <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Manage Applicant</span></a>
+                    <a href="../admin/adminpublishform.php"  id="joinedclubbutton" class="nav-link px-0 align-middle">
+                      <img src="../images//feed.png" class="img" alt="logo" /> <span class="ms-1 d-none d-sm-inline text">Apply Form</span></a>
                 </li>  
                 <li>
                     <a href="../admin/adminsentinvitation.php" id="joinedclubbutton" class="nav-link px-0 align-middle">
