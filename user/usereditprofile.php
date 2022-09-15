@@ -1,12 +1,8 @@
 <?php
-session_start();
-$user_name=$_SESSION['user_name'];
+session_start(); 
 $user_email=$_SESSION['user_email'];
 $user_id=$_SESSION['user_id'];
-$user_type=$_SESSION['user_type'];
-$user_dept=$_SESSION['user_dept'];
-$user_batch=$_SESSION['user_batch'];
-$user_image=$_SESSION['user_image'];
+$user_type=$_SESSION['user_type']; 
 $_SESSION['in_club']=0;
 
 ?> 
@@ -26,6 +22,7 @@ $_SESSION['in_club']=0;
     <link rel="stylesheet" href="../css//discover.css"> 
     <link rel="stylesheet" href="../css//pr.css">
     <link rel="stylesheet" href="../css//profile.css">
+    <link rel="stylesheet" href="../css//register.css">
 
     
     
@@ -49,7 +46,7 @@ $_SESSION['in_club']=0;
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection"> 
     
-    <div><?php include 'profile.php'; ?></div> 
+    <div><?php include 'editProfile.php'; ?></div> 
     
      
 

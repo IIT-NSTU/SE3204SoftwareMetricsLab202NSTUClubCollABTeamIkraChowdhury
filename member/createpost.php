@@ -12,8 +12,7 @@ if (isset($_POST['submit'])) {
     $image_folder = '../post_images//' . $image;
  
     
-    $post_time = date("m.d.Y");
-    echo $post_time;
+    $post_time = date("m.d.Y"); 
 
     if ($image_size > 200000000) {
         $message[] =  'image size is too large ,please provide new picture';

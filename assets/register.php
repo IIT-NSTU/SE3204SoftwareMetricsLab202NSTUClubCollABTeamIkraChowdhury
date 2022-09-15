@@ -53,11 +53,11 @@ include 'config.php';
   }
 
 
-  function insertToDatabae($name,$email,$pass,$user_type,$department,$batch,$is_validate,$conn){
+  function insertToDatabae($name,$email,$pass,$user_image,$user_type,$department,$batch,$is_validate,$conn){
 
 	$v_code=bin2hex(random_bytes(4));
 	 
-	$user_query= "INSERT INTO `users`(name, email, password, user_type,department,batch,is_validate,v_code) VALUES('$name', '$email', '$pass', '$user_type','$department','$batch',0,'$v_code')";
+	$user_query= "INSERT INTO `users`(name, email, password,user_image,user_type,department,batch,is_validate,v_code) VALUES('$name', '$email', '$pass','$user_image', '$user_type','$department','$batch',0,'$v_code')";
 	$result2=(mysqli_query($conn,$user_query) && sendMail($email,$v_code));
  
   if($result2){
@@ -74,7 +74,7 @@ include 'config.php';
   }
 
 if (isset($_POST['submit'])) {
-	echo "khjhj";
+	 
 
 
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -83,8 +83,8 @@ if (isset($_POST['submit'])) {
 	$department = mysqli_real_escape_string($conn, $_POST['dept_name']);
 	$user_type = $_POST['user_type'];
 	$batch = mysqli_real_escape_string($conn, $_POST['batch']); 
-
-	echo "fikdshfk";
+	$user_image="user.png";
+ 
 
 	if (!preg_match("/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]+.nstu.edu.bd+$/i", $email)) {
 
@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
 				$message[] = 'User already exist!';
 			}else{
 				mysqli_query($conn, "DELETE FROM `users` WHERE  user_id = '$user_id'") or die('query failed');
-				insertToDatabae($name,$email,$pass,$user_type,$department,$batch,0,$conn);
+				insertToDatabae($name,$email,$pass,$user_image,$user_type,$department,$batch,0,$conn);
 			}
 			 
 		}
@@ -109,7 +109,7 @@ if (isset($_POST['submit'])) {
 		else {
 		 
 			 
-			insertToDatabae($name,$email,$pass,$user_type,$department,$batch,0,$conn);
+			insertToDatabae($name,$email,$pass,$user_image,$user_type,$department,$batch,0,$conn);
 		 
 		}
 	}

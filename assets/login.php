@@ -21,7 +21,8 @@ if (isset($_POST['submit'])) {
 		$_SESSION['user_id'] = $row['user_id'];
 		$_SESSION['user_type'] = $row['user_type'];
 		$_SESSION['user_dept'] = $row['department'];
-		$_SESSION['user_batch'] = $row['user_id'];
+		$_SESSION['user_batch'] = $row['batch'];
+		$_SESSION['user_image'] = $row['user_image'];
 		$_SESSION['in_club']=0; 
 
 		if($is_validate==1){
