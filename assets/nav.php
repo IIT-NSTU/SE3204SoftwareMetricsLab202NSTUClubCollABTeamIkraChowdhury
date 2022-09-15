@@ -1,5 +1,6 @@
-  
-    
+<?php 
+$user_image=$_SESSION['user_image'] ;
+?>
  <!-- ---------------------------------------------------navbar---------------------------------------------------- -->
   <nav class="navbar navbar-expand-lg  p-3 fixed-top  navbar-light bg-light">  
   <a href="#" class="navbar-brand logo">
@@ -30,7 +31,7 @@
           <!-- -----------------------------------------Profile------------------------------------------ -->
           <li class="nav-item dropdown">
             <a  class="dropdown-toggle d-flex align-items-center hidden-arrow"href="#"id="navbarDropdownMenuAvatar"role="button"data-bs-toggle="dropdown"  aria-expanded="false">
-                 <img src="../images//user.png"  class="rounded-circle" height="36" alt="user icon" loading="lazy"/>
+                 <img src="../images//<?php echo $user_image;?>"  class="rounded-circle" height="36" alt="user icon" loading="lazy"/>
              </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar" >
             <li>

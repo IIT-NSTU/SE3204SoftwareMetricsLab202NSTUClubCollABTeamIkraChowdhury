@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
     $post_id= $_POST['post_id']; 
     $comment_time = date("m.d.Y");
-    $user_id="1";
+    $user_id=$user_id;
     mysqli_query($conn, "INSERT INTO `comment`(user_id,post_id,comment_content,comment_time) VALUES('$user_id', '$post_id', '$comment_content','$comment_time')") or die('query failed');
      
     
@@ -77,10 +77,11 @@ if(isset($_POST['submit'])){
             $comment_time=$rowco['comment_time'];
              
         
-        $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+        $user=mysqli_query($conn, "SELECT * FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
         if(mysqli_num_rows($user) > 0){
             $rowu= mysqli_fetch_assoc($user);
-            $user_name=$rowu['name']; 
+            $user_name=$rowu['name'];
+            $user_image=$rowu['user_image'];  
          } 
         ?>
 
@@ -100,10 +101,11 @@ if(isset($_POST['submit'])){
                      $reply_content=$rowreply['reply_content'];
                      $comment_time=$rowreply['comment_time'];
 
-                     $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+                     $user=mysqli_query($conn, "SELECT * FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
                      if(mysqli_num_rows($user) > 0){
                      $rowu= mysqli_fetch_assoc($user);
                       $user_name=$rowu['name'];
+                      $user_image=$rowu['user_image']; 
                      } 
                     include "reply.php";
                     }
@@ -137,10 +139,11 @@ if(isset($_POST['submit'])){
             $comment_time=$rowco['comment_time'];
              
         
-        $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+        $user=mysqli_query($conn, "SELECT * FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
         if(mysqli_num_rows($user) > 0){
             $rowu= mysqli_fetch_assoc($user);
             $user_name=$rowu['name']; 
+            $user_image=$rowu['user_image']; 
          } 
           
          
@@ -164,10 +167,11 @@ if(isset($_POST['submit'])){
                       $reply_content=$rowreply['reply_content'];
                       $comment_time=$rowreply['comment_time'];
 
-                      $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+                      $user=mysqli_query($conn, "SELECT * FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
                       if(mysqli_num_rows($user) > 0){
                       $rowu= mysqli_fetch_assoc($user);
                        $user_name=$rowu['name'];
+                       $user_image=$rowu['user_image']; 
                       }
                       include "reply.php";
                     }

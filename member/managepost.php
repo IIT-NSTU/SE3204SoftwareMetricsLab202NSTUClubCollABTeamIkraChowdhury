@@ -71,10 +71,11 @@ if(isset($_POST['submit'])){
                 $comment_content=$rowco['comment_content'];
                 $comment_time=$rowco['comment_time'];
 
-                $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+                $user=mysqli_query($conn, "SELECT * FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
                 if(mysqli_num_rows($user) > 0){
                     $rowu= mysqli_fetch_assoc($user);
                     $user_name=$rowu['name']; 
+                    $user_image=$rowu['user_image'];
                      
                 }
             
@@ -86,7 +87,7 @@ if(isset($_POST['submit'])){
               <div class="col">
                 <div class="d-flex flex-start">
                   <img class="rounded-circle shadow-1-strong me-3"
-                    src="../images//user.png" alt="avatar"  width="30" height="30" />
+                    src="../images//<?php echo  $user_image; ?>" alt="avatar"  width="30" height="30" />
                   <div class="flex-grow-1 flex-shrink-1">
                     <div>
                       <div class="d-flex justify-content-between align-items-center">
@@ -134,10 +135,11 @@ if(isset($_POST['submit'])){
                                 $reply_content=$rowreply['reply_content'];
                                 $comment_time=$rowreply['comment_time'];
 
-                                $user=mysqli_query($conn, "SELECT name FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
+                                $user=mysqli_query($conn, "SELECT * FROM `users` WHERE  user_id=' $user_id'") or die('query failed');
                                 if(mysqli_num_rows($user) > 0){
                                 $rowu= mysqli_fetch_assoc($user);
                                  $user_name=$rowu['name']; 
+                                 $user_image=$rowu['user_image'];
                                 }
                                  
                             
@@ -148,7 +150,7 @@ if(isset($_POST['submit'])){
                     <div class="d-flex flex-start mt-4">
                       <a class="me-3" href="#">
                         <img class="rounded-circle shadow-1-strong"
-                          src="../images//user.png" alt="avatar" width="30" height="30" />
+                          src="../images//<?php echo  $user_image; ?>" alt="avatar" width="30" height="30" />
                       </a>
                       <div class="flex-grow-1 flex-shrink-1">
                         <div>

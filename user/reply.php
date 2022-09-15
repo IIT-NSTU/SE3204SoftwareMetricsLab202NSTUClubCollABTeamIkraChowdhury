@@ -1,7 +1,7 @@
 <div class="d-flex flex-start mt-4">
                       <a class="me-3" href="#">
                         <img class="rounded-circle shadow-1-strong"
-                          src="../images//user.png" alt="avatar" width="30" height="30" />
+                          src="../images//<?php echo  $user_image;?>" alt="avatar" width="30" height="30" />
                       </a>
                       <div class="flex-grow-1 flex-shrink-1">
                         <div>
