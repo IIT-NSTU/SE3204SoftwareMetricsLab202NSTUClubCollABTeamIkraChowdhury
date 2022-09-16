@@ -1,7 +1,7 @@
 <?php
 
 include '../assets//config.php';
-$descreiption=$_GET['description'];
+$description=$_GET['description'];
 $club_id=$_GET['club_id'];
 
 if (isset($_POST['submit'])) {
