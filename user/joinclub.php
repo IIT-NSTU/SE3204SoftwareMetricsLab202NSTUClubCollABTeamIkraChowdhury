@@ -79,7 +79,15 @@ include '../assets//config.php';
                     <div class="row">
                         <div class="col">
                             <div class="d-flex justify-content-end">
-                            <a href="userformpay.php?description=<?php echo  $description; ?> && club_id=<?php echo  $club_id; ?>" class=" btn-sm text-danger" style="text-decoration:none ;"><b>Delete</b></a>
+
+
+                            <?php
+                           $member = mysqli_query($conn, "SELECT * FROM `club_members`  WHERE user_id='$user_id' AND club_id='$club_id'") or die('query failed');
+                           if(!mysqli_num_rows($member) > 0){?>
+                             
+                             <a href="userformpay.php?description=<?php echo  $description; ?> && club_id=<?php echo  $club_id; ?>" class=" btn-sm text-danger" style="text-decoration:none ;"><b>Apply</b></a>
+                        
+                             <?php }  ?>
                             </div>
 
                         </div>
