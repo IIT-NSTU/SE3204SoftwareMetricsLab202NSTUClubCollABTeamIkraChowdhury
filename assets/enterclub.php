@@ -5,7 +5,8 @@ $_SESSION['in_club']=1;
 if(isset(($_GET['club_id']))){
 $_SESSION['club_id']=$_GET['club_id'];
 $club_id=$_SESSION['club_id'];
-$_SESSION['club_name']=$_GET['club_name']; 
+$_SESSION['club_name']=$_GET['club_name'];
+$_SESSION['club_image']=$_GET['club_image']; 
 }  
 $user_id=$_SESSION['user_id'];
 $users = mysqli_query($conn, "SELECT * FROM `club_members` WHERE user_id = '$user_id' AND  club_id ='$club_id' ") or die('query failed');

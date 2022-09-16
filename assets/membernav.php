@@ -1,5 +1,6 @@
-  
-    
+<?php
+$club_image=$_SESSION['club_image'];
+?>  
  <!-- ---------------------------------------------------navbar---------------------------------------------------- -->
   <nav class="navbar navbar-expand-lg  p-3 fixed-top  navbar-light bg-light">  
   <a href="#" class="navbar-brand logo">
@@ -30,14 +31,17 @@
           <!-- -----------------------------------------Club Profile------------------------------------------ -->
           <li class="nav-item dropdown">
             <a  class="dropdown-toggle d-flex align-items-center hidden-arrow"href="#"id="navbarDropdownMenuAvatar"role="button"data-bs-toggle="dropdown"  aria-expanded="false">
-                 <img src="../images//club.png"  class="rounded-circle" height="36" alt="user icon" loading="lazy"/>
+                 <img src="../images//<?php echo$club_image; ?>"  class="rounded-circle" height="36" alt="user icon" loading="lazy"/>
              </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar" >
             <li>
               <a class="dropdown-item" href="" id="profilebutton">CLub profile</a>
             </li>
             <li>
-              <a class="dropdown-item" href="../member//leaveclub.php">Leave club!</a>
+              <a class="dropdown-item" href="../admin/admineditclub.php" id="profilebutton">Edit Club</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="../member/leaveclub.php">Leave club!</a>
             </li>
           </ul>
            </li>

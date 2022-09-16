@@ -1,5 +1,6 @@
 <?php 
 $user_image=$_SESSION['user_image'] ;
+ 
 ?>
  <!-- ---------------------------------------------------navbar---------------------------------------------------- -->
   <nav class="navbar navbar-expand-lg  p-3 fixed-top  navbar-light bg-light">  
