@@ -18,8 +18,7 @@ $_SESSION['in_club']=0;
     <link rel="stylesheet" href="../css//user.css">
     <link rel="stylesheet" href="../css//nav.css">
     <link rel="stylesheet" href="../css//side.css"> 
-    <link rel="stylesheet" href="../css//joinclub.css"> 
-    <link rel="stylesheet" href="../css//registerclub.css"> 
+    <link rel="stylesheet" href="../css//discover.css"> 
     <link rel="stylesheet" href="../css//pr.css">
     <link rel="stylesheet" href="../css//profile.css">
 
@@ -43,8 +42,9 @@ $_SESSION['in_club']=0;
 <?php include '../assets//side.php';?>
 </nav> 
 <!--------------------------------------- Discover page body---- -->
-<div class="mainsection">  
-    <div><?php include 'joinclub.php'; ?></div> 
+<div class="mainsection">   
+    
+    <div><?php include 'formpay.php'; ?></div> 
  
 
 </div>
