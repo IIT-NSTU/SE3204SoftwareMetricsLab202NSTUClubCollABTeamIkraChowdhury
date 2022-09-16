@@ -1,5 +1,7 @@
 <?php
 $club_image=$_SESSION['club_image'];
+$club_id=$_SESSION['club_id'];
+$member_type=$_SESSION['member_type'];
 ?>  
  <!-- ---------------------------------------------------navbar---------------------------------------------------- -->
   <nav class="navbar navbar-expand-lg  p-3 fixed-top  navbar-light bg-light">  
@@ -35,7 +37,7 @@ $club_image=$_SESSION['club_image'];
              </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar" >
             <li>
-              <a class="dropdown-item" href="" id="profilebutton">CLub profile</a>
+              <a class="dropdown-item" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" id="profilebutton">CLub profile</a>
             </li>
             <li>
               <a class="dropdown-item" href="../admin/admineditclub.php" id="profilebutton">Edit Club</a>
