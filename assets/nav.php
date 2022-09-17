@@ -54,17 +54,17 @@ $user_image = $_SESSION['user_image'];
       <ul class="navbar-nav ms-auto">
         <?php if ($_SESSION['in_club'] == 0) : ?>
           <li class="nav-item pe-2">
-            <img src="../images/discover.png" class="img" alt="logo">
-            <a href="userdiscover.php" class="link">
-              <span><b>Discover Club</b></span>
-            </a>
-          </li>
-          <li class="nav-item pe-2">
             <img src="../images/newsFeed.png" class="feedimg" alt="logo" />
             <a href="userfeed.php" class="link">
               <span><b>Feed</b></span>
             </a>
           </li>
+          <li class="nav-item pe-2">
+            <img src="../images/discover.png" class="img" alt="logo">
+            <a href="userdiscover.php" class="link">
+              <span><b>Discover Club</b></span>
+            </a>
+        </li>
           <li class="nav-item pe-2">
             <img src="../images/joined.png" class="img" alt="logo" />
             <a href="userjoinedclub.php" class="link">
@@ -74,7 +74,7 @@ $user_image = $_SESSION['user_image'];
           <li class="nav-item pe-2">
             <img src="../images/joinedClub.jpg" class="joinedimg" alt="logo" />
             <a href="userjoinclub.php" class="link">
-              <span><b>Join Clubs</b></span>
+              <span><b>Join Club</b></span>
             </a>
           </li>
         <?php else : ?>

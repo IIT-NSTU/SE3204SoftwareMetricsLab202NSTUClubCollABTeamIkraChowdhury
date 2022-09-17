@@ -26,9 +26,10 @@ if (isset($message)) {
 <div class="searchdiv">   
 
 <div class="container">
+       
 	<div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-12">
-                            <form action="" class="card card-sm" method="post">
+                            <form action="" class="card card-sm" method="post"> 
                                 <div class="card-body row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <i class="fas fa-search h4 text-body"></i>
@@ -99,7 +100,13 @@ if(isset($_POST['username'])){
 
      ?>
      <!-- ------------------------------------------admin table starts-------------------------------------- -->
-  <div class="container mt-3 mb-4">
+<div class="container mt-3 mb-4">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Add Member</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 <div class="col-lg-12 mt-4 mt-lg-0">
     <div class="row">
       <div class="col-md-12">

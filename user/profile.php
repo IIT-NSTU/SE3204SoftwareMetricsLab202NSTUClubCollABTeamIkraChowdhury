@@ -10,6 +10,12 @@
      }
  </style>
  <div class="container">
+     <!-- Account page navigation-->
+     <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
      <div class="main-body">
          <div class="row gutters-sm">
              <div class="col-md-5 mb-3">

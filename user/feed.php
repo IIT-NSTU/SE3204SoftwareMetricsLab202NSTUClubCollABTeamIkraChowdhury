@@ -33,6 +33,12 @@ if(isset($_POST['submit'])){
 
 <section >
     <div class="container my-2 py-1 px-2">
+       <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">User Feed</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
                 <div class="card p-2">

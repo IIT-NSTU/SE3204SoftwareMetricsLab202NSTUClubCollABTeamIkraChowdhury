@@ -11,6 +11,12 @@ $isclicked=false;
 <div class="searchdiv">   
 
 <div class="container">
+     <!-- Account page navigation-->
+     <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Discover Club</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 	<div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8">
                             <form action="userdiscover.php" class="card card-sm" method="post">

@@ -30,6 +30,11 @@ if (mysqli_num_rows($applicant) > 0) {
  
 <!-- ---------------------------------------member  table starts--------------------------------------------- -->
 <div class="container mt-3 mb-4">
+<nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Manage Applicant</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 <div class="col-lg-9 mt-4 mt-lg-0">
     <div class="row">
       <div class="col-md-12">

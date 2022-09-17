@@ -41,6 +41,11 @@ if (isset($message)) {
 
 <!---------------------------------------payment session---------------------------------------------------->
 <div class="container">
+<nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Check Payroll</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 <form  action="" method="post"  >
   <h1>Start payment session</h1>
   <div class="row">

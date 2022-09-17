@@ -57,6 +57,12 @@ if (isset($message)) {
 
 <section class="h-100">
 	<div class="container h-100">
+		 <!-- Account page navigation-->
+		 <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Form Payment</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 		<div class="row justify-content-sm-center h-100">
 			<div class="col-xxl-5 col-xl-6 col-lg-6 col-md-7 col-sm-9">
 

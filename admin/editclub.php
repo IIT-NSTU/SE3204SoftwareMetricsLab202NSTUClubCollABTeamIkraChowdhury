@@ -56,7 +56,7 @@ if(isset($_POST["submit"])){
 <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Club settings</a>
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Edit club</a>
         
     </nav>
     <hr class="mt-0 mb-4">
@@ -73,7 +73,7 @@ if(isset($_POST["submit"])){
                     $image = $user["club_image"];
                      ?>
                     
-                    <img class="img-account-profile rounded-circle mb-2" src="../images//<?php echo $image; ?>" alt="">
+                    <img class="img-account-profile rounded-circle mb-2" src="../images//<?php echo $image; ?>" width="50%" alt="">
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->

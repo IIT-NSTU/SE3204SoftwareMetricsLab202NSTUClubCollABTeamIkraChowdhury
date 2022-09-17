@@ -22,11 +22,7 @@ $_SESSION['in_club']=0;
 <div class="maindiv">  
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  
-    <div class="heading">
-         <div class="mt-3 bg-light text-center" >
-             <h2> Joined clubs</h2>
-    </div>
-    </div>
+   
     <div><?php include 'joinedclubs.php'; ?></div> 
     
      

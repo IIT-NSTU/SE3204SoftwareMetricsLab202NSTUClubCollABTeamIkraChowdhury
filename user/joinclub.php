@@ -1,3 +1,4 @@
+<div class="container">
 <?php
 include '../assets//config.php'; 
 
@@ -37,7 +38,13 @@ include '../assets//config.php';
                 } 
 
                 ?>
-                 <div class="row d-flex align-items-center justify-content-center mt-5">
+                 <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Apply to join club</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
+        <div class="row d-flex align-items-center justify-content-center mt-5">
         <div class="col-md-7">
             <div class="card bg-light">
                 <div class="d-flex justify-content-between p-2 px-3">
@@ -77,7 +84,7 @@ include '../assets//config.php';
                             <div class="col">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h6 class="text-center text-primary">Submission Daadline</h6>
+                                        <h6 class="text-center text-primary">Submission Deadline</h6>
                                         <hr class="mt-1 mb-1">
                                         <p class="mt-2 text-center"><?php echo  $end_time; ?>
                                         </p>
@@ -129,4 +136,4 @@ include '../assets//config.php';
          }
                 
       ?>
-    
+     

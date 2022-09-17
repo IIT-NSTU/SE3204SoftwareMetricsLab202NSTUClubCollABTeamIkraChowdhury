@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     $end_time = $_POST['end_time']; 
     $noti_time = date("m.d.Y");
 
-    $check_formnumber = mysqli_query($conn, "SELECT * FROM `apply_form` WHERE club_id = '$club_id' AND session_number='1'") or die('query failed');
+    $check_formnumber = mysqli_query($conn, "SELECT * FROM `apply_form` WHERE club_id = '$club_id' AND session_number='$session_numbergiven'") or die('query failed');
  
  
  
@@ -63,8 +63,14 @@ if (isset($message)) {
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+ 
 <div class="container">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Apply form</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
     <div class="row gutters-sm mt-0 ">
         <div class="col-sm-2"></div>
         <div class="col-md-8">
