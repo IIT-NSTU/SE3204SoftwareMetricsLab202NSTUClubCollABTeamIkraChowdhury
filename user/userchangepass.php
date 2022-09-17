@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!$_SESSION['is_login']){
+    header('location:../assets/login.php');
+}
 $user_id=$_SESSION['user_id'];
 $_SESSION['in_club']=0;
 ?>

@@ -1,6 +1,9 @@
 <?php
  
  session_start();
+ if($_SESSION['is_login']!=1){
+  header('location:../assets/login.php');
+}
  $user_id=$_SESSION['user_id']; 
  $club_id = $_SESSION['club_id'];
  $club_name = $_SESSION['club_name']; 

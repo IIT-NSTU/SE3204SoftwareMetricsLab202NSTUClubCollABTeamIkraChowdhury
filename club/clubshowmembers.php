@@ -1,5 +1,10 @@
 <?php
 include "clubdatabase.php";
+if(isset(($_GET['after_login']))){
+   if($_SESSION['is_login']!=1){
+      header('location:../assets/login.php');
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,5 +1,8 @@
 <?php
 session_start(); 
+if($_SESSION['is_login']!=1){
+    header('location:../assets/login.php');
+  }
 $user_email=$_SESSION['user_email'];
 $user_id=$_SESSION['user_id'];
 $user_type=$_SESSION['user_type']; 
