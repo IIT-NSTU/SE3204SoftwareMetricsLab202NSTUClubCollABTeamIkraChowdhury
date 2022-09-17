@@ -12,7 +12,7 @@ if (mysqli_num_rows($user) > 0) {
 
 <!-- ------------------------------------------admin table starts-------------------------------------- -->
   <div class="container mt-3 mb-4">
-<div class="col-lg-9 mt-4 mt-lg-0">
+<div class="col-lg-12 mt-4 mt-lg-0">
     <div class="row">
       <div class="col-md-12">
         <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
@@ -63,7 +63,7 @@ if (mysqli_num_rows($user) > 0) {
 </div> 
 <!-- ---------------------------------------member  table starts--------------------------------------------- -->
 <div class="container mt-3 mb-4">
-<div class="col-lg-9 mt-4 mt-lg-0">
+<div class="col-lg-12 mt-4 mt-lg-0 col-auto">
     <div class="row">
       <div class="col-md-12">
         <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">

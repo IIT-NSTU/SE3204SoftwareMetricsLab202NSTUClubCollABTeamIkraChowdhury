@@ -35,13 +35,22 @@ include "clubdatabase.php";
                            <a href="../admin/admineditclub.php" class="btn btn-sm btn-info mb-2">Edit Profile</a>
                         <?php } 
                         ?>
+                         <?php
+                        if($member_type=="admin" || $member_type=="member"){?>
+                           <a href="../member/leaveclub.php"class="btn btn-sm btn-info btn-danger ">Leave Club Parmanently</a>
+                        <?php } 
+                        ?>
                          
                      </div> 
                   </div> 
                   <ul class="profile-header-tab nav nav-tabs"> 
                   <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Member Details </a></li>
-                     <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Activity Section</a></li> 
-                     <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Activity Section</a></li> 
+                     <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Activity Section</a></li>  
+                     <?php
+                        if($member_type=="admin" || $member_type=="member"){?>
+                           <li class="nav-item"><a href= "../member/membercreatepost.php" target="__blank" class="nav-link_">Home</a></li>
+                        <?php } 
+                        ?>
                   </ul> 
                </div>
             </div> 
