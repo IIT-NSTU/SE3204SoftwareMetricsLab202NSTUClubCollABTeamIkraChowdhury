@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $ammount = $_POST['ammount'];
     $session_numbergiven = $_POST['session_number'];
     $end_time = $_POST['end_time']; 
-    $noti_time = date("m.d.Y");
+    $noti_time = date("Y-m-d"); 
 
     $check_formnumber = mysqli_query($conn, "SELECT * FROM `apply_form` WHERE club_id = '$club_id' AND session_number='$session_numbergiven'") or die('query failed');
  
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
        
        
             $noti_description=$club_name." has now published a new recruitment form form";
-           // mysqli_query($conn, "INSERT INTO `club_notification`(club_id,description,noti_time) VALUES('$club_id', '$noti_description','$noti_time')") or die('query failed');
+            mysqli_query($conn, "INSERT INTO `notification`(club_id,description,noti_time) VALUES('$club_id', '$noti_description','$noti_time')") or die('query failed');
     
             $message[] =  'session started successfully!';
 

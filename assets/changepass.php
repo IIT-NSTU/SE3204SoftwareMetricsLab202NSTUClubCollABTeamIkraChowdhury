@@ -23,6 +23,11 @@ if(isset($_POST['submit'])){
 ?>
 	<section class="h-100">
 		<div class="container h-100">
+		<nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Change Password</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 			<div class="row justify-content-sm-center h-100">
 				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
  

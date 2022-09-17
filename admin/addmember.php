@@ -142,7 +142,7 @@ if(isset($_POST['username'])){
                 $user_batch=$rowu['batch'];
                  
             } 
-            include "managemembertable.php";
+            include "../club//membertable.php";
           }
   } else{
     echo "No Admin  yet ";

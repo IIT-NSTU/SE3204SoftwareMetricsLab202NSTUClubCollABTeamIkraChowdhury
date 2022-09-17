@@ -8,12 +8,15 @@ if (isset($_POST['submit'])) {
  
 	$pay_number = $_POST['pay_number'];
 	$bkash_number = $_POST['bkash_number'];
-	$transiction_number = mysqli_real_escape_string($conn, $_POST['transiction_number']);
+	$transiction_number= mysqli_real_escape_string($conn, $_POST['transiction_number']);
 
 	//--------------------------------------checks for user already paid-----------------------------
 	$available = mysqli_query($conn, "SELECT * FROM `apply_form`  WHERE   club_id='$club_id'") or die('query failed');
+	if(strlen($bkash_number)!=11 || strlen($pay_number)!=11){
+		$message[] = 'Not 11 digit';
 
-	if (mysqli_num_rows($available) > 0) {
+	}
+	elseif (mysqli_num_rows($available) > 0) {
 
 		while ($row = mysqli_fetch_assoc($available)) {
 			$session_id = $row['session_id']; 

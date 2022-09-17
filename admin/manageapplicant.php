@@ -35,7 +35,7 @@ if (mysqli_num_rows($applicant) > 0) {
         
     </nav>
     <hr class="mt-0 mb-4">
-<div class="col-lg-9 mt-4 mt-lg-0">
+<div class="col-lg-12 mt-4 mt-lg-0">
     <div class="row">
       <div class="col-md-12">
         <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
@@ -47,6 +47,7 @@ if (mysqli_num_rows($applicant) > 0) {
                 <th class="text-center">Department</th>
                 <th class="text-center">Status</th>
                 <th class="action text-right">Batch</th>
+                <th class="action text-right">Phone Number</th>
               </tr>
             </thead>
             <tbody> 
@@ -57,7 +58,9 @@ if (mysqli_num_rows($applicant) > 0) {
  
 
 while ($row = mysqli_fetch_assoc($applicant)) {
-    $userp_id = $row['user_id']; 
+    $userp_id = $row['user_id'];
+    $pay_number = $row['pay_number']; 
+
 
     $user=mysqli_query($conn, "SELECT * FROM `users` WHERE  user_id=' $userp_id'") or die('query failed');
             if(mysqli_num_rows($user) > 0){

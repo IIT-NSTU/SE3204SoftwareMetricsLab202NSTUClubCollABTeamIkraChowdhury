@@ -1,4 +1,9 @@
 <div class="container">
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Apply to join club</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 <?php
 include '../assets//config.php'; 
 
@@ -39,11 +44,7 @@ include '../assets//config.php';
 
                 ?>
                  <!-- Account page navigation-->
-    <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Apply to join club</a>
-        
-    </nav>
-    <hr class="mt-0 mb-4">
+     
         <div class="row d-flex align-items-center justify-content-center mt-5">
         <div class="col-md-7">
             <div class="card bg-light">

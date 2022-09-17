@@ -26,10 +26,13 @@
 <td class="candidate-list-favourite-time text-center">
   <span class="candidate-list-time order-1"><?php echo  $user_batch; ?></span>
 </td> 
+<td class="candidate-list-favourite-time text-center">
+  <span class="candidate-list-time order-1"><?php echo  $pay_number; ?></span>
+</td> 
 <td>
   <ul class="list-unstyled mb-0 d-flex justify-content-end">   
 
-   <li><a href="applicantaction.php?addmember=1  &&  user_id=<?php echo $userm_id; ?>" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+   <li><a href="applicantaction.php?addmember=1  &&  user_id=<?php echo $userm_id; ?>" class="text-primary" data-toggle="tooltip" title="" data-original-title="add"><i class="fa-solid fa-check"></i></a></li>
   </ul>
 </td>
 </tr> 

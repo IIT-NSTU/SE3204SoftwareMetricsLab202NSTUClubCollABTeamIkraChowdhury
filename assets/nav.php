@@ -41,12 +41,12 @@ $user_image = $_SESSION['user_image'];
   <div class="container">
 
     <?php if ($_SESSION['in_club'] == 0) : ?>
-      <a href="#" class="navbar-brand text-primary logo" style="font-size: 15px ;"><img src="../images/collab.jpg" alt="user icon" style="width:25px;border-radius:50%;" /> NSTU CLUB COLLAB</a>
+      <a href="#" class="navbar-brand text-primary logo" style="font-size: 15px ;"><img src="../images/nstu.png" alt="user icon" style="width:25px;border-radius:50%;" /> NSTU CLUB COLLAB</a>
       <button class="navbar-toggler " data-bs-toggle="collapse" data-bs-target="#navbarcollapseCMS">
         <span class="navbar-toggler-icon bg-dark"></span>
       </button>
     <?php else : ?>
-      <a href="#" class="navbar-brand logo"><?php echo $club_name; ?></a>
+      <a href="#" class="navbar-brand text-primary logo"><img src="../images/nstu.png" alt="user icon" style="width:25px;border-radius:50%;" /> <?php echo $club_name; ?>: <?php echo $member_type; ?></a>
     <?php endif; ?>
 
 
@@ -182,22 +182,20 @@ $user_image = $_SESSION['user_image'];
         <?php endif; ?>
       </ul>
       <ul class="navbar-nav ms-auto">
-        <div style="margin-top:7px;">
+        <div style="margin-top:7px;" >
           <li class="nav-item dropdown">
             <a class="link-secondary me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa fa-bell " style="font-size:20px"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li>
-                <a class="dropdown-item" href="#">Some news</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Another news</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </li>
-            </ul>
+            </a> 
+             
+            <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdownMenuLink" >
+            <?php if ($_SESSION['in_club'] == 0){
+              include "notification.php";}
+              else{
+                include "clubnotification.php";
+              }?>
+               
+            </ul>  
           </li>
         </div>
 
