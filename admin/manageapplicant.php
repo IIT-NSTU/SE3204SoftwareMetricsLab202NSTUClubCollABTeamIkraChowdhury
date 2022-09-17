@@ -84,6 +84,8 @@ while ($row = mysqli_fetch_assoc($applicant)) {
 </div>
 
 <?php
+}else{
+  echo "No applications yet ";
 }
 }
 else{

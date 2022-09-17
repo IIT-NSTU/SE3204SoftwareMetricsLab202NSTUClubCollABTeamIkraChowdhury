@@ -1,6 +1,25 @@
 <?php
 include '../assets//config.php'; 
-         $post = mysqli_query($conn, "SELECT * FROM `apply_form` ORDER BY session_id DESC ") or die('query failed');
+
+        //stops all the form session which date has expired 
+        $form = mysqli_query($conn, "SELECT * FROM `apply_form` WHERE session_status='running'") or die('query failed');
+     if (mysqli_num_rows($form) > 0) {
+        while($row= mysqli_fetch_assoc($form)){ 
+        $session_id=$row['session_id'];
+        $session_number=$row['session_number'];
+        $end_time=$row['end_time'];
+        $current_time = date("Y-m-d");  
+
+        if($end_time==$current_time){  
+            mysqli_query($conn, "UPDATE `apply_form` SET session_status='stop'") or die('query failed');   
+        } 
+
+    } 
+         
+    } 
+
+
+         $post = mysqli_query($conn, "SELECT * FROM `apply_form` WHERE session_status='running' ORDER BY session_id DESC ") or die('query failed');
          if(mysqli_num_rows($post) > 0){ 
             while($row = mysqli_fetch_assoc($post)){ 
                 $club_id=$row['club_id'];
@@ -105,6 +124,8 @@ include '../assets//config.php';
                 <?php
                 
             }
+         }else{
+            echo "No application form availabe";
          }
                 
       ?>

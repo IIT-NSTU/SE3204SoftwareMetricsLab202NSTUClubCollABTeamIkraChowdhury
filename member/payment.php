@@ -9,7 +9,11 @@ if (isset($_POST['submit'])) {
 	$usergiven_paynumber = $_POST['pay_number'];
 	$payment_ammount = $_POST['payment_ammount'];
 	$transiction_number = mysqli_real_escape_string($conn, $_POST['transiction_number']);
+     //----------------------------checks for valid number-----------------------------------
+	if(strlen($usergiven_paynumber)!=11){
+		$message[] = 'Not 11 digit';
 
+	}else{
 	//--------------------------------------checks for availability of payment of the month------------------------------
 	$available = mysqli_query($conn, "SELECT * FROM `clubmonthypayment`  WHERE  clubmonthypayment.month='$month' AND clubmonthypayment.year='$year' AND clubmonthypayment.club_id='$club_id'") or die('query failed');
 
@@ -46,6 +50,8 @@ if (isset($_POST['submit'])) {
 	} else {
 		$message[] = 'No payment for this month on this club  --->' . $month;
 	}
+
+}
 }
 
 ?>

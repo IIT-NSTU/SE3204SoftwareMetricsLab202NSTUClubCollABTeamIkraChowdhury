@@ -2,11 +2,15 @@
 include '../assets//config.php';
 if(isset($_POST['submit'])){
     $club_id=$club_id;
-    $invitedclub_id= $_POST['invitedclub_id']; 
+    $invitedclub_id= $_POST['invitedclub_id'];
+    $event_name = mysqli_real_escape_string($conn, $_POST['event_name']); 
     $invite_msg = mysqli_real_escape_string($conn, $_POST['invite_msg']);
     $invite_date = date("m.d.Y");
     $user_id= $user_id;
-    mysqli_query($conn, "INSERT INTO `invitation`(club_id,invitedclub_id,invite_msg,invite_date) VALUES('$club_id', '$invitedclub_id', '$invite_msg','$invite_date')") or die('query failed');
+   
+    $noti_description=$club_name." has invited you for club new event <b>.$event_name</b> ";
+    mysqli_query($conn, "INSERT INTO `invitation`(club_id,invitedclub_id,event_name,invite_msg,invite_date) VALUES('$club_id','$invitedclub_id','$event_name','$invite_msg','$invite_date')") or die('query failed');
+    
      
     
 }
@@ -31,6 +35,10 @@ if(isset($_POST['submit'])){
                         <label for="invite_msg" class="mb-2"><b>Description:</b> <sup class="star-color">*</sup></label>
                         <textarea name="invite_msg" class="form-control form-control-lg mb-4" rows="4"></textarea>
                     </div> 
+                    <div class="col-sm-12 form-group mb-3">
+                        <label for="event_name" class="mb-2"><b>Event name</b></label>
+                        <input class="form-control" type="text" placeholder="Enter the event name"  name="event_name">
+                    </div>
                     <div class="d-flex mb-0">
                         <label class="mb-2 me-3"><b>Select Clubs</b></label> 
                         <div class="me-3">
