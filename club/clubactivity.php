@@ -1,11 +1,8 @@
 <?php
 include "clubdatabase.php";
-session_start();
-$member_type = $_SESSION['member_type']; 
 if(isset(($_GET['after_login']))){
- 
    if($_SESSION['is_login']!=1){
-     header('location:../assets/login.php');
+      header('location:../assets/login.php');
     }
 }
 ?>
@@ -74,9 +71,22 @@ if(isset(($_GET['after_login']))){
       </div>
    </div>
    <div class="container">
-    <div class="col-md-12">
-      <?php include "activity.php";?>
+   
+   <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Club Activities</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4"> 
+    <div>
+    <div  id="data">
+
     </div>
+<div class="row d-flex justify-content-center">
+<div class="spinner-border m-5" id="loading" style="width: 3rem; height: 3rem;" role="status">
+</div>
+</div>
+</div>
+    
 </div>
 </div>
 </div>
@@ -85,5 +95,42 @@ if(isset(($_GET['after_login']))){
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+
+<script>
+  var page_no = 1;
+  var isrunning = false;
+ 
+  showData();
+$(window).scroll(function(){
+if($(window).scrollTop()+$(window).height() > $(document).height()-50){
+   // alert("down");
+   if(!isrunning){
+     showData();
+   }
+  
+}
+
+});
+function showData(){
+  $("#loading").show();
+    isrunning = true;
+
+   
+$.post("./activity.php",{page:page_no},(response)=>{
+
+$("#data").append(response);
+$("#loading").hide();
+isrunning = false;
+page_no++;
+});
+
+}
+</script>
+
 </body>
 </html>

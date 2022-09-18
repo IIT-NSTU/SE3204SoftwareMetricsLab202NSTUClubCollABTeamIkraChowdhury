@@ -1,8 +1,17 @@
    
-
+<div class="row d-flex justify-content-center ">
 <?php
- 
- $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND post_status='public' ORDER BY post_id DESC ") or die('query failed');
+include '../assets//config.php';
+session_start();
+$user_id=$_SESSION['user_id']; 
+$club_id =$_SESSION['club_id'];
+
+sleep(1);
+$page = $_POST['page']??1; // if page is not set..then it get by default 1 value
+$limit = 3;
+$row = ($page - 1)*$limit;
+
+ $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND post_status='public' ORDER BY post_id DESC limit $row,$limit") or die('query failed');
  if(mysqli_num_rows($post) > 0){ 
     while($row = mysqli_fetch_assoc($post)){ 
         $post_id=$row['post_id'];
@@ -24,10 +33,7 @@
 ?>
 
 
-<section >
-<div class="container my-2 py-1 px-2">
-<div class="row d-flex justify-content-center">
-    <div class="col-md-12 col-lg-10 col-xl-8">
+    <div class="col-7  mt-3 ">
         <div class="card p-2">
 <!-- ---------------------------------------------------------loads post one by one------------------------------------------------------------------------------- -->
             <div class="card-body">
@@ -53,15 +59,15 @@
         
 
         </div>
-        <?php
-            }
-          } 
-            ?> 
+   
     </div>
-</div>
+<?php } ?>
+<?php } ?>
 
-</div>
-</section>
+    </div>
+
+
+
 
 
 

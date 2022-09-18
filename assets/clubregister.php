@@ -65,6 +65,17 @@ if (isset($_POST['submit'])) {
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/register.css">
+
+	<style>
+		.batch {
+			display: none;
+		}
+		.joinedimg {
+    width: 30px;
+    max-width: 100%;
+    margin: auto;
+    vertical-align: middle;}
+	</style>
 </head>
 
 <body>
@@ -86,7 +97,7 @@ if (isset($_POST['submit'])) {
 			<div class="row justify-content-sm-center h-100">
 				<div class="col-xxl-5 col-xl-6 col-lg-6 col-md-7 col-sm-9">
 					<div class="text-center my-3">
-						<img src="images/club.png" alt="logo" width="80">
+						<img src="../images//club.png" alt="logo" width="80">
 						<h1 class="fs-4 card-title fw-bold mb-4">NSTU Club Collab</h1>
 					</div>
 					<div class="card shadow-lg mb-1">
@@ -121,7 +132,10 @@ if (isset($_POST['submit'])) {
 								<div class="form-outline">
 									<textarea class="form-control" id="club_description" name="club_description" rows="4"></textarea>
 								</div>
-								<div class="align-items-center d-flex mt-3">
+								<div class="d-flex align-items-center">
+								<a class="btn" href="../homepage/home.php" id="profilebutton">
+									<img src="../images/home.jpg" class="joinedimg" alt="logo" /> </a> 
+									</a>
 									<button type="submit" name="submit" class="btn btn-sm btn-primary ms-auto">
 										Register
 									</button>

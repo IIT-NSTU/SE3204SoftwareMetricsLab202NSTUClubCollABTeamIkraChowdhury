@@ -35,6 +35,10 @@ $user_image = $_SESSION['user_image'];
     padding: 0 10px 0 3px;
     text-decoration: none;
   }
+  .dropdown-menu {
+    max-height: 230px;
+    overflow-y: auto;
+}
 </style>
 <!-- ---------------------------------------------------navbar---------------------------------------------------- -->
 <nav class="navbar navbar-expand-lg  p-2 fixed-top  bg-light">

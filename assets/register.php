@@ -138,6 +138,11 @@ if (isset($_POST['submit'])) {
 		.batch {
 			display: none;
 		}
+		.joinedimg {
+    width: 30px;
+    max-width: 100%;
+    margin: auto;
+    vertical-align: middle;}
 	</style>
 </head>
 
@@ -249,7 +254,10 @@ if (isset($_POST['submit'])) {
 								</script>
 								 
 
-								<div class="align-items-center d-flex">
+								<div class="d-flex align-items-center">
+								<a class="btn" href="../homepage/home.php" id="profilebutton">
+									<img src="../images/home.jpg" class="joinedimg" alt="logo" /> </a> 
+									</a>
 									<button type="submit" name="submit" class="btn btn-sm btn-primary ms-auto">
 										Register
 									</button>

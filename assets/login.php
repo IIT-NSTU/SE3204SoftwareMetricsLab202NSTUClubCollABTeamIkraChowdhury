@@ -110,7 +110,7 @@ if (isset($_POST['submit'])) {
 
 								<div class="d-flex align-items-center">
 									<div class="form-check"> 
-									<a class="btn" href="" id="profilebutton">
+									<a class="btn" href="../homepage/home.php" id="profilebutton">
 									<img src="../images/home.jpg" class="joinedimg" alt="logo" /> </a> 
 									</a>
 									</div>

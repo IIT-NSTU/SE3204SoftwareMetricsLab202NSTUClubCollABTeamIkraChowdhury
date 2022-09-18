@@ -1,11 +1,20 @@
-<nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Manage Post</a>
-        
-    </nav>
-    <hr class="mt-0 mb-4">
+
 
 <?php
 include '../assets//config.php';
+
+session_start();
+$user_id=$_SESSION['user_id']; 
+$club_id =$_SESSION['club_id'];
+$club_name = $_SESSION['club_name']; 
+$_SESSION['in_club']=1;
+
+
+sleep(1);
+$page = $_POST['page']??1; // if page is not set..then it get by default 1 value
+$limit = 3;
+$row = ($page - 1)*$limit;
+
 if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
     $commnet_id= $_POST['comment_id']; 
@@ -17,7 +26,7 @@ if(isset($_POST['submit'])){
     
 }
  
-         $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND user_id='$user_id' ORDER BY post_id DESC ") or die('query failed');
+         $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND user_id='$user_id' ORDER BY post_id DESC limit $row,$limit") or die('query failed');
          if(mysqli_num_rows($post) > 0){ 
             while($row = mysqli_fetch_assoc($post)){ 
                 $post_id=$row['post_id'];
@@ -203,13 +212,7 @@ if(isset($_POST['submit'])){
 <?php
          }
       }else{?>
-        <div class="container my-2 py-1 px-2">
-    <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Manage Post</a>
-        
-    </nav>
-    <hr class="mt-0 mb-4">
-        No post yet
+
 
     <?php  }
 ?>
