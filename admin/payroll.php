@@ -201,7 +201,7 @@ if (isset($_POST['selsectmonth'])) {
         
 		} 
         else{
-            echo 'No payment has been added yet to this session  --->' . $month;  
+          $message[] = 'No payment has been added yet to this session  --->' . $month; 
         }
         
                 

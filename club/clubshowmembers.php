@@ -1,7 +1,13 @@
 <?php
 include "clubdatabase.php";
+session_start(); 
+$member_type = $_SESSION['member_type']; 
+if(isset(($_GET['after_login']))){
  
-echo $member_type;
+   if($_SESSION['is_login']!=1){
+     header('location:../assets/login.php');
+    }
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">

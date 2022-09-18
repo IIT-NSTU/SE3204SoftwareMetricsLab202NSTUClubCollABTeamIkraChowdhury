@@ -39,6 +39,7 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,6 +52,16 @@ if (isset($_POST['submit'])) {
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="stylesheet" href="../css//login.css">
+<style>
+	   .joinedimg {
+    width: 28px;
+    max-width: 100%;
+    margin: auto;
+    vertical-align: middle;
+  }
+  
+</style>	
+	 
 </head>
 
 <body>
@@ -98,9 +109,10 @@ if (isset($_POST['submit'])) {
 								</div>
 
 								<div class="d-flex align-items-center">
-									<div class="form-check">
-										<input type="checkbox" name="remember" id="remember" class="form-check-input">
-										<small for="remember" class="form-check-label">Remember Me</small>
+									<div class="form-check"> 
+									<a class="btn" href="" id="profilebutton">
+									<img src="../images/home.jpg" class="joinedimg" alt="logo" /> </a> 
+									</a>
 									</div>
 									<a href="../forgot.php" class="float-end ms-auto forgot">
 										Forgot Password?

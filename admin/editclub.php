@@ -1,6 +1,7 @@
 <?php 
 include '../assets/config.php'; 
 
+
  
 
 if(isset($_POST["submit"])){  
@@ -18,10 +19,11 @@ if(isset($_POST["submit"])){
         move_uploaded_file($image_tmp_name, $image_folder);  
         mysqli_query($conn, "UPDATE `clubs` SET  club_image='$image'  WHERE club_id= '$club_id'") or die('query failed'); 
         $_SESSION['club_image']=$image; 
+        
+        $message[] = 'Successfullly Updated Club Profile Picture';
         echo
         "
-        <script>
-          alert('successfullly updated Picture');
+        <script> 
           document.location.href = './admineditclub.php';
         </script>
         ";
@@ -38,6 +40,7 @@ if(isset($_POST["submit"])){
 
     $query = "UPDATE clubs SET club_description = '$textarea' WHERE club_id = '$club_id'";
     mysqli_query($conn, $query);
+    $message[] = 'Successfullly Updated Club Description';
     echo
     "
     <script>
@@ -46,12 +49,23 @@ if(isset($_POST["submit"])){
     ";
 
 
-  }
-
-
-
-
+  } 
 ?>
+<?php
+if (isset($message)) {
+	foreach ($message as $message) {
+        
+		echo '
+      <div class="message">
+         <span>' . $message . '</span>
+         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+      </div>
+      ';
+	}
+}
+?>
+
+ 
 
 <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
