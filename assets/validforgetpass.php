@@ -1,14 +1,20 @@
+
 <?php
 
 include 'config.php'; 
+session_start();
+$password= $_SESSION['user_name'] ;
 
 if (isset($_POST['submit'])) {
 
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
-	$validate = $_POST['validate'];
+	$validate = mysqli_real_escape_string($conn,$_POST['validate']);
 
 	$select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+    if (!preg_match("/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]+.nstu.edu.bd+$/i", $email)) {
 
+        $message[] = "Must enter Education mail of the university";
+    } else{
 	if (mysqli_num_rows($select_users) > 0) {
         while($row = mysqli_fetch_assoc($select_users)){
             $random_code=$row['v_code'];
@@ -16,7 +22,9 @@ if (isset($_POST['submit'])) {
         }
 
         if($validate==$random_code){
-            mysqli_query($conn, "UPDATE `users` SET is_validate = '1' WHERE user_id = '$user_id'") or die('query failed');
+            mysqli_query($conn, "UPDATE `users` SET password ='$password' WHERE email = '$email'") or die('query failed');
+            session_unset();
+            session_destroy();
             header('location:login.php');
         }
         else{
@@ -26,6 +34,7 @@ if (isset($_POST['submit'])) {
 	} else {
 		$message[] = 'Incorrect email ';
 	}
+}
 }
 
 ?>
@@ -77,7 +86,7 @@ if (isset($_POST['submit'])) {
 									</div>
 									<input id="validate" type="text" class="form-control" name="validate" required>
 									<div class="invalid-feedback">
-										Password is required
+										Code required
 									</div>
 								</div>
 

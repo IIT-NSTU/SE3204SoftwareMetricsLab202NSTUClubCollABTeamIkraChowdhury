@@ -31,16 +31,21 @@ if ($image_size > 200000000) {
 } else{ 
     move_uploaded_file($image_tmp_name, $image_folder); 
     mysqli_query($conn, "UPDATE `users` SET name = '$name', department='$department', batch='$batch' ,user_image='$image'  WHERE user_id= '$user_id'") or die('query failed');
-    setSession($name,$department,$batch,$image);
-    $message[] = 'Successfully updated Profile';
+    setSession($name,$department,$batch,$image); 
+    
+    echo
+    "
+    <script> 
+      document.location.href = './userprofile.php';
+    </script>
+    ";
      
 }
 }
 else { 
     $image=$user_image;
     mysqli_query($conn, "UPDATE `users` SET name = '$name', department='$department', batch='$batch' ,user_image='$image'  WHERE user_id= '$user_id'") or die('query failed');
-    setSession($name,$department,$batch,$image);
-    $message[] = 'Successfully updated Profile'; 
+    setSession($name,$department,$batch,$image); 
 }
 
  }

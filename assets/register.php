@@ -18,8 +18,8 @@ include 'config.php';
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;  		//Enable SMTP authentication
-        $mail->Username   = 'nowshadparvin@gmail.com';                     //SMTP username
-        $mail->Password   = 'bzgzxtulnlgvkphj';                               //SMTP password
+        $mail->Username   = 'andrewsmith105086@gmail.com';                     //SMTP username
+        $mail->Password   = 'tppmkafgklfvdenp';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 		$mail->SMTPOptions = array(
@@ -30,11 +30,11 @@ include 'config.php';
 		)
 		);
         //Recipients
-        $mail->setFrom('nowshadparvin@gmail.com', 'NSTU CLUB COLLAB');
+        $mail->setFrom('andrewsmith105086@gmail.com', 'NSTU CLUB COLLAB');
         $mail->addAddress($email);     //Add a recipient
 	
 		
-		$mail->From = 'nowshadparvin@gmail.com';
+		$mail->From = 'andrewsmith105086@gmail.com';
         $mail->Sender = $email;
     
         //Content
@@ -58,6 +58,7 @@ include 'config.php';
 	$v_code=bin2hex(random_bytes(4));
 	 
 	$user_query= "INSERT INTO `users`(name, email, password,user_image,user_type,department,batch,is_validate,v_code) VALUES('$name', '$email', '$pass','$user_image', '$user_type','$department','$batch',0,'$v_code')";
+ 
 	$result2=(mysqli_query($conn,$user_query) && sendMail($email,$v_code));
  
   if($result2){
@@ -67,7 +68,7 @@ include 'config.php';
   else{
 	echo "<script>
 	alert('Not Successfully Registered or Check your internet connection');
-	window.location.href='';
+	 
 	</script>";
   }
 
@@ -91,7 +92,7 @@ if (isset($_POST['submit'])) {
 
 		$message[] = "Must enter Education mail of the university";
 	} 
-	else if(strlen($checkpass)<9){ 
+	else if(strlen($checkpass)<7){ 
 		$message[] = "Password is too short to be strong";
 
 	}else {

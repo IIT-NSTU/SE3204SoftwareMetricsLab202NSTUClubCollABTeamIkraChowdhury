@@ -100,7 +100,7 @@ include '../assets//config.php';
                     <hr>
                     <div class="row">
                         <div class="col">
-                            <textarea class="form-control" name="" id="" cols="66" rows="3" placeholder="Why you want to join the club?" required> </textarea>
+                            <textarea class="form-control" name="description" id="" cols="66" rows="3" placeholder="Why you want to join the club?" required> </textarea>
                         </div>
                     </div>
                     <div class="row">

@@ -136,11 +136,8 @@ if(isset($_POST['submit'])){
       </div>
     </div>
      <?php }else{
-         echo ' <div class="heading">
-         <div class="mt-3 bg-light text-center" >
-             <h2>No clubs to show</h2>
-    </div>
-    </div>';
+          echo"
+          <h5 class='text-center'>Not yet joined any club</h5> ";
       }
     }?> 
   

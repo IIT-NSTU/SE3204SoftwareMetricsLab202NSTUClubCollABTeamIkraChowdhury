@@ -108,7 +108,7 @@ if (isset($_POST['submit'])) {
 									<img src="../images/home.jpg" class="joinedimg" alt="logo" /> </a> 
 									</a>
 									</div>
-									<a href="../forgot.php" class="float-end ms-auto forgot">
+									<a href="../assets/fogetpass.php" class="float-end ms-auto forgot">
 										Forgot Password?
 									</a>
 								</div>

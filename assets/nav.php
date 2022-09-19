@@ -103,7 +103,7 @@ $user_image = $_SESSION['user_image'];
             </li>
             <li class="nav-item pe-2">
               <img src="../images/home.jpg" class="joinedimg" alt="logo" />
-              <a href="../user/userfeed.php" class="link">
+              <a href="../user/userjoinedclub.php" class="link">
                 <span><b>Home</b></span>
               </a>
             </li>
