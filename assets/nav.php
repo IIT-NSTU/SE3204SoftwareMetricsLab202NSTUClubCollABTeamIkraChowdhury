@@ -225,7 +225,7 @@ $user_image = $_SESSION['user_image'];
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                <a class="dropdown-item" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?> && after_login='1'" id="profilebutton">CLub profile</a>
+                <a class="dropdown-item" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?> && after_login='1'" id="profilebutton">Club profile</a>
               </li>
               <li>
                 <a class="dropdown-item" href="../assets/logout.php">Logout</a>

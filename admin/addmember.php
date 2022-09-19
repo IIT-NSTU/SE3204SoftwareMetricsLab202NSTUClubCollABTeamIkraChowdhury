@@ -11,7 +11,7 @@ if (isset($message)) {
 		echo '
       <div class="message">
          <span>' . $message . '</span>
-         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
       </div>
       ';
 	}
@@ -66,20 +66,41 @@ if(isset($_POST['username'])){
 
 }
  //------------------------searching result is shown--------------------------- 
-  if($isclicked){
+  if($isclicked){?>
+<div class="container">
+        <div class="row justify-content-center">
+
+<?php
     $user = mysqli_query($conn, "SELECT * FROM `users`  WHERE  name='$username'") or die('query failed');
          if(mysqli_num_rows($user ) > 0){
             while($row = mysqli_fetch_assoc($user)){
-                ?>
- 
-  <div class="box-container">
-    <form action="" method="post" class="box">
-    <img class="image" src="../images//<?php echo $row['user_image']; ?>" alt="club profilepic">
-    <div class="name"><?php echo $row['name']?>:<?php echo $row['department']; ?></div>
-    <div class="totall_member"><?php echo $row['batch']; ?></div> 
-    <a href="addmemberaction.php?addmember=1  &&  user_id=<?php echo  $row['user_id'] ?>" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa-solid fa-plus"></i></a>
-    </form>
-    </div>
+              $batch=$row['batch'];
+              $userid=$row['user_id'];
+              $member = mysqli_query($conn, "SELECT * FROM `club_members`  WHERE club_id='$club_id' AND user_id='$userid' ") or die('query failed');
+
+                ?> 
+    <div class="col-md-4">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="inner">
+                        <img src="../images//<?php echo $row['user_image']; ?>" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body text-center"> 
+                        <h5 class="card-text"><?php echo $row['name']?>:<?php echo $row['department']; ?></h5>
+                        <?php if($batch!=null){?>
+                        <p class="card-text"><?php echo $row['user_type']; ?>:<?php echo $row['department']; ?></p>
+                        <p class="card-text">Batch:<?php echo $row['batch']; ?></p>
+                        <?php }else{?>
+                          <p class="card-text"><?php echo $row['user_type']; ?>:<?php echo $row['department']; ?></p>
+                          <?php } ?>
+                          
+                          <?php if(!mysqli_num_rows($user ) > 0){?>
+                        <a href="addmemberaction.php?addmember=1  &&  user_id=<?php echo  $row['user_id'] ?>" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa-solid fa-plus"></i></a>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+
+    
     <?php
          }
       }else{
@@ -88,7 +109,12 @@ if(isset($_POST['username'])){
              <h2>No clubs to show</h2>
     </div>
     </div>';
-      }
+      }?>
+      </div>
+    </div>
+   
+
+<?php
     } 
     else{
         $user = mysqli_query($conn, "SELECT * FROM `club_members`  WHERE club_id='$club_id'") or die('query failed');

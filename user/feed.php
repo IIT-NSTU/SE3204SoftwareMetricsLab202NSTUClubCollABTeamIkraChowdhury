@@ -66,7 +66,9 @@ if(isset($_POST['submit'])){
                             </p>
                         </div>
                         <div class="text-center">
-                            <img class="py-3" src="../post_images//<?php echo  $post_picture; ?>" alt="avatar" width="50%" height="auto" />
+                          <?php if($post_picture!=null) {?>
+                            <img class="py-3" src="../post_images//<?php echo  $post_picture; ?>" width="50%" height="auto" />
+                            <?php }?>
                         </div>
                     </div>
 

@@ -4,12 +4,17 @@ if (isset($message)) {
 		echo '
       <div class="message">
          <span>' . $message . '</span>
-         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
       </div>
       ';
 	}
 }
 ?>
+<nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Manage Applicant</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 <?php
 
 include '../assets//config.php';
@@ -30,11 +35,7 @@ if (mysqli_num_rows($applicant) > 0) {
  
 <!-- ---------------------------------------member  table starts--------------------------------------------- -->
 <div class="container mt-3 mb-4">
-<nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Manage Applicant</a>
-        
-    </nav>
-    <hr class="mt-0 mb-4">
+ 
 <div class="col-lg-12 mt-4 mt-lg-0">
     <div class="row">
       <div class="col-md-12">
@@ -93,11 +94,16 @@ while ($row = mysqli_fetch_assoc($applicant)) {
 
 <?php
 }else{
-  echo "No applications yet ";
+  echo "
+  
+  
+  No applications yet ";
 }
 }
 else{
-    echo "No new requirement-session is available ";
+    echo "
+    
+   <h5 class='text-center'> No new requirement-session is available</h5>   ";
 }
 ?>  
   

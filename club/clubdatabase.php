@@ -1,12 +1,13 @@
  
  <?php
-include '../assets/config.php';  
+include '../assets/config.php';
+if(isset(($_GET['club_id']))){
+    $club_id=$_GET['club_id']; 
+ }  
 if(isset(($_GET['member_type']))){
     $member_type=$_GET['member_type']; 
 } 
-if(isset(($_GET['club_id']))){
-   $club_id=$_GET['club_id']; 
-}
+ 
 
 $users =mysqli_query($conn, "SELECT * FROM clubs WHERE club_id = '$club_id'");
 if(mysqli_num_rows($users) > 0){

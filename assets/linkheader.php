@@ -12,5 +12,7 @@
     <link rel="stylesheet" href="../css//pr.css">
     <link rel="stylesheet" href="../css//profile.css">
     <link rel="stylesheet" href="../css//register.css">
+    <link rel="stylesheet" href="../css//style3.css">
+    <link rel="stylesheet" href="../css//login.css">
      
     <link rel="stylesheet" href="../css//tableCss//applicant.css">

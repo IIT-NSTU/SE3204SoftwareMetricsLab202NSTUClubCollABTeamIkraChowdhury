@@ -1,9 +1,9 @@
 <?php
 include "clubdatabase.php";
-session_start(); 
-$member_type = $_SESSION['member_type']; 
-if(isset(($_GET['after_login']))){
  
+if(isset(($_GET['after_login']))){
+   session_start(); 
+   $member_type = $_SESSION['member_type']; 
    if($_SESSION['is_login']!=1){
      header('location:../assets/login.php');
     }
@@ -37,7 +37,8 @@ if(isset(($_GET['after_login']))){
                         <img src="../images//<?php echo $image;?>" alt="">
                      </div> 
                      <div class="profile-header-info">
-                        <h4 class="m-t-10 m-b-5"><?php echo $club_name;?></h4> 
+                        <h4 class="m-t-10 m-b-5"><?php echo $club_name;?></h4>
+                       <?php if(isset(($_GET['after_login']))){ ?>
                         <?php
                         if($member_type=="admin"){?>
                            <a href="../admin/admineditclub.php" class="btn btn-sm btn-info ">Edit Profile</a>
@@ -47,17 +48,24 @@ if(isset(($_GET['after_login']))){
                         if($member_type=="admin" || $member_type=="member"){?>
                            <a href="../member/leaveclub.php"class="btn btn-sm btn-info btn-danger ">Leave Club Parmanently</a>
                         <?php } 
+                       }
                         ?>
+                        
                          
                      </div> 
                   </div> 
                   <ul class="profile-header-tab nav nav-tabs">
-                     <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Members Details</a></li>
-                     <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Activity Section</a></li>
-                     <?php
+                     <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?>" target="__blank" class="nav-link_">Members Details</a></li>
+                     <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> " target="__blank" class="nav-link_">Activity Section</a></li>
+                     <?php if(isset(($_GET['after_login']))){ ?>
+                        
+                      <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Members Details</a></li>
+                      <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Activity Section</a></li>
+                     <?php 
                         if($member_type=="admin" || $member_type=="member"){?>
                            <li class="nav-item"><a href= "../member/membercreatepost.php" target="__blank" class="nav-link_">Home</a></li>
-                        <?php } 
+                        <?php }
+                     } 
                         ?>
                      
                        

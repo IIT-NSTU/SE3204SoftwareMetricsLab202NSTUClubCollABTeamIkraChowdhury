@@ -44,14 +44,8 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="author" content="Muhamad Nauval Azhar">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="description" content="This is a login page template based on Bootstrap 5">
-	<title>NSTU Club Collab</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
-	<link rel="stylesheet" href="../css//login.css">
+ <?php include "linkheader.php";
+ ?>
 <style>
 	   .joinedimg {
     width: 28px;
@@ -71,7 +65,7 @@ if (isset($_POST['submit'])) {
 		foreach ($message as $message) {
 			echo '
       <div class="message"> 
-         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
          <span>' . $message . '</span>
       </div>
       ';
@@ -110,7 +104,7 @@ if (isset($_POST['submit'])) {
 
 								<div class="d-flex align-items-center">
 									<div class="form-check"> 
-									<a class="btn" href="../homepage/home.php" id="profilebutton">
+									<a class="" href="../club/home.php" id="profilebutton">
 									<img src="../images/home.jpg" class="joinedimg" alt="logo" /> </a> 
 									</a>
 									</div>

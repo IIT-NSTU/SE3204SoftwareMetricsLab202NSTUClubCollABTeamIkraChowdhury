@@ -9,17 +9,30 @@ if(isset($_POST['submit'])){
  
 	if ($password==$password_confirm) {  
 		mysqli_query($conn, "UPDATE `users` SET password='$password_confirm' WHERE user_id='$user_id'") or die('query failed');
+		echo
+    "
+    <script>
+    document.location.href = '../assets/logout.php';
+    </script>
+    ";
 
    }else{
-	 
-	echo ' <div class="heading">
-	           <div class="mt-3 bg-light text-center" >
-		           <h2>No clubs to show</h2>
-              </div>
-          </div>';
+	  $message[] = 'Do not match';
    }
  }
  
+?>
+ <?php
+if (isset($message)) {
+	foreach ($message as $message) {
+		echo '
+      <div class="message">
+         <span>' . $message . '</span>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
+      </div>
+      ';
+	}
+}
 ?>
 	<section class="h-100">
 		<div class="container h-100">

@@ -49,7 +49,7 @@ if (isset($message)) {
 		echo '
       <div class="message">
          <span>' . $message . '</span>
-         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
       </div>
       ';
 	}

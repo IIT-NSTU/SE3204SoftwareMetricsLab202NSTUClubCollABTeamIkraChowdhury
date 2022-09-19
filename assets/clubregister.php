@@ -57,14 +57,8 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="author" content="Muhamad Nauval Azhar">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="description" content="This is a login page template based on Bootstrap 5">
-	<title>NSTU Club Collab</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/register.css">
+	 <?php include "linkheader.php";
+ ?>
 
 	<style>
 		.batch {
@@ -86,7 +80,7 @@ if (isset($_POST['submit'])) {
 			echo '
       <div class="message">
          <span>' . $message . '</span>
-         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
       </div>
       ';
 		}
@@ -133,7 +127,7 @@ if (isset($_POST['submit'])) {
 									<textarea class="form-control" id="club_description" name="club_description" rows="4"></textarea>
 								</div>
 								<div class="d-flex align-items-center">
-								<a class="btn" href="../homepage/home.php" id="profilebutton">
+								<a class="" href="../club/home.php" id="profilebutton">
 									<img src="../images/home.jpg" class="joinedimg" alt="logo" /> </a> 
 									</a>
 									<button type="submit" name="submit" class="btn btn-sm btn-primary ms-auto">

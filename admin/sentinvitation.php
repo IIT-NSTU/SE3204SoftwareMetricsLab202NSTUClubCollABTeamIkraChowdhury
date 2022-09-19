@@ -15,10 +15,12 @@ if(isset($_POST['submit'])){
                 $invitedclub_id=$row['club_id'];  
         mysqli_query($conn, "INSERT INTO `invitation`(club_id,invitedclub_id,event_name,invite_msg,invite_date) VALUES('$club_id','$invitedclub_id','$event_name','$noti_description','$invite_date')") or die('query failed');
             }
-        }    
+        } 
+        $message[] = 'Invitation is sent to all';   
     }else{ 
         
         mysqli_query($conn, "INSERT INTO `invitation`(club_id,invitedclub_id,event_name,invite_msg,invite_date) VALUES('$club_id','$invitedclub_id','$event_name','$noti_description','$invite_date')") or die('query failed');
+        $message[] = 'Invitation is sent to selected club'; 
     }
      
     
@@ -30,7 +32,7 @@ if (isset($message)) {
 		echo '
       <div class="message">
          <span>' . $message . '</span>
-         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
       </div>
       ';
 	}

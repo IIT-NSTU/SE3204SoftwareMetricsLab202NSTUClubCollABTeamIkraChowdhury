@@ -79,6 +79,7 @@ if (isset($_POST['submit'])) {
 
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$checkpass=$_POST['password'];
 	$pass = mysqli_real_escape_string($conn, md5($_POST['password']));
 	$department = mysqli_real_escape_string($conn, $_POST['dept_name']);
 	$user_type = $_POST['user_type'];
@@ -89,7 +90,11 @@ if (isset($_POST['submit'])) {
 	if (!preg_match("/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]+.nstu.edu.bd+$/i", $email)) {
 
 		$message[] = "Must enter Education mail of the university";
-	} else {
+	} 
+	else if(strlen($checkpass)<9){ 
+		$message[] = "Password is too short to be strong";
+
+	}else {
 		$select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
 		if (mysqli_num_rows($select_users) > 0) {
@@ -126,14 +131,8 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="author" content="Muhamad Nauval Azhar">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="description" content="This is a login page template based on Bootstrap 5">
-	<title>NSTU Club Collab</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/register.css">
+ <?php include "linkheader.php";
+ ?>
 	<style>
 		.batch {
 			display: none;
@@ -154,7 +153,7 @@ if (isset($_POST['submit'])) {
 			echo '
       <div class="message">
          <span>' . $message . '</span>
-         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
       </div>
       ';
 		}
@@ -255,7 +254,7 @@ if (isset($_POST['submit'])) {
 								 
 
 								<div class="d-flex align-items-center">
-								<a class="btn" href="../homepage/home.php" id="profilebutton">
+								<a class="" href="../club/home.php" id="profilebutton">
 									<img src="../images/home.jpg" class="joinedimg" alt="logo" /> </a> 
 									</a>
 									<button type="submit" name="submit" class="btn btn-sm btn-primary ms-auto">

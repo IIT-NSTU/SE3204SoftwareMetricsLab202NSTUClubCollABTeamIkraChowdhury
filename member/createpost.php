@@ -15,11 +15,11 @@ if (isset($_POST['submit'])) {
     $post_time = date("m.d.Y"); 
 
     if ($image_size > 200000000) {
-        $message[] =  'image size is too large ,please provide new picture';
+        $message[] =  'Image size is too large ,please provide new picture';
     } else {
         move_uploaded_file($image_tmp_name, $image_folder);
         $create_post = mysqli_query($conn, "INSERT INTO `post`(user_id,club_id,post_caption,post_picture,post_status,post_time) VALUES('$user_id', '$club_id', '$post_caption','$image', '$post_status', '$post_time')") or die('query failed');
-        $message[] =  'product added successfully!';
+        $message[] =  'Post created successfully!';
     }
 }
 
@@ -31,7 +31,7 @@ if (isset($message)) {
         echo '
   <div class="message">
      <span>' . $message . '</span>
-     <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+     <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
   </div>
   ';
     }
