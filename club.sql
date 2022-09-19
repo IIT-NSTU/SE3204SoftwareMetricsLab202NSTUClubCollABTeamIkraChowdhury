@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2022 at 06:43 AM
+-- Generation Time: Sep 19, 2022 at 05:02 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -80,8 +80,8 @@ CREATE TABLE `clubs` (
 --
 
 INSERT INTO `clubs` (`club_id`, `club_name`, `totall_members`, `club_type`, `club_description`, `club_image`) VALUES
-(28, 'NSTU Adventure Club', 31, 'adventure', 'Presenting the Noakhali Science & Technology University Adventure Club, a place to share joy,adventure,happiness. Beyond all these, it\'s about celebrating immense wilderness, to learn and discuss skills to make your outdoor trips safer and more pleasant.', 'adventureClub.jpg'),
-(33, 'NSTU Debating Society', 70, 'Educational', 'à¦¦à§‡à¦¶à§‡à¦° à¦¨à¦¾à¦¨à¦¾ à¦ªà§à¦°à¦¾à¦¨à§à¦¤ à¦¥à§‡à¦•à§‡ à¦à¦‡ à¦¬à¦¿à¦¶à§à¦¬à¦¬à¦¿à¦¦à§à¦¯à¦¾à¦²à§Ÿà§‡ à¦ªà§œà¦¤à§‡ à¦†à¦¸à¦¾ à¦¶à¦¿à¦•à§à¦·à¦¾à¦°à§à¦¥à§€à¦¦à§‡à¦° à¦®à¦¾à¦à§‡ à¦¯à§à¦•à§à¦¤à¦¿ à¦“ à¦®à¦¨à¦¨à§‡à¦° à¦¨à§‡à¦¶à¦¾ à¦›à§œà¦¿à§Ÿà§‡ à¦¦à¦¿à¦¤à§‡ à¦•à¦¾à¦œ à¦•à¦°à§‡ à¦¯à¦¾à¦šà§à¦›à§‡ à¦¨à§‹à¦¬à¦¿à¦ªà§à¦°à¦¬à¦¿ à¦¡à¦¿à¦¬à§‡à¦Ÿà¦¿à¦‚ à¦¸à§‹à¦¸à¦¾à¦‡à¦Ÿà¦¿à¥¤\r\nà¦¨à¦¤à§à¦¨ à¦•à¦°à§‡ à¦à¦° à¦ªà¦¥à¦šà¦²à¦¾à§Ÿ à¦¸à¦¬à¦¾à¦‡à¦•à§‡ à¦à¦•à¦¤à§à¦°à¦¿à¦¤ à¦•à¦°à¦¤à§‡à¦‡ à¦à¦‡ à¦—à§à¦°à§à¦ª,à¦¯à§‡à¦–à¦¾à¦¨à§‡ à¦¸à¦¾à¦°à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦¸à¦¬à¦¾à¦° à¦¸à¦¾à¦¥à§‡à¦‡ à¦¸à¦‚à¦¯à§‹à¦— à¦˜à¦Ÿà¦¬à§‡ à¦¨à§‹à¦¬à¦¿à¦ªà§à¦°à¦¬à¦¿à¦° à¦¬à¦¿à¦¤à¦¾à¦°à§à¦•à¦¿à¦•à¦¦à§‡à¦°à¥¤', '296079530_969689971094265_4244960714165675887_n.png'),
+(28, 'NSTU Adventure Club', 33, 'adventure', 'Presenting the Noakhali Science & Technology University Adventure Club, a place to share joy,adventure,happiness. Beyond all these, it\'s about celebrating immense wilderness, to learn and discuss skills to make your outdoor trips safer and more pleasant.', 'adventureClub.jpg'),
+(33, 'NSTU Debating Society', 71, 'Educational', 'à¦¦à§‡à¦¶à§‡à¦° à¦¨à¦¾à¦¨à¦¾ à¦ªà§à¦°à¦¾à¦¨à§à¦¤ à¦¥à§‡à¦•à§‡ à¦à¦‡ à¦¬à¦¿à¦¶à§à¦¬à¦¬à¦¿à¦¦à§à¦¯à¦¾à¦²à§Ÿà§‡ à¦ªà§œà¦¤à§‡ à¦†à¦¸à¦¾ à¦¶à¦¿à¦•à§à¦·à¦¾à¦°à§à¦¥à§€à¦¦à§‡à¦° à¦®à¦¾à¦à§‡ à¦¯à§à¦•à§à¦¤à¦¿ à¦“ à¦®à¦¨à¦¨à§‡à¦° à¦¨à§‡à¦¶à¦¾ à¦›à§œà¦¿à§Ÿà§‡ à¦¦à¦¿à¦¤à§‡ à¦•à¦¾à¦œ à¦•à¦°à§‡ à¦¯à¦¾à¦šà§à¦›à§‡ à¦¨à§‹à¦¬à¦¿à¦ªà§à¦°à¦¬à¦¿ à¦¡à¦¿à¦¬à§‡à¦Ÿà¦¿à¦‚ à¦¸à§‹à¦¸à¦¾à¦‡à¦Ÿà¦¿à¥¤\r\nà¦¨à¦¤à§à¦¨ à¦•à¦°à§‡ à¦à¦° à¦ªà¦¥à¦šà¦²à¦¾à§Ÿ à¦¸à¦¬à¦¾à¦‡à¦•à§‡ à¦à¦•à¦¤à§à¦°à¦¿à¦¤ à¦•à¦°à¦¤à§‡à¦‡ à¦à¦‡ à¦—à§à¦°à§à¦ª,à¦¯à§‡à¦–à¦¾à¦¨à§‡ à¦¸à¦¾à¦°à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦¸à¦¬à¦¾à¦° à¦¸à¦¾à¦¥à§‡à¦‡ à¦¸à¦‚à¦¯à§‹à¦— à¦˜à¦Ÿà¦¬à§‡ à¦¨à§‹à¦¬à¦¿à¦ªà§à¦°à¦¬à¦¿à¦° à¦¬à¦¿à¦¤à¦¾à¦°à§à¦•à¦¿à¦•à¦¦à§‡à¦°à¥¤', '296079530_969689971094265_4244960714165675887_n.png'),
 (34, 'IT Club', 5, 'educational', 'IT Club provides students with opportunities to discuss various IT issues outside the classroom.', '299143166_473534951148908_1695854776916005098_n.jpg'),
 (36, 'Chitrokrit', 5, 'Cultural', 'à¦šà¦¿à¦¤à§à¦°à¦•à§ƒà§Ž(Chitrokrit) is an exhibition page of interdisciplinary visual arts. It is and will be solely dedicated to providing a platform and promoting visual arts by students of Noakhali Science and Technology University(NSTU).', '297429773_638637490943613_1378105625457766996_n.jpg'),
 (37, 'NSTU Photography Club', 1, 'Cultural', 'Noakhali Science and Technology University has sea-alike possibilities and NSTUPC is a small part of that sea and a field for expressing the talent of emerging photographers of NSTU.', '301840525_825842268598036_7911772817667630618_n.jpg'),
@@ -108,6 +108,8 @@ CREATE TABLE `club_members` (
 --
 
 INSERT INTO `club_members` (`user_id`, `club_id`, `member_type`) VALUES
+(1, 28, 'member'),
+(1, 33, 'member'),
 (4, 28, 'member'),
 (5, 28, 'admin'),
 (5, 33, 'admin'),
@@ -118,7 +120,8 @@ INSERT INTO `club_members` (`user_id`, `club_id`, `member_type`) VALUES
 (5, 39, 'admin'),
 (5, 40, 'admin'),
 (5, 42, 'admin'),
-(5, 43, 'admin');
+(5, 43, 'admin'),
+(35, 28, 'member');
 
 -- --------------------------------------------------------
 
@@ -367,7 +370,10 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `user_image`, `user
 (59, 'Sourav Barman', 'barman2514@student.nstu.edu.bd', '1ff1de774005f8da13f42943881c655f', 'IMG-20211231-WA0157.jpg', 'Student', 'IIT', 14, 1, 'ecd58c2b'),
 (60, 'Dhruba kanti', 'dhruba2514@student.nstu.edu.bd', '1ff1de774005f8da13f42943881c655f', 'IMG-20211231-WA0157.jpg', 'Student', 'IIT', 14, 1, 'ecd58c2b'),
 (61, 'Fardin Ahsan Shawon', 'fardin2514@student.nstu.edu.bd', '1ff1de774005f8da13f42943881c655f', 'IMG-20211231-WA0157.jpg', 'Student', 'IIT', 14, 1, 'ecd58c2b'),
-(62, 'Ratna Tripura', 'ratna2514@student.nstu.edu.bd', '1ff1de774005f8da13f42943881c655f', 'IMG-20211231-WA0157.jpg', 'Student', 'IIT', 14, 1, 'ecd58c2b');
+(62, 'Ratna Tripura', 'ratna2514@student.nstu.edu.bd', '1ff1de774005f8da13f42943881c655f', 'IMG-20211231-WA0157.jpg', 'Student', 'IIT', 14, 1, 'ecd58c2b'),
+(64, 'Ishrat rintu', 'ishrat2514@student.nstu.edu.bd', '37693cfc748049e45d87b8c7d8b9aacd', 'user.png', 'Student', 'IIT', 14, 0, 'c1ed1325'),
+(66, 'nowkshi', 'armagn@student.nstu.edu.bd', '2a38a4a9316c49e5a833517c45d31070', 'user.png', 'Student', 'ACCE', 56, 0, 'de828029'),
+(67, 'nowkshi', 'armahn@student.nstu.edu.bd', 'ac1dd209cbcc5e5d1c6e28598e8cbbe8', 'user.png', 'Student', 'ACCE', 78, 0, '5cee3a73');
 
 --
 -- Indexes for dumped tables
@@ -525,7 +531,7 @@ ALTER TABLE `userform_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
