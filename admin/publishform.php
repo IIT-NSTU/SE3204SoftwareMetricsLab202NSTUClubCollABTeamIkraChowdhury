@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
         
     }else{ 
 
-        $message[] =  'You have to close the previous session first!';
+        $message[] =  'A session is already running!';
     } 
     
 }

@@ -19,11 +19,12 @@ if (isset($message)) {
 
 include '../assets//config.php';
 
-$apply_form = mysqli_query($conn, "SELECT * FROM `apply_form`  WHERE club_id='$club_id'") or die('query failed');
+$apply_form = mysqli_query($conn, "SELECT * FROM `apply_form`  WHERE club_id='$club_id' AND session_status='running'") or die('query failed');
 
 if (mysqli_num_rows($apply_form) > 0) {  
 $row = mysqli_fetch_assoc($apply_form);
 $session_id = $row['session_id']; 
+$_SESSION['form_session']=$session_id;
 
     
 $applicant = mysqli_query($conn, "SELECT * FROM `form_pay`  WHERE session_id='$session_id'") or die('query failed');
@@ -97,7 +98,7 @@ while ($row = mysqli_fetch_assoc($applicant)) {
   echo "
   
   
-  No applications yet ";
+  <h5 class='text-center'> No Applicant</h5>  ";
 }
 }
 else{

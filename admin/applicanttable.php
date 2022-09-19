@@ -1,4 +1,6 @@
-
+<?php  
+$session_id=$_SESSION['form_session'];
+?>
               <tr class="candidates-list">
 
 <td class="title">
@@ -32,7 +34,7 @@
 <td>
   <ul class="list-unstyled mb-0 d-flex justify-content-end">   
 
-   <li><a href="applicantaction.php?addmember=1  &&  user_id=<?php echo $userm_id; ?>" class="text-primary" data-toggle="tooltip" title="" data-original-title="add"><i class="fa-solid fa-check"></i></a></li>
+   <li><a href="applicantaction.php?addmember=1  &&  user_id=<?php echo $userm_id; ?> $&  session_id=<?php echo  $session_id; ?>" class="text-primary" data-toggle="tooltip" title="" data-original-title="add"><i class="fa-solid fa-check"></i></a></li>
   </ul>
 </td>
 </tr> 

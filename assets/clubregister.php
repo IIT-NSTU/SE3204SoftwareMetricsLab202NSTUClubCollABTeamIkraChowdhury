@@ -1,3 +1,57 @@
+
+<?php
+
+include 'config.php';
+
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\SMTP;
+  use PHPMailer\PHPMailer\Exception;
+  
+  function sendMail($email,$club_name){
+      require ("phpMailer/Exception.php");
+      require ("phpMailer/PHPMailer.php");
+      require ("phpMailer/SMTP.php");
+
+      $mail= new PHPMailer(true);
+      try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                  //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;  		//Enable SMTP authentication
+        $mail->Username   = 'andrewsmith105086@gmail.com';                     //SMTP username
+        $mail->Password   = 'tppmkafgklfvdenp';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+		$mail->SMTPOptions = array(
+		'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+		)
+		);
+        //Recipients
+        $mail->setFrom('andrewsmith105086@gmail.com', 'NSTU CLUB COLLAB');
+        $mail->addAddress($email);     //Add a recipient
+	
+		
+		$mail->From = 'andrewsmith105086@gmail.com';
+        $mail->Sender = $email;
+    
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'Email Verification';
+        $mail->Body    = " The registration process for your club.$club_name. has been finished. You will shortly receive information about additional steps."
+        ;
+    
+        $mail->send();
+       return true;
+    } catch (Exception $e) {
+        return false;
+    }
+
+  }
+  ?>
 <?php
 
 include 'config.php';
@@ -5,18 +59,18 @@ include 'config.php';
 if (isset($_POST['submit'])) {
 
 	$club_name = mysqli_real_escape_string($conn, $_POST['club_name']);
-	$admin_mail = mysqli_real_escape_string($conn, $_POST['admin_email']);
+	$email = mysqli_real_escape_string($conn, $_POST['admin_email']);
 	$totall_members = $_POST['totall_members'];
 	$club_description = mysqli_real_escape_string($conn, $_POST['club_description']);
 	$club_type = $_POST['club_type'];
 	$club_image = "dhrupod.jpg";
 	$member_type = "admin";
 
-	if (!preg_match("/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]+.nstu.edu.bd+$/i", $admin_mail)) {
+	if (!preg_match("/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]+.nstu.edu.bd+$/i", $email)) {
 
 		$message[] = "Must enter Education mail of the university";
 	} else {
-		$admin = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$admin_mail'") or die('query failed');
+		$admin = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
 
 		if (!mysqli_num_rows($admin) > 0) {
 
@@ -27,7 +81,7 @@ if (isset($_POST['submit'])) {
 
 			if (!mysqli_num_rows($select_club) > 0) {
 				mysqli_query($conn, "INSERT INTO `clubs`(club_name,totall_members,club_type,club_description,club_image) VALUES('$club_name', '$totall_members', '$club_type','$club_description','$club_image')") or die('query failed');
-				$user = mysqli_query($conn, "SELECT user_id FROM `users` WHERE email = '$admin_mail'") or die('query failed');
+				$user = mysqli_query($conn, "SELECT user_id FROM `users` WHERE email = '$email'") or die('query failed');
 
 				while ($row = mysqli_fetch_assoc($user)) {
 					$user_id = $row["user_id"];
@@ -40,8 +94,13 @@ if (isset($_POST['submit'])) {
 				}
 
 				mysqli_query($conn, "INSERT INTO `club_members`(user_id,club_id,member_type) VALUES('$user_id','$club_id','$member_type')") or die('query failed');
-				$message[] = 'registered successfully!';
-				header('location:login.php');
+				$result= sendMail($email,$club_name);
+				if($result){ 
+					header('location:login.php');
+				}else{
+					$message[] = "Internet connection or other problem!";
+					
+				} 
 			} else {
 
 				$message[] = "This club name already exits!";

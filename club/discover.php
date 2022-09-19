@@ -19,7 +19,7 @@ $isclicked=false;
     <hr class="mt-0 mb-4">
 	<div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8">
-                            <form action="userdiscover.php" class="card card-sm" method="post">
+                            <form action="home.php" class="card card-sm" method="post">
                                 <div class="card-body row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <i class="fas fa-search h4 text-body"></i>
@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
                     <div class="card-body text-center">
                         <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
                         <p class="card-text"><?php echo $row['club_type']; ?></p>
-                        <a href="#" class="btn btn-sm btn-primary">Visit Club</a>
+                        <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo $row['club_id']; ?>" id="profilebutton">Visit club</a>
                     </div>
                 </div>
             </div>
