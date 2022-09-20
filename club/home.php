@@ -125,9 +125,8 @@
                                         <div class="home_text ">
                                             <!-- <h2 class="text-white">Welcome to <strong>Made</strong></h2>
                                             <h1 class="text-white">We Do Business All Of Time</h1> -->
-                                            <h3 class="text-white">"You gain strength, courage, and confidence by every experience in which you really stop to look fear in the face... Do the thing you think you cannot do." -Eleanor Roosevelt
-
-                                            </h3>
+                                            <h2 class="text-white"> New club registration   </h2>
+                                            <h1 class="text-white">NSTU CLUB COLLAB</h1>
                                         </div>
 
                                         <div class="home_btns m-top-40">
@@ -160,8 +159,7 @@
                                     </div>
                                     <div class="f_item_text">
                                         <h3>Online Recruitment</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque eleifend
-                                            in sit amet mattis volutpat rhoncus.</p>
+                                        <p>This platform makes it simple for clubs to recruit new members</p>
                                     </div>
                                 </div>
                             </div>
@@ -172,8 +170,7 @@
                                     </div>
                                     <div class="f_item_text">
                                         <h3>CLub Post</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque eleifend
-                                            in sit amet mattis volutpat rhoncus.</p>
+                                        <p> Through posting, clubs can publicize their events and directly interact with the students</p>
                                     </div>
                                 </div>
                             </div>
@@ -183,9 +180,9 @@
                                         <i class="fa fa-sliders"></i>
                                     </div>
                                     <div class="f_item_text">
-                                        <h3>Send Invitaion</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque eleifend
-                                            in sit amet mattis volutpat rhoncus.</p>
+                                        <h3>Manage club</h3>
+                                        It is quite simple to manage club inner activities.
+                                        <p> </p>
                                     </div>
                                 </div>
                             </div>
@@ -233,10 +230,7 @@
                                         <li><i class="fa  fa-arrow-circle-right"></i> Fully Responsive</li>
                                         <li><i class="fa  fa-arrow-circle-right"></i> Google Fonts</li>
                                     </ul> -->
-                                    <p class="m-top-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit pellentesque eleifend in mi 
-                                        sit amet mattis suspendisse ac ligula volutpat nisl rhoncus sagittis cras suscipit 
-                                        lacus quis erat malesuada lobortis eiam dui magna volutpat commodo eget pretium vitae
-                                        elit etiam luctus risus urna in malesuada ante convallis.</p>
+                                    <p class="m-top-20"> Noakhali Science and Technology University (abbreviated as NSTU) was established on 15 July 2001 enacting the Noakhali Science and Technology University Act 2001. Finally, it started its academic activities on 22 June 2006. Co-curricular activities are extensively patronized. There are students’ organizations like NSTUMUNA, NSTU Debating Society, and NSTU English Club, NSTU Business Club etc. which work to develop leadership capacity of a student by promoting the art of public speaking, reasoning and logical thinking.</p>
 
                                     <div class="business_btn">
                                         <a href="https://bootstrapthemes.co" class="btn btn-default m-top-20">Take a tour</a>

@@ -9,17 +9,21 @@ if (isset($_POST['monthysession'])) {
 	$year = $_POST['year'];  
     $pay_number= $_POST['number'];
 	//--------------------------------------checks for availability of payment of the month------------------------------
-	$available = mysqli_query($conn, "SELECT * FROM `clubmonthypayment`  WHERE  clubmonthypayment.month='$month' AND clubmonthypayment.year='$year' AND clubmonthypayment.club_id='$club_id'") or die('query failed');
+  if(strlen($pay_number)!=11){
+    $message[] = 'Not 11 digit' . $month;
 
-	if (!mysqli_num_rows($available) > 0) {
+  }else{	$available = mysqli_query($conn, "SELECT * FROM `clubmonthypayment`  WHERE  clubmonthypayment.month='$month' AND clubmonthypayment.year='$year' AND clubmonthypayment.club_id='$club_id'") or die('query failed');
 
-       mysqli_query($conn, "INSERT INTO `clubmonthypayment`(club_id,month,year,pay_number) VALUES('$club_id', '$month', '$year', '$pay_number')") or die('query failed');
-        $message[] = 'Succesfully inserted  session for month   --->' . $month;
-        
-		} 
-        else{
-            $message[] = 'Alredy have payment session for month   --->' . $month;
-        }
+    if (!mysqli_num_rows($available) > 0) {
+  
+         mysqli_query($conn, "INSERT INTO `clubmonthypayment`(club_id,month,year,pay_number) VALUES('$club_id', '$month', '$year', '$pay_number')") or die('query failed');
+          $message[] = 'Succesfully inserted  session for month   --->' . $month;
+          
+      } 
+          else{
+              $message[] = 'Alredy have payment session for month   --->' . $month;
+          }}
+ 
 } 
 
 ?>
@@ -78,19 +82,24 @@ if (isset($message)) {
 <div class="form-group col-md-3"> 
  
     <select id="inputState" class="form-control" name="month">
-    <option>month</option>
-    <option value="jan">January</option>
-    <option value="feb">February</option>
-    <option value="03">March</option>
-    <option value="04">April</option>
-    <option value="05">May</option>
-    <option value="06">June</option>
-    <option value="07">July</option>
-    <option value="08">August</option>
-    <option value="09">September</option>
-    <option value="10">October</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
+    <option  disabled selected value>Select a month</option> 
+
+                        <?php
+                        $club=mysqli_query($conn, "SELECT * FROM `clubmonthypayment` WHERE club_id='$club_id'") or die('query failed');
+                        if(mysqli_num_rows($club) > 0){ 
+                            
+                            while($row = mysqli_fetch_assoc($club)){ 
+                                $month=$row['month']; 
+
+                        ?> 
+                        <option value="<?php echo  $month; ?>"><?php echo  $month; ?></option>
+
+                        <?php
+                            }
+                        }
+                       ?>
+                         
+
 </select>
 </div>
 <div class="form-group col-md-3"> 
@@ -149,39 +158,40 @@ if (isset($_POST['selsectmonth'])) {
 	if (mysqli_num_rows($available) > 0) { 
         $row = mysqli_fetch_assoc($available);
         $payment_id=$row['payment_id'];  
-     ?>  
+      
  
- <!-- -----------------------table starts------------------------------- -->
-        <div class="col-lg-12">
-		<div class="main-box clearfix">
-	    <div class="table-responsive"> 
-	    <table class="table user-list">
-        <thead>
-						<tr>
-							<th><span>Name</span></th>
-							<th><span>Dp</span></th>
-							<th><span>Payment Amount</span></th>
-                            <th><span>Transaction number</span></th>
-                            <th><span>Payment Status</span></th>
-                            <th><span>User Payment number</span></th> 
-						</tr>
-		</thead>
-  
-         
-        <?php
+//-- -----------------------table starts------------------------------- --> 
+    
          $payment = mysqli_query($conn, "SELECT * FROM `pay`  WHERE payment_id='$payment_id'") or die('query failed');
 
-        if (mysqli_num_rows($payment) > 0) {  
-
+        if (mysqli_num_rows($payment) > 0) {  ?>
+          <div class="col-lg-12">
+          <div class="main-box clearfix">
+            <div class="table-responsive"> 
+            <table class="table user-list">
+              <thead>
+                  <tr>
+                    <th><span>Name</span></th>
+                    <th><span>Dp</span></th>
+                    <th><span>Payment Amount</span></th>
+                                  <th><span>Transaction number</span></th>
+                                  <th><span>Payment Status</span></th>
+                                  <th><span>User Payment number</span></th> 
+                  </tr>
+          </thead>
+          <?php
+           
+          $toall=0;
         while ($row = mysqli_fetch_assoc($payment)) {
         $userp_id = $row['user_id'];
         $transiction_number = $row['transiction_number'];
+        $bkash_number = $row['mobile_number'];
         $payment_ammount = $row['payment_ammount'];
         $payment_status = $row['payment_status'];
-
+        $toall=$toall+$payment_ammount;
         $user=mysqli_query($conn, "SELECT * FROM `users` WHERE  user_id=' $userp_id'") or die('query failed');
                 if(mysqli_num_rows($user) > 0){
-                    $rowu= mysqli_fetch_assoc($user);
+                    $rowu= mysqli_fetch_assoc($user); 
                     $user_name=$rowu['name']; 
                     $user_image=$rowu['user_image'];
                     $user_dept=$rowu['department'];
@@ -194,14 +204,14 @@ if (isset($_POST['selsectmonth'])) {
 			</tbody> 
 				</table>
 			</div>
-
+      <h3 class="text-center">Totall payment of this month till now is:<?php echo $toall;?></h3>
 		</div>
 	</div> 
     <?php
         
 		} 
         else{
-          $message[] = 'No payment has been added yet to this session  --->' . $month; 
+          echo " <h3 class='text-center'>No payment has been added yet to this session $month </h3>"; 
         }
         
                 

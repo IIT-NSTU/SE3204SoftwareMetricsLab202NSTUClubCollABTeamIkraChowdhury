@@ -31,59 +31,11 @@
 <div class="maindiv">  
 <!--------------------------------------- Discover page body---- -->
 <div class="mainsection">  
-<nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Manage post</a>
-        
-    </nav>
-    <hr class="mt-0 mb-4"> 
-    <div>
-    <div  id="data">
-
-    </div>
-<div class="row d-flex justify-content-center">
-<div class="spinner-border m-5" id="loading" style="width: 3rem; height: 3rem;" role="status">
-</div>
-</div>
-</div>
-</div>
-
-
-</div> 
-
-
-<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-
-
-<script>
-  var page_no = 1;
-  var isrunning = false;
  
-  showData();
-$(window).scroll(function(){
-if($(window).scrollTop()+$(window).height() > $(document).height()-50){
-   // alert("down");
-   if(!isrunning){
-     showData();
-   }
-  
-}
+    <div><?php include 'managepost.php'; ?></div> 
+ 
 
-});
-function showData(){
-  $("#loading").show();
-    isrunning = true;
-
-   
-$.post("./managepost.php",{page:page_no},(response)=>{
-
-$("#data").append(response);
-$("#loading").hide();
-isrunning = false;
-page_no++;
-});
-
-}
-</script>
-
+</div>
+</div>  
 </body>
 </html>

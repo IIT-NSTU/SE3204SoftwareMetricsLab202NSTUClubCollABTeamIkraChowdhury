@@ -55,19 +55,22 @@ if(isset(($_GET['after_login']))){
                      </div> 
                   </div> 
                   <ul class="profile-header-tab nav nav-tabs">
-                     <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?>" target="__blank" class="nav-link_">Members Details</a></li>
-                     <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> " target="__blank" class="nav-link_">Activity Section</a></li>
-                     <li class="nav-item"><a href= "../club/home.php" target="__blank" class="nav-link_">Home</a></li>
+                      
                      <?php if(isset(($_GET['after_login']))){ ?>
                         
-                      <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Members Details</a></li>
-                      <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?>" target="__blank" class="nav-link_">Activity Section</a></li>
+                      <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?> && after_login='1'" target="__blank" class="nav-link_">Members Details</a></li>
+                      <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?> && after_login='1'" target="__blank" class="nav-link_">Activity Section</a></li>
                      <?php 
                         if($member_type=="admin" || $member_type=="member"){?>
                            <li class="nav-item"><a href= "../member/membercreatepost.php" target="__blank" class="nav-link_">Home</a></li>
                         <?php }
-                     } 
+                     } else{ 
                         ?>
+                     <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?>" target="__blank" class="nav-link_">Members Details</a></li>
+                     <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> " target="__blank" class="nav-link_">Activity Section</a></li>
+                     <li class="nav-item"><a href= "../club/home.php" target="__blank" class="nav-link_">Home</a></li>
+
+                     <?php }?>
                      
                        
                   </ul> 

@@ -21,11 +21,19 @@ if (isset($message)) {
 
    
 <!---------------------------------------------totall page-------------------------------------------- -->
-<div class="clubdiv">    
+<div class="clubdiv"> 
+  
+     
 <!-- ----------------------------------------searchdiv------------------------------------------------> 
 <div class="searchdiv">   
 
 <div class="container">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Add member</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
        
 	<div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-12">
@@ -93,7 +101,10 @@ if(isset($_POST['username'])){
                           <p class="card-text"><?php echo $row['user_type']; ?>:<?php echo $row['department']; ?></p>
                           <?php } ?>
                           
-                          <?php if(!mysqli_num_rows($user ) > 0){?>
+                          <?php
+                           $clubmember = mysqli_query($conn, "SELECT * FROM `club_members`  WHERE club_id='$club_id' AND user_id='$userid'") or die('query failed');
+                          
+                          if(!mysqli_num_rows($clubmember) > 0){?>
                         <a href="addmemberaction.php?addmember=1  &&  user_id=<?php echo  $row['user_id'] ?>" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="fa-solid fa-plus"></i></a>
                         <?php } ?>
                     </div>
@@ -106,7 +117,7 @@ if(isset($_POST['username'])){
       }else{
          echo ' <div class="heading">
          <div class="mt-3 bg-light text-center" >
-             <h2>No clubs to show</h2>
+             <h2>No member with this name</h2>
     </div>
     </div>';
       }?>
@@ -127,12 +138,7 @@ if(isset($_POST['username'])){
      ?>
      <!-- ------------------------------------------admin table starts-------------------------------------- -->
 <div class="container mt-3 mb-4">
-    <!-- Account page navigation-->
-    <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Add Member</a>
-        
-    </nav>
-    <hr class="mt-0 mb-4">
+    
 <div class="col-lg-12 mt-4 mt-lg-0">
     <div class="row">
       <div class="col-md-12">

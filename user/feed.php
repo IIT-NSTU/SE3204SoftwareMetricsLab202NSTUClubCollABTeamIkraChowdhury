@@ -1,16 +1,11 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
-
-
+<nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">User Feed</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4"> 
 
  <?php
 include '../assets//config.php';
-session_start();
-$user_id=$_SESSION['user_id'];
-sleep(1);
-$page = $_POST['page']??1; // if page is not set..then it get by default 1 value
-$limit = 3;
-$row = ($page - 1)*$limit;
-
 if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
     $post_id= $_POST['post_id']; 
@@ -19,9 +14,7 @@ if(isset($_POST['submit'])){
      
     
 }
-
-
-         $post = mysqli_query($conn, "SELECT * FROM `post` ORDER BY post_id DESC limit $row,$limit") or die('query failed');
+         $post = mysqli_query($conn, "SELECT * FROM `post` ORDER BY post_id DESC ") or die('query failed');
          if(mysqli_num_rows($post) > 0){ 
             while($row = mysqli_fetch_assoc($post)){ 
                 $post_id=$row['post_id'];
@@ -66,9 +59,9 @@ if(isset($_POST['submit'])){
                             </p>
                         </div>
                         <div class="text-center">
-                          <?php if($post_picture!=null) {?>
+                        <?php if($post_picture!=null) {?>
                             <img class="py-3" src="../post_images//<?php echo  $post_picture; ?>" width="50%" height="auto" />
-                            <?php }?>
+                            <?php }?> 
                         </div>
                     </div>
 

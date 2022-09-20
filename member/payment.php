@@ -8,9 +8,10 @@ if (isset($_POST['submit'])) {
 	$year = mysqli_real_escape_string($conn, $_POST['year']);
 	$usergiven_paynumber = $_POST['pay_number'];
 	$payment_ammount = $_POST['payment_ammount'];
+	$bkash_number = $_POST['bkash_number'];
 	$transiction_number = mysqli_real_escape_string($conn, $_POST['transiction_number']);
      //----------------------------checks for valid number-----------------------------------
-	if(strlen($usergiven_paynumber)!=11){
+	if(strlen($usergiven_paynumber)!=11 || strlen($bkash_number)!=11 ){
 		$message[] = 'Not 11 digit';
 
 	}else{
@@ -41,7 +42,7 @@ if (isset($_POST['submit'])) {
 
 			if ($pay_number == $usergiven_paynumber) {
 
-				mysqli_query($conn, "INSERT INTO `pay`(user_id,payment_id,payment_ammount,transiction_number) VALUES('$user_id', '$payment_id', '$payment_ammount', '$transiction_number')") or die('query failed');
+				mysqli_query($conn, "INSERT INTO `pay`(user_id,payment_id,payment_ammount,transiction_number,mobile_number) VALUES('$user_id', '$payment_id', '$payment_ammount', '$transiction_number','$bkash_number')") or die('query failed');
 				$message[] = 'Succesfully inserted payment check request of month   --->' . $month;
 			} else {
 				$message[] = 'Not the correct Bkash NUmber .The correct number is --->' . $pay_number;
@@ -135,6 +136,10 @@ if (isset($message)) {
 							<div class="mb-3">
 								<label class="mb-2 text-muted" for="pay_number">Bkash Number (Club)</label>
 								<input id="pay_numberr" type="number" class="form-control" name="pay_number" value="" required autofocus>
+							</div>
+							<div class="mb-3">
+								<label class="mb-2 text-muted" for="pay_number">Bkash NUmber(User)</label>
+								<input id="pay_numberr" type="number" class="form-control" name="bkash_number" value="" required autofocus>
 							</div>
 
 							<div class="mb-3">

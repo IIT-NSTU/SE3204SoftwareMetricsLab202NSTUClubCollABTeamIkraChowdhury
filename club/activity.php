@@ -1,17 +1,8 @@
    
 <div class="row d-flex justify-content-center ">
-<?php
-include '../assets//config.php';
-session_start();
-$user_id=$_SESSION['user_id']; 
-$club_id =$_SESSION['club_id'];
-
-sleep(1);
-$page = $_POST['page']??1; // if page is not set..then it get by default 1 value
-$limit = 3;
-$row = ($page - 1)*$limit;
-
- $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND post_status='public' ORDER BY post_id DESC limit $row,$limit") or die('query failed');
+<?php 
+include '../assets/config.php';
+ $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND post_status='public' ORDER BY post_id ") or die('query failed');
  if(mysqli_num_rows($post) > 0){ 
     while($row = mysqli_fetch_assoc($post)){ 
         $post_id=$row['post_id'];

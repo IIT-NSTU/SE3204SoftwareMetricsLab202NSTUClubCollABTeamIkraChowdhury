@@ -29,11 +29,13 @@
 
 
                     <td class="text-center">
-						<p>Have to add</p> 
+                    <p><?php echo  $bkash_number; ?></p>
                     </td>
                     
                     <td class="text-center"> 
-                    <a href="checkedpayroll.php?payment_id=<?php echo  $payment_id; ?> &&  user_id=<?php echo  $user_id; ?>" class=" btn-sm text-primary" style="text-decoration:none ;"><b>Mark Checked</b></a>
+                     <?php if($payment_status=="not-checked"){?> 
+                        <a href="checkedpayroll.php?payment_id=<?php echo  $payment_id; ?> &&  user_id=<?php echo  $userp_id; ?>" class=" btn-sm text-primary" style="text-decoration:none ;"><b>Mark Checked</b></a>
+                    <?php }?> 
 					</td>
 
 				</tr>

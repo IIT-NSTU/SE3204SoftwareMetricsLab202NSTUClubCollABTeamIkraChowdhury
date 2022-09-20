@@ -127,7 +127,7 @@ if(isset($_POST['submit'])){
                     <div class="card-body text-center">
                         <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
                         <p class="card-text"><?php echo $row['member_type']; ?></p> 
-    <a href=" ../assets/enterclub.php?club_id=<?php echo $row['club_id'];?> & club_name=<?php echo $row['club_name'];?> & club_image=<?php echo $row['club_image'];?> "  name="visitclub" class="btn">Visit CLub</a>
+    <a href=" ../assets/enterclub.php?club_id=<?php echo $row['club_id'];?> & club_name=<?php echo $row['club_name'];?> & club_image=<?php echo $row['club_image'];?> "  name="visitclub" class="btn">Enter Club</a>
                     </div>
                 </div>
             </div>
