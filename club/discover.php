@@ -68,10 +68,6 @@ if(isset($_POST['submit'])){
     $clubs = mysqli_query($conn, "SELECT * FROM `clubs`  WHERE clubs.club_name='$clubnam'") or die('query failed');
          if(mysqli_num_rows($clubs) > 0){
             while($row = mysqli_fetch_assoc($clubs)){
-<<<<<<< HEAD:user/discover.php
-                $club_id= $row['club_id']; 
-=======
->>>>>>> e9866c848b7ac9758c3dbfd90d3f91691879cb3e:club/discover.php
                 ?> 
                 <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
@@ -81,11 +77,7 @@ if(isset($_POST['submit'])){
                     <div class="card-body text-center">
                         <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
                         <p class="card-text"><?php echo $row['club_type']; ?></p>
-<<<<<<< HEAD:user/discover.php
-                        <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?>&& member_type='user' && after_login='1'" id="profilebutton">Visit club</a>
-=======
                         <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo $row['club_id']; ?>" id="profilebutton">Visit club</a>
->>>>>>> e9866c848b7ac9758c3dbfd90d3f91691879cb3e:club/discover.php
                     </div>
                 </div>
             </div>
@@ -114,16 +106,9 @@ if(isset($_POST['submit'])){
         <?php
          $clubs = mysqli_query($conn, "SELECT * FROM `clubs`") or die('query failed');
          if(mysqli_num_rows($clubs) > 0){
-<<<<<<< HEAD:user/discover.php
-            while($row = mysqli_fetch_assoc($clubs)){
-                $club_id= $row['club_id']; 
-                ?> 
-            <div class="col-md-4">
-=======
             while($row = mysqli_fetch_assoc($clubs)){ 
                 ?> 
             <div class="col-md-4 mb-5">
->>>>>>> e9866c848b7ac9758c3dbfd90d3f91691879cb3e:club/discover.php
                 <div class="card shadow" style="width: 18rem;">
                     <div class="inner">
                         <img src="../images//<?php echo $row['club_image']; ?>" class="card-img-top" alt="">
@@ -131,11 +116,7 @@ if(isset($_POST['submit'])){
                     <div class="card-body text-center">
                         <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
                         <p class="card-text"><?php echo $row['club_type']; ?></p>
-<<<<<<< HEAD:user/discover.php
-                        <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?>&& member_type='user' && after_login='1'" id="profilebutton">Visit club</a>
-=======
                         <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo $row['club_id']; ?>" id="profilebutton">Visit club</a>
->>>>>>> e9866c848b7ac9758c3dbfd90d3f91691879cb3e:club/discover.php
                     </div>
                 </div>
             </div>  
