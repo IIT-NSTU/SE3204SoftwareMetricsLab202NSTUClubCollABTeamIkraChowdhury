@@ -11,6 +11,12 @@ $isclicked=false;
 <div class="searchdiv">   
 
 <div class="container">
+     <!-- Account page navigation-->
+     <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Discover Club</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 	<div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8">
                             <form action="userdiscover.php" class="card card-sm" method="post">
@@ -52,22 +58,30 @@ if(isset($_POST['submit'])){
         
     } 
 
-}
- //------------------------searching result is shown--------------------------- 
+} //------------------------searching result is shown--------------------------- 
   if($isclicked){
+    ?>
+<div class="container">
+        <div class="row justify-content-center">
+
+<?php 
     $clubs = mysqli_query($conn, "SELECT * FROM `clubs`  WHERE clubs.club_name='$clubnam'") or die('query failed');
          if(mysqli_num_rows($clubs) > 0){
             while($row = mysqli_fetch_assoc($clubs)){
-                ?>
- 
-  <div class="box-container">
-    <form action="../assets//login.php" method="post" class="box">
-    <img class="image" src="../images//<?php echo $row['club_image']; ?>" alt="club profilepic">
-    <div class="name"><?php echo $row['club_name']; ?></div>
-    <div class="totall_member"><?php echo $row['totall_members']; ?></div> 
-    <input type="submit" value="Visit club" name="visitclub" class="btn">
-    </form>
-    </div>
+                $club_id= $row['club_id']; 
+                ?> 
+                <div class="col-md-4">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="inner">
+                        <img src="../images//<?php echo $row['club_image']; ?>" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
+                        <p class="card-text"><?php echo $row['club_type']; ?></p>
+                        <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?>&& member_type='user' && after_login='1'" id="profilebutton">Visit club</a>
+                    </div>
+                </div>
+            </div>
     <?php
          }
       }else{
@@ -77,26 +91,44 @@ if(isset($_POST['submit'])){
     </div>
     </div>';
       }
-    }
+    
    //-------------------------------all clubs are shown---------------------------
+   ?>
+      </div>
+    </div>
    
-   else{
+ 
+   
+   <?php
+        }else{?>
+        <div class="container">
+        <div class="row justify-content-center">
+
+        <?php
          $clubs = mysqli_query($conn, "SELECT * FROM `clubs`") or die('query failed');
          if(mysqli_num_rows($clubs) > 0){
             while($row = mysqli_fetch_assoc($clubs)){
-                ?>
- 
-  <div class="box-container">
-    <form action="../assets//login.php" method="post" class="box">
-    <img class="image" src="../images//<?php echo $row['club_image']; ?>" alt="club profilepic">
-    <div class="name"><?php echo $row['club_name']; ?></div>
-    <div class="totall_member"><?php echo $row['totall_members']; ?></div> 
-    <input type="submit" value="Visit club" name="visitclub" class="btn">
-    </form>
-    </div>
+                $club_id= $row['club_id']; 
+                ?> 
+            <div class="col-md-4">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="inner">
+                        <img src="../images//<?php echo $row['club_image']; ?>" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
+                        <p class="card-text"><?php echo $row['club_type']; ?></p>
+                        <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?>&& member_type='user' && after_login='1'" id="profilebutton">Visit club</a>
+                    </div>
+                </div>
+            </div>  
+     
     <?php
-         }
-      }else{
+         }?>
+        </div>
+    </div>
+
+     <?php }else{
          echo ' <div class="heading">
          <div class="mt-3 bg-light text-center" >
              <h2>No clubs to show</h2>

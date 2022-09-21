@@ -3,13 +3,21 @@
 include '../assets//config.php'; 
  
 $isclicked=false;
+include "../assets//errorconfirmmsg.php";
  
 ?>
+
 <!---------------------------------------------totall page-------------------------------------------- -->
 <div class="clubdiv">    
 <!-- ----------------------------------------searchdiv------------> 
 <div class="searchdiv">   
 <div class="container">
+   <!-- Account page navigation-->
+   <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">My clubs</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 <div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8">
                             <form action="userjoinedclub.php" class="card card-sm" method="post">
@@ -52,7 +60,10 @@ if(isset($_POST['submit'])){
 
 }
  //------------------------searching result is shown--------------------------- 
-  if($isclicked){
+  if($isclicked){?>
+          <div class="container">
+        <div class="row justify-content-center">
+  <?php
     $sql = "SELECT * FROM clubs JOIN 
           club_members ON clubs.club_id=club_members.club_id WHERE club_members.user_id=$user_id;";
          $clubs = mysqli_query($conn,$sql) or die('query failed');
@@ -63,25 +74,27 @@ if(isset($_POST['submit'])){
                 if($row['club_name']==$clubnam){
                 $count++;
                 ?> 
- 
-  <div class="box-container">
-    <form action="../assets//login.php" method="post" class="box">
-    <img class="image" src="../images//<?php echo $row['club_image']; ?>" alt="club profilepic">
-    <div class="name"><?php echo $row['club_name']; ?></div>
-    <div class="totall_member"><?php echo $row['totall_members']; ?></div> 
-    <a href="../assets/enterclub.php?club_id=<?php echo $row['club_id']; ?>"  name="visitclub" class="btn">Visit CLub</a>
-    </form>
- </div>
+                
+                
+                 <div class="col-md-4">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="inner">
+                        <img src="../images//<?php echo $row['club_image']; ?>" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
+                        <p class="card-text"><?php echo $row['member_type']; ?></p>
+                        
+                         <a href=" ../assets/enterclub.php?club_id=<?php echo $row['club_id'];?> & club_name=<?php echo $row['club_name'];?> & club_image=<?php echo $row['club_image'];?> "  name="visitclub" class="btn">Visit CLub</a>
+                    </div>
+                </div>
+            </div>
     <?php 
                
     }
       } 
-      if($count==0){
-        echo ' <div class="heading">
-         <div class="mt-3 bg-light text-center" >
-             <h2>No clubs to show</h2>
-    </div>
-    </div>';
+      if($count==0){ 
+        $message[] = 'No yet  joined any club';
       }
     
     }else{
@@ -90,37 +103,41 @@ if(isset($_POST['submit'])){
              <h2>No clubs to show</h2>
     </div>
     </div>';
-      }
-    }
+      }?>
+  </div>
+    </div>
 
 
-
-else{          
-             $sql = "SELECT * FROM clubs JOIN 
+   <?php } else{  ?> 
+           
+            
+    <?php $sql = "SELECT * FROM clubs JOIN 
           club_members ON clubs.club_id=club_members.club_id WHERE club_members.user_id=$user_id;";
            $clubs = mysqli_query($conn,$sql) or die('query failed');
  
           
           if(mysqli_num_rows($clubs) > 0){
             while($row = mysqli_fetch_assoc($clubs)){
-                ?>
- 
-  <div class="box-container">
-    <form action="../assets//login.php" method="post" class="box">
-    <img class="image" src="../images//<?php echo $row['club_image']; ?>" alt="club profilepic">
-    <div class="name"><?php echo $row['club_name']; ?></div>
-    <div class="totall_member"><?php echo $row['totall_members']; ?></div> 
-    <a href=" ../assets/enterclub.php?club_id=<?php echo $row['club_id'];?> & club_name=<?php echo $row['club_name'];?> "  name="visitclub" class="btn">Visit CLub</a>
-    </form>
-    </div>
+                ?>   
+                 <div class="col-md-4">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="inner">
+                        <img src="../images//<?php echo $row['club_image']; ?>" class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
+                        <p class="card-text"><?php echo $row['member_type']; ?></p> 
+    <a href=" ../assets/enterclub.php?club_id=<?php echo $row['club_id'];?> & club_name=<?php echo $row['club_name'];?> & club_image=<?php echo $row['club_image'];?> "  name="visitclub" class="btn">Enter Club</a>
+                    </div>
+                </div>
+            </div>
     <?php
-         }
-      }else{
-         echo ' <div class="heading">
-         <div class="mt-3 bg-light text-center" >
-             <h2>No clubs to show</h2>
+         }?>
+      </div>
     </div>
-    </div>';
+     <?php }else{
+          echo"
+          <h5 class='text-center'>Not yet joined any club</h5> ";
       }
     }?> 
   

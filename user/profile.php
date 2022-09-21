@@ -10,6 +10,12 @@
      }
  </style>
  <div class="container">
+     <!-- Account page navigation-->
+     <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
      <div class="main-body">
          <div class="row gutters-sm">
              <div class="col-md-5 mb-3">
@@ -97,7 +103,7 @@
                         $club = mysqli_query($conn, "SELECT * FROM `clubs` WHERE club_id='$club_id'") or die('query failed');
                         if (mysqli_num_rows($club) > 0) {
                             $rowc = mysqli_fetch_assoc($club);
-                            $club_name = $rowc['club_name'];
+                            $club_name = $rowc['club_name']; 
                             $club_image = $rowc['club_image'];
                         }
 
@@ -110,6 +116,7 @@
                                      <img src="../images//<?php echo $club_image; ?>" class="img-radius" alt="User-Profile-Image">
                                  </div>
                                  <hr>
+                                 <p class=" m-t-15"><?php echo  $club_name ?></p>
                                  <p class=" m-t-15"><?php echo $member_type; ?></p>
                              </div>
                          </div>

@@ -1,4 +1,8 @@
-  
+<nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">User Feed</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4"> 
 
  <?php
 include '../assets//config.php';
@@ -33,6 +37,8 @@ if(isset($_POST['submit'])){
 
 <section >
     <div class="container my-2 py-1 px-2">
+       <!-- Account page navigation-->
+    
         <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
                 <div class="card p-2">
@@ -53,7 +59,9 @@ if(isset($_POST['submit'])){
                             </p>
                         </div>
                         <div class="text-center">
-                            <img class="py-3" src="../post_images//<?php echo  $post_picture; ?>" alt="avatar" width="50%" height="auto" />
+                        <?php if($post_picture!=null) {?>
+                            <img class="py-3" src="../post_images//<?php echo  $post_picture; ?>" width="50%" height="auto" />
+                            <?php }?> 
                         </div>
                     </div>
 

@@ -8,8 +8,13 @@ if (isset($_POST['submit'])) {
 	$year = mysqli_real_escape_string($conn, $_POST['year']);
 	$usergiven_paynumber = $_POST['pay_number'];
 	$payment_ammount = $_POST['payment_ammount'];
+	$bkash_number = $_POST['bkash_number'];
 	$transiction_number = mysqli_real_escape_string($conn, $_POST['transiction_number']);
+     //----------------------------checks for valid number-----------------------------------
+	if(strlen($usergiven_paynumber)!=11 || strlen($bkash_number)!=11 ){
+		$message[] = 'Not 11 digit';
 
+	}else{
 	//--------------------------------------checks for availability of payment of the month------------------------------
 	$available = mysqli_query($conn, "SELECT * FROM `clubmonthypayment`  WHERE  clubmonthypayment.month='$month' AND clubmonthypayment.year='$year' AND clubmonthypayment.club_id='$club_id'") or die('query failed');
 
@@ -37,7 +42,7 @@ if (isset($_POST['submit'])) {
 
 			if ($pay_number == $usergiven_paynumber) {
 
-				mysqli_query($conn, "INSERT INTO `pay`(user_id,payment_id,payment_ammount,transiction_number) VALUES('$user_id', '$payment_id', '$payment_ammount', '$transiction_number')") or die('query failed');
+				mysqli_query($conn, "INSERT INTO `pay`(user_id,payment_id,payment_ammount,transiction_number,mobile_number) VALUES('$user_id', '$payment_id', '$payment_ammount', '$transiction_number','$bkash_number')") or die('query failed');
 				$message[] = 'Succesfully inserted payment check request of month   --->' . $month;
 			} else {
 				$message[] = 'Not the correct Bkash NUmber .The correct number is --->' . $pay_number;
@@ -46,6 +51,8 @@ if (isset($_POST['submit'])) {
 	} else {
 		$message[] = 'No payment for this month on this club  --->' . $month;
 	}
+
+}
 }
 
 ?>
@@ -60,7 +67,7 @@ if (isset($message)) {
 		echo '
       <div class="message">
          <span>' . $message . '</span>
-         <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+         <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
       </div>
       ';
 	}
@@ -71,6 +78,12 @@ if (isset($message)) {
 
 <section class="h-100">
 	<div class="container h-100">
+		 <!-- Account page navigation-->
+		 <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Monthy payment</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
 		<div class="row justify-content-sm-center h-100">
 			<div class="col-xxl-5 col-xl-6 col-lg-6 col-md-7 col-sm-9">
 
@@ -82,33 +95,51 @@ if (isset($message)) {
 						<form action="" method="post" class="checkform" name="checkform" autocomplete="on">
 
 							<div class="dept mb-3">
-								<label class="mb-2 text-muted" for="month">Payment of Month</label>
-								<select placeholder="Month" class="month" name="month" id="type-option" required>
-									<option disabled selected value>Select Month</option>
-									<option name="January" value="jan">January</option>
-									<option name="February" value="feb">February</option>
-									<option name="March" value="mar">March</option>
-									<option name="April" value="apr">April</option>
-									<option name="May" value="may">May</option>
-									<option name="June" value="jun">June</option>
-									<option name="July" value="jul">July</option>
-									<option name="August" value="aug">August</option>
-									<option name="September" value="sep">September</option>
-									<option name="October" value="oct">October</option>
-									<option name="November" value="nov">November</option>
-									<option name="December" value="dec">December</option>
+								<label class="mb-2 text-muted" for="month">Payment of Month</label> 
+								<select name="month" class="mb-3" id="type-option" required>
+                                      <option  disabled selected value>Select a month</option> 
+
+                                        <?php
+                                         $club=mysqli_query($conn, "SELECT * FROM `clubmonthypayment`WHERE club_id='$club_id'") or die('query failed');
+                                         if(mysqli_num_rows($club) > 0){ 
+                            
+                                          while($row = mysqli_fetch_assoc($club)){ 
+                                           $month=$row['month']; 
+
+                                            ?> 
+                                          <option value="<?php echo  $month; ?>"><?php echo  $month; ?></option>
+
+                                          <?php  }  }  ?>
 								</select>
 							</div>
 							 
 							<div class="mb-1">
 								<label class="mb-2 text-muted" for="year">Payment Year</label>
-								<input id="year" type="number" class="form-control" name="year" required>
+								<select name="year" class="mb-3" id="type-option" required>
+                                      <option  disabled selected value>Select a year</option> 
+
+                                        <?php
+                                         $club=mysqli_query($conn, "SELECT * FROM `clubmonthypayment`WHERE club_id='$club_id'") or die('query failed');
+                                         if(mysqli_num_rows($club) > 0){ 
+                            
+                                          while($row = mysqli_fetch_assoc($club)){ 
+                                           $year=$row['year']; 
+
+                                            ?> 
+                                          <option value="<?php echo  $year; ?>"><?php echo  $year; ?></option>
+
+                                          <?php  }  }  ?>
+								</select>								 
 							</div>
 
 
 							<div class="mb-3">
 								<label class="mb-2 text-muted" for="pay_number">Bkash Number (Club)</label>
 								<input id="pay_numberr" type="number" class="form-control" name="pay_number" value="" required autofocus>
+							</div>
+							<div class="mb-3">
+								<label class="mb-2 text-muted" for="pay_number">Bkash NUmber(User)</label>
+								<input id="pay_numberr" type="number" class="form-control" name="bkash_number" value="" required autofocus>
 							</div>
 
 							<div class="mb-3">

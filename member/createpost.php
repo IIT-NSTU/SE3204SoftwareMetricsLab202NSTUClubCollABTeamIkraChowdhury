@@ -3,9 +3,13 @@
 
 include '../assets//config.php';
 if (isset($_POST['submit'])) {
-
+ 
+    $post_status=null;
     $post_caption = mysqli_real_escape_string($conn, $_POST['post_caption']);
-    $post_status = mysqli_real_escape_string($conn, $_POST['post_status']);
+    if(isset( $_POST['post_status'])){
+        $post_status = mysqli_real_escape_string($conn, $_POST['post_status']);
+    }
+     
     $image = $_FILES['image']['name'];
     $image_size = $_FILES['image']['size'];
     $image_tmp_name = $_FILES['image']['tmp_name'];
@@ -14,12 +18,16 @@ if (isset($_POST['submit'])) {
     
     $post_time = date("m.d.Y"); 
 
-    if ($image_size > 200000000) {
-        $message[] =  'image size is too large ,please provide new picture';
+    if ($image_size > 3145728) {
+        $message[] =  'Image size is too large ,please provide new picture less than 3MB';
+    
+    
+    }elseif($post_status==null){
+        $message[] =  'Select post type';
     } else {
         move_uploaded_file($image_tmp_name, $image_folder);
         $create_post = mysqli_query($conn, "INSERT INTO `post`(user_id,club_id,post_caption,post_picture,post_status,post_time) VALUES('$user_id', '$club_id', '$post_caption','$image', '$post_status', '$post_time')") or die('query failed');
-        $message[] =  'product added successfully!';
+        $message[] =  'Post created successfully!';
     }
 }
 
@@ -31,7 +39,7 @@ if (isset($message)) {
         echo '
   <div class="message">
      <span>' . $message . '</span>
-     <i  class="fa fa-bell " style="font-size:20px" onclick="this.parentElement.remove();"></i>
+     <i  class="fa-solid fa-xmark" style="font-size:20px" onclick="this.parentElement.remove();"></i>
   </div>
   ';
     }
@@ -39,9 +47,14 @@ if (isset($message)) {
 ?>
 
 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
+ 
 <div class="container">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Create Post</a>
+        
+    </nav>
+    <hr class="mt-0 mb-4">
     <div class="row gutters-sm mt-0 ">
         <div class="col-sm-2"></div>
         <div class="col-md-8">
