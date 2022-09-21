@@ -1,9 +1,8 @@
-<div class="container">
-    <nav class="nav nav-borders">
+<nav class="nav nav-borders">
         <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Apply to join club</a>
         
     </nav>
-    <hr class="mt-0 mb-4">
+    <hr class="mt-0 mb-4"> 
 <?php
 include '../assets//config.php'; 
 
@@ -15,7 +14,6 @@ include '../assets//config.php';
         $session_number=$row['session_number'];
         $end_time=$row['end_time'];
         $current_time = date("Y-m-d");  
-
         if($end_time==$current_time){  
             mysqli_query($conn, "UPDATE `apply_form` SET session_status='stop'") or die('query failed');   
         } 
@@ -44,6 +42,9 @@ include '../assets//config.php';
 
                 ?>
                  <!-- Account page navigation-->
+ 
+                 <div class="container">
+ 
      
         <div class="row d-flex align-items-center justify-content-center mt-5">
         <div class="col-md-7">
