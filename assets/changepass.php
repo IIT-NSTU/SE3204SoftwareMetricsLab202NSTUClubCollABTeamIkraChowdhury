@@ -3,11 +3,23 @@
 include 'config.php'; 
 if(isset($_POST['submit'])){
 	 
-
+    $checkpass=$_POST['password'];
 	$password = mysqli_real_escape_string($conn, md5($_POST['password']));
 	$password_confirm= mysqli_real_escape_string($conn, md5($_POST['password_confirm'])); 
+
+	 
  
-	if ($password==$password_confirm) {  
+	if ($password==$password_confirm) { 
+		
+	$number = preg_match('@[0-9]@', $checkpass);
+	$uppercase = preg_match('@[A-Z]@', $checkpass);
+	$lowercase = preg_match('@[a-z]@', $checkpass);
+	$specialChars = preg_match('@[^\w]@', $checkpass);
+		
+		 if(strlen($checkpass) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars){ 
+			$message[] = "Password must be at least 8 characters in length and must contain at least one number, one upper case letter, one lower case letter and one special character.";
+	
+		}else{
 		mysqli_query($conn, "UPDATE `users` SET password='$password_confirm' WHERE user_id='$user_id'") or die('query failed');
 		echo
     "
@@ -15,6 +27,7 @@ if(isset($_POST['submit'])){
     document.location.href = '../assets/logout.php';
     </script>
     ";
+		}
 
    }else{
 	  $message[] = 'Do not match';

@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>Made One</title>
+        <title>NSTU Club Collab :Home </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="favicon.ico">
@@ -169,7 +169,7 @@
                                         <i class="fa fa-tablet"></i>
                                     </div>
                                     <div class="f_item_text">
-                                        <h3>CLub Post</h3>
+                                        <h3>Club Post</h3>
                                         <p> Through posting, clubs can publicize their events and directly interact with the students</p>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
                                     <p class="m-top-20"> Noakhali Science and Technology University (abbreviated as NSTU) was established on 15 July 2001 enacting the Noakhali Science and Technology University Act 2001. Finally, it started its academic activities on 22 June 2006. Co-curricular activities are extensively patronized. There are students’ organizations like NSTUMUNA, NSTU Debating Society, and NSTU English Club, NSTU Business Club etc. which work to develop leadership capacity of a student by promoting the art of public speaking, reasoning and logical thinking.</p>
 
                                     <div class="business_btn">
-                                        <a href="https://bootstrapthemes.co" class="btn btn-default m-top-20">Take a tour</a>
+                                        <a href="#club" class="btn btn-default m-top-20">Take a tour</a>
                                     </div>
 
                                 </div>

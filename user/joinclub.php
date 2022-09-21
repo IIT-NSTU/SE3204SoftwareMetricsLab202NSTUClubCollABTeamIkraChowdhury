@@ -100,6 +100,7 @@ include '../assets//config.php';
                     <hr>
                     <div class="row">
                         <div class="col">
+                            <label for=""> Why do you want to join the club?</label>
                             <textarea class="form-control" name="description" id="" cols="66" rows="3" placeholder="Why you want to join the club?" required> </textarea>
                         </div>
                     </div>

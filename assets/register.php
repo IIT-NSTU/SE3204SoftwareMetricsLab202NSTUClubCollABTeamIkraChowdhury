@@ -86,14 +86,19 @@ if (isset($_POST['submit'])) {
 	$user_type = $_POST['user_type'];
 	$batch = mysqli_real_escape_string($conn, $_POST['batch']); 
 	$user_image="user.png";
+
+	$number = preg_match('@[0-9]@', $checkpass);
+	$uppercase = preg_match('@[A-Z]@', $checkpass);
+	$lowercase = preg_match('@[a-z]@', $checkpass);
+	$specialChars = preg_match('@[^\w]@', $checkpass);
  
 
 	if (!preg_match("/^[a-zA-Z0-9+_.-]+@*[a-zA-Z.]+.nstu.edu.bd+$/i", $email)) {
 
 		$message[] = "Must enter Education mail of the university";
 	} 
-	else if(strlen($checkpass)<7){ 
-		$message[] = "Password is too short to be strong";
+	else if(strlen($checkpass) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars){ 
+		$message[] = "Password must be at least 8 characters in length and must contain at least one number, one upper case letter, one lower case letter and one special character.";
 
 	}else {
 		$select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');

@@ -25,8 +25,8 @@ $image_size = $_FILES['image']['size'];
 $image_tmp_name = $_FILES['image']['tmp_name'];
 $image_folder = '../images//'. $image;
 
-if ($image_size > 200000000) {
-    $message[] =  'image size is too large ,please provide new picture';
+if ($image_size > 3145728) {
+    $message[] =  'Image size is too large ,please provide new picture less than 3MB';
 
 } else{ 
     move_uploaded_file($image_tmp_name, $image_folder); 
@@ -92,8 +92,40 @@ if (isset($message)) {
                                     <div class="col-sm-3">
                                         <label class="form-label mb-0 pt-1" for="form3Example1c">Department</label>
                                     </div>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="dept_name" id="form3Example1c" value="<?php echo $user_dept; ?>" class="form-control" />
+                                    <div class="col-sm-9"> 
+                                        <select name="dept_name" class="mb-3" id="type-option">
+                                        <option value="<?php echo $user_dept; ?>"><?php echo $user_dept; ?></option>
+										<option value="ACCE">ACCE</option>
+										<option value="Agriculture">Agriculture</option>
+										<option value="Applied Math">Applied Math</option>
+										<option value="Bangla">Bangla</option>
+										<option value="BGE">BGE</option>
+										<option value="Biochemistry">Biochemistry</option>
+										<option value="BMS">BMS</option>
+										<option value="Business Administration">Business Administration</option>
+										<option value="CSTE">CSTE</option>
+										<option value="Economics">Economics</option>
+										<option value="Education">Education</option>
+										<option value="Educational Administration">Educational Administration</option>
+										<option value="EEE">EEE</option>
+										<option value="English">English</option>
+										<option value="ESDM">ESDM</option>
+										<option value="FIMS">FIMS</option>
+										<option value="FTNS">FTNS</option>
+										<option value="ICE">ICE</option>
+										<option value="IIS">IIS</option>
+										<option value="IIT">IIT</option>
+										<option value="Law">Law</option>
+										<option value="Microbiology">Microbiology</option>
+										<option value="MIS">MIS</option>
+										<option value="Oceanography">Oceanography</option>
+										<option value="Pharmacy">Pharmacy</option>
+										<option value="Social Work">Social Work</option>
+										<option value="Sociology">Sociology</option>
+										<option value="Statistics">Statistics</option>
+										<option value="THM">THM</option>
+										<option value="Zoology">Zoology</option>
+									</select>
                                     </div>
                                 </div>
                                 <div class="row pb-3">

@@ -3,9 +3,13 @@
 
 include '../assets//config.php';
 if (isset($_POST['submit'])) {
-
+ 
+    $post_status=null;
     $post_caption = mysqli_real_escape_string($conn, $_POST['post_caption']);
-    $post_status = mysqli_real_escape_string($conn, $_POST['post_status']);
+    if(isset( $_POST['post_status'])){
+        $post_status = mysqli_real_escape_string($conn, $_POST['post_status']);
+    }
+     
     $image = $_FILES['image']['name'];
     $image_size = $_FILES['image']['size'];
     $image_tmp_name = $_FILES['image']['tmp_name'];
@@ -14,8 +18,12 @@ if (isset($_POST['submit'])) {
     
     $post_time = date("m.d.Y"); 
 
-    if ($image_size > 200000000) {
-        $message[] =  'Image size is too large ,please provide new picture';
+    if ($image_size > 3145728) {
+        $message[] =  'Image size is too large ,please provide new picture less than 3MB';
+    
+    
+    }elseif($post_status==null){
+        $message[] =  'Select post type';
     } else {
         move_uploaded_file($image_tmp_name, $image_folder);
         $create_post = mysqli_query($conn, "INSERT INTO `post`(user_id,club_id,post_caption,post_picture,post_status,post_time) VALUES('$user_id', '$club_id', '$post_caption','$image', '$post_status', '$post_time')") or die('query failed');

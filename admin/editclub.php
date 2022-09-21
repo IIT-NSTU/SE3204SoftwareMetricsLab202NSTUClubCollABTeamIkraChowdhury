@@ -13,9 +13,10 @@ if(isset($_POST["submit"])){
     $image_tmp_name = $_FILES['image']['tmp_name'];
     $image_folder = '../images//'. $image;
     
-    if ($image_size > 200000000) { 
+    if ($image_size > 3145728) {
+        $message[] =  'Image size is too large ,please provide new picture less than 3MB';
     
-    } else{ 
+    }else{ 
         move_uploaded_file($image_tmp_name, $image_folder);  
         mysqli_query($conn, "UPDATE `clubs` SET  club_image='$image'  WHERE club_id= '$club_id'") or die('query failed'); 
         $_SESSION['club_image']=$image; 
@@ -89,7 +90,7 @@ if (isset($message)) {
                     
                     <img class="img-account-profile rounded-circle mb-2" src="../images//<?php echo $image; ?>" width="50%" alt="">
                     <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 3 MB</div>
                     <!-- Profile picture upload button-->
                     <form class="form" id = "form" class="mb-3" action="" method="post" enctype="multipart/form-data">
       

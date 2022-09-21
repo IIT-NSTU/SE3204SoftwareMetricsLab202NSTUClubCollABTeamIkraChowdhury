@@ -6,6 +6,7 @@
 
 <?php
 include '../assets//config.php';
+$member_type=$_SESSION['member_type'];
 if(isset($_POST['submit'])){
     $comment_content= mysqli_real_escape_string($conn, $_POST['comment_content']);
     $commnet_id= $_POST['comment_id']; 
@@ -15,9 +16,15 @@ if(isset($_POST['submit'])){
     mysqli_query($conn, "INSERT INTO `comment_reply`(comment_id,user_id,post_id,reply_content,comment_time) VALUES('$commnet_id', '$user_id','$post_id','$comment_content','$comment_time')") or die('query failed');
      
     
-}
- 
-         $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND user_id='$user_id' ORDER BY post_id DESC ") or die('query failed');
+}       
+         if($member_type=='adimn') { 
+          echo "lol";
+          $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' ORDER BY post_id DESC ") or die('query failed');
+         }else{
+          
+          $post = mysqli_query($conn, "SELECT * FROM `post` WHERE club_id='$club_id' AND user_id='$user_id' ORDER BY post_id DESC ") or die('query failed');
+         }
+          
          if(mysqli_num_rows($post) > 0){ 
             while($row = mysqli_fetch_assoc($post)){ 
                 $post_id=$row['post_id'];
