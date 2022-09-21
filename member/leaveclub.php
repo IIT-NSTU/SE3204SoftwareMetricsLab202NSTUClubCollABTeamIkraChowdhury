@@ -21,7 +21,9 @@ if($member_type=="admin"){
     $available =mysqli_query($conn, "SELECT * FROM `club_members`  WHERE club_id='$club_id' AND member_type='admin'") or die('query failed');
        
     if(mysqli_num_rows($available)<=1){   
-        echo "you can not leave club as only admin"; 
+        echo "<script>alert('You can not leave the club as only admin.
+        Please first make a new admin')</script>"; 
+       header('location:../admin/adminmanagemember.php');
     
     }else{  
         
