@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
             $create_post = mysqli_query($conn, "INSERT INTO `apply_form`(club_id,description,ammount,bkash_number,end_time,session_number) VALUES('$club_id', '$description', '$ammount','$bkash_number', '$end_time','$session_numbergiven')") or die('query failed');
        
        
-            $noti_description=$club_name." has now published a new recruitment form form";
+            $noti_description=$club_name." has now published a new recruitment form ";
             mysqli_query($conn, "INSERT INTO `notification`(club_id,description,noti_time) VALUES('$club_id', '$noti_description','$noti_time')") or die('query failed');
     
             $message[] =  'session started successfully!';

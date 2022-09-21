@@ -2,12 +2,22 @@
 include "clubdatabase.php";
  
 if(isset(($_GET['after_login']))){
-   session_start(); 
-   $member_type = $_SESSION['member_type']; 
+   session_start();   
+   if($_SESSION['in_club']==1){
+   $member_type=$_SESSION['member_type'];
+   }else{ 
+      if(isset(($_GET['member_type']))){
+         $member_type=$_GET['member_type']; 
+     }  
+   }
+  
    if($_SESSION['is_login']!=1){
      header('location:../assets/login.php');
     }
-} 
+}else{
+   include "clubdatabase.php"; 
+    
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,8 +49,9 @@ if(isset(($_GET['after_login']))){
                      <div class="profile-header-info">
                         <h4 class="m-t-10 m-b-5"><?php echo $club_name;?></h4>
                        <?php if(isset(($_GET['after_login']))){ ?>
-                        <?php
+                        <?php 
                         if($member_type=="admin"){?>
+                         
                            <a href="../admin/admineditclub.php" class="btn btn-sm btn-info ">Edit Profile</a>
                         <?php } 
                         ?>
@@ -56,21 +67,22 @@ if(isset(($_GET['after_login']))){
                   </div> 
                   <ul class="profile-header-tab nav nav-tabs">
                       
-                     <?php if(isset(($_GET['after_login']))){ ?>
+                  <?php if(isset(($_GET['after_login']))){ ?>
                         
-                      <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?> && after_login='1'" target="__blank" class="nav-link_">Members Details</a></li>
-                      <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?> && after_login='1'" target="__blank" class="nav-link_">Activity Section</a></li>
-                     <?php 
-                        if($member_type=="admin" || $member_type=="member"){?>
-                           <li class="nav-item"><a href= "../member/membercreatepost.php" target="__blank" class="nav-link_">Home</a></li>
-                        <?php }
-                     } else{ 
-                        ?>
-                     <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?>" target="__blank" class="nav-link_">Members Details</a></li>
-                     <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> " target="__blank" class="nav-link_">Activity Section</a></li>
-                     <li class="nav-item"><a href= "../club/home.php" target="__blank" class="nav-link_">Home</a></li>
-
-                     <?php }?>
+                        <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?> && after_login='1'" target="__blank" class="nav-link_">Members Details</a></li>
+                        <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> && member_type=<?php echo  $member_type; ?> && after_login='1'" target="__blank" class="nav-link_">Activity Section</a></li>
+                       <?php 
+                          if($member_type=="admin" || $member_type=="member"){ ?>
+                             <li class="nav-item"><a href= "../member/membercreatepost.php" target="__blank" class="nav-link_">Home</a></li>
+                          <?php }else{ ?> 
+                            <li class="nav-item"><a href= "../user/userdiscover.php" target="__blank" class="nav-link_">Home</a></li>
+                      <?php }} else{ 
+                          ?>
+                       <li class="nav-item"><a href="clubshowmembers.php?club_id=<?php echo  $club_id; ?>" target="__blank" class="nav-link_">Members Details</a></li>
+                       <li class="nav-item"><a href= "clubactivity.php?club_id=<?php echo  $club_id; ?> " target="__blank" class="nav-link_">Activity Section</a></li>
+                       <li class="nav-item"><a href= "../club/home.php" target="__blank" class="nav-link_">Home</a></li>
+  
+                       <?php }?>
                      
                        
                   </ul> 

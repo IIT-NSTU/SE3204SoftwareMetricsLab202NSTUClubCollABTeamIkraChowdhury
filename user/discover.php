@@ -68,6 +68,7 @@ if(isset($_POST['submit'])){
     $clubs = mysqli_query($conn, "SELECT * FROM `clubs`  WHERE clubs.club_name='$clubnam'") or die('query failed');
          if(mysqli_num_rows($clubs) > 0){
             while($row = mysqli_fetch_assoc($clubs)){
+                $club_id= $row['club_id']; 
                 ?> 
                 <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
@@ -77,7 +78,7 @@ if(isset($_POST['submit'])){
                     <div class="card-body text-center">
                         <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
                         <p class="card-text"><?php echo $row['club_type']; ?></p>
-                        <a href="#" class="btn btn-sm btn-primary">Visit Club</a>
+                        <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?>&& member_type='user' && after_login='1'" id="profilebutton">Visit club</a>
                     </div>
                 </div>
             </div>
@@ -107,6 +108,7 @@ if(isset($_POST['submit'])){
          $clubs = mysqli_query($conn, "SELECT * FROM `clubs`") or die('query failed');
          if(mysqli_num_rows($clubs) > 0){
             while($row = mysqli_fetch_assoc($clubs)){
+                $club_id= $row['club_id']; 
                 ?> 
             <div class="col-md-4">
                 <div class="card shadow" style="width: 18rem;">
@@ -116,7 +118,7 @@ if(isset($_POST['submit'])){
                     <div class="card-body text-center">
                         <h5 class="card-title"><?php echo $row['club_name']; ?></h5>
                         <p class="card-text"><?php echo $row['club_type']; ?></p>
-                        <a href="#" class="btn btn-sm btn-primary">Visit Club</a>
+                        <a class="btn btn-primary btn-sm" href="../club/clubshowmembers.php?club_id=<?php echo  $club_id; ?>&& member_type='user' && after_login='1'" id="profilebutton">Visit club</a>
                     </div>
                 </div>
             </div>  
